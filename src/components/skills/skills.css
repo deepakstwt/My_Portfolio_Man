@@ -1,0 +1,385 @@
+@import url('../modern-ui/ModernEffects.css');
+
+.skills__container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  margin-bottom: 4rem;
+}
+
+.skills__tools {
+  grid-column: 1 / -1;
+  margin-top: 2rem;
+}
+
+.skills__frontend,
+.skills__backend,
+.skills__tools {
+  background: var(--color-card-bg);
+  padding: 2.5rem;
+  border-radius: 2rem;
+  border: 1px solid var(--color-primary-variant);
+  box-shadow: 0 12px 28px var(--color-card-shadow), 0 6px 12px rgba(0, 0, 0, 0.08);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.skills__frontend::before,
+.skills__backend::before,
+.skills__tools::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  z-index: -1;
+}
+
+.skills__frontend:hover,
+.skills__backend:hover,
+.skills__tools:hover {
+  transform: translateY(-10px) scale(1.02) rotateX(5deg);
+  box-shadow: 0 25px 50px var(--color-card-shadow), 0 15px 25px rgba(0, 0, 0, 0.15);
+  border-color: var(--color-primary);
+}
+
+.skills__frontend:hover::before,
+.skills__backend:hover::before,
+.skills__tools:hover::before {
+  opacity: 0.05;
+}
+
+.skills__frontend h3,
+.skills__backend h3,
+.skills__tools h3 {
+  text-align: center;
+  margin-bottom: 2rem;
+  color: var(--color-text);
+  font-size: 1.3rem;
+  font-weight: 600;
+  position: relative;
+}
+
+.skills__frontend h3::after,
+.skills__backend h3::after,
+.skills__tools h3::after {
+  content: '';
+  position: absolute;
+  bottom: -0.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 3rem;
+  height: 3px;
+  background: linear-gradient(90deg, var(--color-primary), var(--color-primary-variant));
+  border-radius: 2px;
+}
+
+/* Progress Bar Styles */
+.skills__content {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.skill-item {
+  width: 100%;
+}
+
+.skill-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.skill-name {
+  font-weight: 500;
+  color: var(--color-text);
+  font-size: 1rem;
+}
+
+.skill-percentage {
+  font-weight: 600;
+  color: var(--color-primary);
+  font-size: 1rem;
+  min-width: 50px;
+  text-align: right;
+}
+
+.progress-bar {
+  width: 100%;
+  height: 8px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  overflow: hidden;
+  position: relative;
+  border: 1px solid var(--color-primary-variant);
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--color-primary), var(--color-secondary), var(--color-primary));
+  background-size: 200% 100%;
+  border-radius: 10px;
+  position: relative;
+  overflow: hidden;
+  animation: progressShimmer 3s ease-in-out infinite;
+}
+
+@keyframes progressShimmer {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+.progress-fill::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  animation: shimmer 2s infinite;
+}
+
+@keyframes shimmer {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+/* Circular Progress Styles */
+.skills__circular {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 2rem;
+  justify-items: center;
+  margin-top: 1rem;
+}
+
+.circular-progress {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.circular-svg {
+  transform: rotate(-90deg);
+}
+
+.circular-content {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.circular-percentage {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--color-primary);
+  line-height: 1;
+}
+
+.circular-label {
+  font-size: 0.8rem;
+  color: var(--color-text);
+  margin-top: 0.3rem;
+  font-weight: 500;
+  max-width: 80px;
+  line-height: 1.2;
+  text-align: center;
+}
+
+/* Hover Effects */
+.circular-progress:hover {
+  transform: scale(1.05);
+  transition: transform 0.3s ease;
+}
+
+.circular-progress:hover .circular-percentage {
+  color: var(--color-primary);
+  font-weight: 800;
+}
+
+.circular-progress:hover .circular-label {
+  color: var(--color-text);
+  font-weight: 600;
+}
+
+/* Animation Classes */
+.skill-item {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 0.6s ease forwards;
+}
+
+.skill-item:nth-child(1) { animation-delay: 0.1s; }
+.skill-item:nth-child(2) { animation-delay: 0.2s; }
+.skill-item:nth-child(3) { animation-delay: 0.3s; }
+.skill-item:nth-child(4) { animation-delay: 0.4s; }
+.skill-item:nth-child(5) { animation-delay: 0.5s; }
+
+.circular-progress {
+  opacity: 0;
+  transform: scale(0.8);
+  animation: scaleIn 0.6s ease forwards;
+}
+
+.circular-progress:nth-child(1) { animation-delay: 0.1s; }
+.circular-progress:nth-child(2) { animation-delay: 0.2s; }
+.circular-progress:nth-child(3) { animation-delay: 0.3s; }
+.circular-progress:nth-child(4) { animation-delay: 0.4s; }
+.circular-progress:nth-child(5) { animation-delay: 0.5s; }
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Responsive Design */
+@media screen and (max-width: 1024px) {
+  .skills__container {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+  
+  .skills__tools {
+    grid-column: 1;
+  }
+  
+  .skills__circular {
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    gap: 1.5rem;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .skills__frontend,
+  .skills__backend,
+  .skills__tools {
+    padding: 1.2rem;
+    border-radius: 1.5rem;
+  }
+  
+  .skills__container {
+    gap: 1.5rem;
+  }
+  
+  .skills__frontend h3,
+  .skills__backend h3,
+  .skills__tools h3 {
+    font-size: 1.1rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .skills__circular {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.8rem;
+  }
+  
+  .circular-progress {
+    transform: scale(0.85);
+  }
+  
+  .skill-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.2rem;
+  }
+  
+  .skill-name {
+    font-size: 0.9rem;
+  }
+  
+  .skill-percentage {
+    align-self: flex-end;
+    font-size: 0.9rem;
+  }
+  
+  .progress-bar {
+    height: 6px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .skills__frontend,
+  .skills__backend,
+  .skills__tools {
+    padding: 1rem;
+    border-radius: 1.2rem;
+  }
+  
+  .skills__container {
+    gap: 1.2rem;
+  }
+  
+  .skills__frontend h3,
+  .skills__backend h3,
+  .skills__tools h3 {
+    font-size: 1rem;
+    margin-bottom: 1.2rem;
+  }
+  
+  .skills__circular {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.6rem;
+  }
+  
+  .circular-progress {
+    transform: scale(0.8);
+  }
+  
+  .circular-percentage {
+    font-size: 1rem;
+  }
+  
+  .circular-label {
+    font-size: 0.7rem;
+  }
+  
+  .skill-name {
+    font-size: 0.85rem;
+  }
+  
+  .skill-percentage {
+    font-size: 0.85rem;
+  }
+  
+  .progress-bar {
+    height: 5px;
+  }
+} 

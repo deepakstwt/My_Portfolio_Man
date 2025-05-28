@@ -1,0 +1,103 @@
+/* Z-Index Layering System */
+/* This file defines the z-index hierarchy for all components */
+
+:root {
+  /* Z-Index Layer System */
+  --z-background: -1;
+  --z-base: 0;
+  --z-content: 1;
+  --z-elevated: 10;
+  --z-sticky: 100;
+  --z-fixed: 1000;
+  --z-modal-backdrop: 9000;
+  --z-modal: 9100;
+  --z-popover: 9200;
+  --z-tooltip: 9300;
+  --z-notification: 9400;
+  --z-maximum: 9999;
+}
+
+/* Apply z-index layers to prevent conflicts */
+
+/* Background elements */
+.background-element,
+.background-gradient,
+.background-pattern {
+  z-index: var(--z-background);
+}
+
+/* Base content */
+.base-content,
+section,
+.container {
+  z-index: var(--z-base);
+}
+
+/* Regular content */
+.content-element,
+.card,
+.form,
+.contact__form,
+.contact__card,
+.contact__form-wrapper {
+  z-index: var(--z-content) !important;
+}
+
+/* Elevated content (dropdowns, tooltips) */
+.elevated-content,
+.dropdown,
+.tooltip,
+.status-message {
+  z-index: var(--z-elevated) !important;
+}
+
+/* Sticky elements */
+.sticky-element,
+.header__socials {
+  z-index: var(--z-sticky);
+}
+
+/* Fixed elements (navigation, theme toggle) */
+.fixed-element,
+nav,
+.theme-toggle,
+.scroll-to-top {
+  z-index: var(--z-fixed) !important;
+}
+
+/* Modal backdrop */
+.modal::backdrop,
+.modal-backdrop {
+  z-index: var(--z-modal-backdrop);
+}
+
+/* Modal content */
+.modal,
+.modal-content {
+  z-index: var(--z-modal);
+}
+
+/* Popovers */
+.popover,
+.select-dropdown {
+  z-index: var(--z-popover);
+}
+
+/* Tooltips */
+.tooltip-content,
+nav a::after {
+  z-index: var(--z-tooltip);
+}
+
+/* Notifications */
+.notification,
+.toast,
+.alert {
+  z-index: var(--z-notification);
+}
+
+/* Maximum priority elements */
+.maximum-priority,
+.emergency-overlay {
+  z-index: var(--z-maximum);
+} 

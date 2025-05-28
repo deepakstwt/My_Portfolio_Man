@@ -1,0 +1,99 @@
+.portfolio__container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2.5rem;
+}
+
+.portfolio__item {
+  background: var(--color-card-bg);
+  padding: 1.3rem;
+  border-radius: 2rem;
+  border: 1px solid transparent;
+  transition: var(--transition);
+  box-shadow: 0 8px 25px var(--color-card-shadow), 0 4px 10px rgba(0, 0, 0, 0.05);
+  cursor: pointer;
+  position: relative;
+}
+
+.portfolio__item:hover {
+  border-color: var(--color-primary-variant);
+  background: var(--color-card-bg);
+  box-shadow: 0 15px 35px var(--color-card-shadow), 0 8px 15px var(--color-primary-variant);
+  transform: translateY(-8px);
+}
+
+.portfolio__item-image {
+  border-radius: 1.5rem;
+  overflow: hidden;
+  height: 200px;
+}
+
+.portfolio__item-image img {
+  height: 100%;
+  object-fit: cover;
+}
+
+.portfolio__item h3 {
+  margin: 1.2rem 0 0.8rem;
+  font-size: 1.1rem;
+}
+
+.portfolio__item-brief {
+  color: var(--color-light);
+  font-size: 0.9rem;
+  margin-bottom: 1.2rem;
+  line-height: 1.4;
+}
+
+.portfolio__item-cta {
+  display: flex;
+  gap: 0.8rem;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+}
+
+.portfolio__item-cta .btn {
+  flex: 1;
+  min-width: fit-content;
+  text-align: center;
+  font-size: 0.9rem;
+  padding: 0.6rem 1rem;
+  border-radius: 50px;
+}
+
+.portfolio__item::before {
+  content: "Click to view details";
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: var(--color-primary);
+  color: var(--color-white);
+  padding: 0.3rem 0.8rem;
+  border-radius: var(--border-radius-full);
+  font-size: 0.75rem;
+  opacity: 0;
+  transform: translateY(-10px);
+  transition: var(--transition);
+  pointer-events: none;
+}
+
+.portfolio__item:hover::before {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* MEDIA QUERIES (MEDIUM DEVICES) */
+@media screen and (max-width: 1024px) {
+  .portfolio__container {
+    grid-template-columns: 1fr 1fr;
+    gap: 1.2rem;
+  }
+}
+
+/* MEDIA QUERIES (SMALL DEVICES) */
+@media screen and (max-width: 600px) {
+  .portfolio__container {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+}

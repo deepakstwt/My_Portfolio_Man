@@ -83,15 +83,31 @@ const Contact = () => {
     setSubmitStatus(null);
 
     try {
-      // EmailJS configuration
-      const result = await emailjs.sendForm(
+      // EmailJS configuration - using send method with form data
+      const templateParams = {
+        name: formData.name,
+        email: formData.email,
+        message: formData.message,
+        to_name: 'Deepak Prajapati' // Your name for the email
+      };
+
+      // Debug: Log the data being sent
+      console.log('Sending email with data:', templateParams);
+      console.log('EmailJS Config:', {
+        serviceId: emailjsConfig.serviceId,
+        templateId: emailjsConfig.templateId,
+        publicKey: emailjsConfig.publicKey
+      });
+
+      const result = await emailjs.send(
         emailjsConfig.serviceId,
         emailjsConfig.templateId,
-        form.current,
+        templateParams,
         emailjsConfig.publicKey
       );
 
       console.log('Email sent successfully:', result.text);
+      console.log('Full result:', result);
       setSubmitStatus('success');
       setFormData({ name: '', email: '', message: '' });
       setErrors({});
@@ -104,6 +120,7 @@ const Contact = () => {
 
     } catch (error) {
       console.error('Email sending failed:', error);
+      console.error('Error details:', error.text || error.message);
       setSubmitStatus('error');
       
       // Reset error message after 5 seconds
@@ -131,7 +148,7 @@ const Contact = () => {
           <div className="contact__card-content">
             <BsLinkedin className="contact__icon" />
             <h3>LinkedIn</h3>
-            <h4>Deep Prajapati</h4>
+            <h4>Deepak Prajapati</h4>
             <a 
               href="https://www.linkedin.com/in/deepak-prajapati123/" 
               target="_blank" 

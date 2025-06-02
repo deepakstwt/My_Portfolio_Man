@@ -22,43 +22,49 @@ const About = () => {
               <FaAward className="about__icon" />
               <h5>Experience</h5>
               <small>
-                3+ Years
+                iOS Developer Intern
               </small> <br />
               <small>
-                Professional Experience
+                Frontend Web Dev Intern
               </small>
             </article>
             <article className="about__card">
               <FiUsers className="about__icon" />
               <h5>Education</h5>
               <small>
-                Computer Science
+                B.Tech Computer Science
                 <br />
-                Bachelor's Degree
+                CGPA: 8.57/10
               </small>
             </article>
             <article className="about__card">
               <VscFolderLibrary className="about__icon" />
               <h5>Projects</h5>
               <small>
-                25+ Completed
+                3+ Major Projects
                 <br />
-                Projects
+                iOS & Web Apps
               </small>
             </article>
           </div>
           <p>
-            I'm a dedicated Software Developer with expertise in building responsive web applications 
-            and modern user interfaces. My technical stack includes JavaScript, React.js, Node.js, 
-            and various frontend and backend technologies. I'm passionate about creating 
-            clean, efficient, and scalable code to deliver exceptional user experiences.
+            I'm a passionate iOS Developer and Full Stack Developer currently pursuing B.Tech in Computer Science 
+            at Galgotias University with a CGPA of 8.57/10. Currently working as an iOS Developer Intern at 
+            Infosys Campus, Mysore, where I develop secure iOS applications using Swift and SwiftUI, implementing 
+            industry-standard protocols and achieving 95% test coverage in an Agile environment.
           </p>
           <p>
-            With a strong foundation in computer science principles and a keen eye for detail, 
-            I approach each project with a focus on producing high-quality solutions that 
-            meet business requirements and exceed user expectations. I enjoy collaborating 
-            with cross-functional teams and continuously learning new technologies to 
-            enhance my development skills.
+            My technical expertise spans across iOS development with Swift, SwiftUI, Firebase, and Supabase, 
+            as well as web development using React.js, Node.js, and modern JavaScript frameworks. I've successfully 
+            built comprehensive applications including AInteraView (AI-powered interview platform), Faby (iOS app 
+            for toddler tracking), and Fleet Management System with real-time monitoring and role-based access control.
+          </p>
+          <p>
+            With hands-on experience in both frontend and backend development, I'm skilled in creating responsive 
+            web applications, implementing secure authentication systems, and optimizing performance. I've reduced 
+            page load times by 35% and login friction by 40% through code optimization and modern development techniques. 
+            I thrive in collaborative environments and am passionate about leveraging cutting-edge technologies to 
+            solve real-world problems.
           </p>
           <a href="#contact" className="btn btn-primary">
             Let's Talk

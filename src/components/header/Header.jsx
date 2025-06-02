@@ -56,9 +56,6 @@ const Header = () => {
         </div>
         <CTA />
         <ConditionalSocials />
-        <a href="#contact" className="scroll__down">
-          Scroll Down
-        </a>
       </div>
     </header>
   );

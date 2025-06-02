@@ -29,9 +29,6 @@ const Footer = () => {
           <a href="#portfolio">Portfolio</a>
         </li>
         <li>
-          <a href="#testimonials">Testimonials</a>
-        </li>
-        <li>
           <a href="#contact">Contact</a>
         </li>
       </ul>
@@ -49,7 +46,7 @@ const Footer = () => {
         </div>
       )}
       <div className="footer__copyright">
-        <small>&copy; Deep Prajapati. All rights reserved</small>
+        <small>&copy; Deepak Prajapati. All rights reserved</small>
       </div>
     </footer>
   );

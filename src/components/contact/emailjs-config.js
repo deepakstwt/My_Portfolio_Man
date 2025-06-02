@@ -9,25 +9,26 @@
 
 export const emailjsConfig = {
   // Replace with your EmailJS service ID
-  serviceId: 'YOUR_SERVICE_ID',
+  serviceId: 'service_lj5s1wi',
   
   // Replace with your EmailJS template ID
-  templateId: 'YOUR_TEMPLATE_ID',
+  templateId: 'template_176zgxd',
   
   // Replace with your EmailJS public key
-  publicKey: 'YOUR_PUBLIC_KEY'
+  publicKey: '1NCBp5ugCb9I1ewdB'
 };
 
-// Example EmailJS template variables:
+// IMPORTANT: EmailJS template variables that you should use:
 // {{name}} - User's name from the form
 // {{email}} - User's email from the form
 // {{message}} - User's message from the form
+// {{to_name}} - Your name (recipient)
 
-// Sample EmailJS template:
+// CORRECT EmailJS template format:
 /*
 Subject: New Contact Form Submission from {{name}}
 
-Hello,
+Hello {{to_name}},
 
 You have received a new message from your portfolio contact form:
 
@@ -36,6 +37,9 @@ Email: {{email}}
 
 Message:
 {{message}}
+
+---
+This message was sent from your portfolio website contact form.
 
 Best regards,
 Portfolio Contact Form

@@ -21,6 +21,7 @@ header::before {
     radial-gradient(circle at 100% 100%, var(--color-primary-variant), transparent 40%);
   z-index: 0;
   opacity: 0.5;
+  animation: subtleGradientShift 20s ease-in-out infinite alternate;
 }
 
 .header__container {
@@ -169,16 +170,46 @@ header::before {
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   box-shadow: 0 5px 15px var(--color-card-shadow);
   transform: translateY(0);
+  position: relative;
+  overflow: hidden;
 }
 
 .header__socials a:hover {
   color: var(--color-bg);
   background: linear-gradient(45deg, var(--color-primary), var(--color-secondary));
-  transform: translateY(-5px) rotate(360deg);
-  box-shadow: 0 8px 20px var(--color-primary-variant);
+  transform: translateY(-6px) scale(1.1);
+  box-shadow: 0 10px 25px var(--color-primary-variant);
+}
+
+/* Ripple effect for social icons */
+.header__socials a::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background-color: rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition: width 0.4s ease-out, height 0.4s ease-out, opacity 0.4s ease-out;
+  opacity: 0;
+}
+
+.header__socials a:active::before {
+  width: 200%; 
+  height: 200%;
+  opacity: 1;
+  transition: width 0s, height 0s, opacity 0s;
+}
+
+.header__socials a:hover::before {
+    width: 0;
+    height: 0;
+    opacity: 0;
 }
 
 /* CTA */
@@ -234,16 +265,9 @@ header::before {
   border-color: var(--color-primary);
 }
 
-/* SCROLL DOWN */
+/* Remove scroll down button styles */
 .scroll__down {
-  position: fixed;
-  right: -1rem;
-  bottom: 6rem;
-  transform: rotate(90deg);
-  font-weight: 500;
-  font-size: 1rem;
-  color: var(--color-primary);
-  animation: fadeIn 1s ease 1.2s backwards;
+  display: none;
 }
 
 @keyframes fadeInUp {
@@ -302,6 +326,16 @@ header::before {
   }
 }
 
+/* Keyframes for subtle gradient animation */
+@keyframes subtleGradientShift {
+  0% {
+    background-position: 0% 0%, 100% 100%;
+  }
+  100% {
+    background-position: 5% 5%, 95% 95%;
+  }
+}
+
 /* MEDIA QUERIES (MEDIUM DEVICES) */
 @media screen and (max-width: 1024px) {
   .header__profile-image {
@@ -320,10 +354,9 @@ header::before {
   /* Reposition social links for tablet */
   .header__socials {
     position: fixed;
-    right: 1.5rem;
-    bottom: 9rem; /* Increased to avoid mobile tab bar */
-    left: auto;
-    flex-direction: row;
+    left: 1.5rem;
+    bottom: 9rem;
+    flex-direction: column;
     gap: 0.8rem;
     z-index: var(--z-fixed);
   }
@@ -370,10 +403,9 @@ header::before {
   /* Reposition social links for mobile */
   .header__socials {
     position: fixed;
-    right: 1rem;
-    bottom: 8rem; /* Increased to avoid mobile tab bar */
-    left: auto;
-    flex-direction: row;
+    left: 1rem;
+    bottom: 8rem;
+    flex-direction: column;
     gap: 0.6rem;
     z-index: var(--z-fixed);
   }
@@ -397,14 +429,18 @@ header::before {
     padding: 0 1.5rem;
     padding-bottom: 4rem;
   }
+
+  .scroll__down {
+    display: none;
+  }
 }
 
 /* MEDIA QUERIES (EXTRA SMALL DEVICES) */
 @media screen and (max-width: 480px) {
   /* Adjust social links for very small screens */
   .header__socials {
-    right: 0.5rem;
-    bottom: 7.5rem; /* Increased to avoid mobile tab bar */
+    left: 0.5rem;
+    bottom: 7.5rem;
     gap: 0.4rem;
   }
 

@@ -35,53 +35,53 @@ const App = () => {
 
   return (
     <ErrorBoundary>
-      <ThemeProvider>
+    <ThemeProvider>
         <div className="app-container">
           <ErrorBoundary>
-            <Header />
+      <Header />
           </ErrorBoundary>
           
           <ErrorBoundary>
-            <SearchSection />
+      <SearchSection />
           </ErrorBoundary>
           
           <ErrorBoundary>
-            <Nav />
+      <Nav />
           </ErrorBoundary>
           
           <ErrorBoundary>
-            <About />
+      <About />
           </ErrorBoundary>
           
           <ErrorBoundary>
-            <Skills />
+      <Skills />
           </ErrorBoundary>
           
           <ErrorBoundary>
-            <Timeline />
+      <Timeline />
           </ErrorBoundary>
           
           <ErrorBoundary>
-            <Experience />
+      <Experience />
           </ErrorBoundary>
           
           <ErrorBoundary>
-            <Portfolio />
+      <Portfolio />
           </ErrorBoundary>
           
           <ErrorBoundary>
-            <Contact />
+      <Contact />
           </ErrorBoundary>
           
           <ErrorBoundary>
-            <Footer />
+      <Footer />
           </ErrorBoundary>
           
           <ErrorBoundary>
-            <ThemeToggle />
+      <ThemeToggle />
           </ErrorBoundary>
         </div>
-      </ThemeProvider>
+    </ThemeProvider>
     </ErrorBoundary>
   );
 };

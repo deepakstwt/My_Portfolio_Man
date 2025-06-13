@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import "./portfolio.css";
-import IMG1 from "../../assets/project.jpeg";
-import IMG2 from "../../assets/project.jpeg";
-import IMG3 from "../../assets/project.jpeg";
+import IMG1 from "../../assets/AInteraView.jpeg";
+import IMG2 from "../../assets/Faby.jpeg";
+import IMG3 from "../../assets/FleetManagementSystem.jpeg";
 import ProjectModal from "./ProjectModal";
 
 const data = [
@@ -118,17 +118,6 @@ const Portfolio = () => {
                 >
                   GitHub
                 </a>
-                {project.demo !== "#" && (
-                  <a 
-                    href={project.demo} 
-                    className="btn btn-primary" 
-                    target="_blank" 
-                    rel="noreferrer"
-                    onClick={(e) => e.stopPropagation()}
-                  >
-                    Demo
-                  </a>
-                )}
               </div>
             </article>
           );

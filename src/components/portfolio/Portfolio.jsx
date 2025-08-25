@@ -33,7 +33,7 @@ const data = [
     image: IMG2,
     title: "Faby - iOS App for Toddlers",
     category: "iOS Mobile Application",
-    github: "https://testflight.apple.com/join/5WQytTZW",
+    github: "https://github.com/AkshayS734/Faby",
     demo: "https://drive.google.com/drive/folders/1rPIuF66dQjgbvrY6MzUDEutm2oC1TASt?usp=sharing",
     brief: "iOS app for tracking toddler growth, meals, and vaccination with comprehensive parenting features.",
     description: "Faby is a comprehensive iOS application designed to help parents track and manage their toddler's development, health, and daily activities. The app provides an intuitive interface for monitoring growth milestones, vaccination schedules, meal planning, and developmental progress.",
@@ -56,7 +56,7 @@ const data = [
     image: IMG3,
     title: "Fleet Management System - iOS App",
     category: "iOS Enterprise Application",
-    github: "https://github.com/deepakstwt/Fleet-Master/tree/Deepak-Dev",
+    github: "https://github.com/Ricky30feb/Fleet-Master",
     demo: "#",
     brief: "Enterprise iOS app for comprehensive fleet management with real-time tracking and maintenance scheduling.",
     description: "Fleet Master is an enterprise-grade iOS application designed for comprehensive fleet management. The app enables fleet managers to efficiently track vehicles, assign trips, monitor maintenance schedules, and handle emergency situations with real-time updates and notifications.",
@@ -106,20 +106,18 @@ const Portfolio = () => {
               <div className="portfolio__item-image">
                 <img src={project.image} alt={project.title} />
               </div>
-              <div className="portfolio__content">
-                <h3>{project.title}</h3>
-                <p className="portfolio__item-brief">{project.brief}</p>
-                <div className="portfolio__item-cta">
-                  <a 
-                    href={project.github} 
-                    className="btn" 
-                    target="_blank" 
-                    rel="noreferrer"
-                    onClick={(e) => e.stopPropagation()}
-                  >
-                    {project.github.includes('testflight.apple.com') ? 'TestFlight' : 'GitHub'}
-                  </a>
-                </div>
+              <h3>{project.title}</h3>
+              <p className="portfolio__item-brief">{project.brief}</p>
+              <div className="portfolio__item-cta">
+                <a 
+                  href={project.github} 
+                  className="btn" 
+                  target="_blank" 
+                  rel="noreferrer"
+                  onClick={(e) => e.stopPropagation()}
+                >
+                  GitHub
+                </a>
               </div>
             </article>
           );

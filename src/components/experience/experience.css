@@ -120,16 +120,3 @@
     font-size: 0.9rem;
   }
 }
-
-/* Dark mode specific styling for experience cards */
-body.dark-mode .experience__container > div {
-  background: #1a1a1a;
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), 0 5px 15px rgba(255, 255, 255, 0.1);
-}
-
-body.dark-mode .experience__container > div:hover {
-  background: #2a2a2a;
-  border-color: var(--color-primary);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.7), 0 10px 20px var(--color-primary-variant);
-}

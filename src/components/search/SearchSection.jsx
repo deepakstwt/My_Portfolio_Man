@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import SearchBar from './SearchBar';
 import './search-section.css';
 
-const SearchSection = () => {
+const SearchSection = ({ globalSearchTerm }) => {
   const [searchResults, setSearchResults] = useState([]);
   const [isSearching, setIsSearching] = useState(false);
 
@@ -79,6 +79,13 @@ const SearchSection = () => {
     }
   };
 
+  // Effect to handle global search term from floating search
+  useEffect(() => {
+    if (globalSearchTerm) {
+      handleSearch(globalSearchTerm);
+    }
+  }, [globalSearchTerm]);
+
   return (
     <section id="search" className="search-section">
       <div className="container search__container">
@@ -120,4 +127,4 @@ const SearchSection = () => {
   );
 };
 
-export default SearchSection; 
+export default SearchSection;

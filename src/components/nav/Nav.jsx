@@ -5,7 +5,6 @@ import { AiOutlineUser } from "react-icons/ai";
 import { BiBook } from "react-icons/bi";
 import { RiServiceLine } from "react-icons/ri";
 import { BiMessageSquareDetail } from "react-icons/bi";
-import { GiSkills } from "react-icons/gi";
 import { MdTimeline } from "react-icons/md";
 import { HiMenuAlt3, HiX } from "react-icons/hi";
 
@@ -16,10 +15,9 @@ const Nav = () => {
   const navItems = [
     { href: "#home", icon: <AiOutlineHome />, label: "Home" },
     { href: "#about", icon: <AiOutlineUser />, label: "About" },
-    { href: "#skills", icon: <GiSkills />, label: "Skills" },
+    { href: "#portfolio", icon: <RiServiceLine />, label: "Portfolio" },
     { href: "#timeline", icon: <MdTimeline />, label: "Timeline" },
     { href: "#experience", icon: <BiBook />, label: "Experience" },
-    { href: "#portfolio", icon: <RiServiceLine />, label: "Portfolio" },
     { href: "#contact", icon: <BiMessageSquareDetail />, label: "Contact" }
   ];
 

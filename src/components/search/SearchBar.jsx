@@ -2,9 +2,16 @@ import React, { useState, useEffect } from 'react';
 import { BsSearch, BsX } from 'react-icons/bs';
 import './search-bar.css';
 
-const SearchBar = ({ onSearch, placeholder = "Search projects, skills, or content..." }) => {
-  const [searchTerm, setSearchTerm] = useState('');
+const SearchBar = ({ onSearch, placeholder = "Search projects, skills, or content...", value, compact = false }) => {
+  const [searchTerm, setSearchTerm] = useState(value || '');
   const [isExpanded, setIsExpanded] = useState(false);
+
+  // Update local state when value prop changes
+  useEffect(() => {
+    if (value !== undefined) {
+      setSearchTerm(value);
+    }
+  }, [value]);
 
   const handleInputChange = (e) => {
     const value = e.target.value;
@@ -51,7 +58,7 @@ const SearchBar = ({ onSearch, placeholder = "Search projects, skills, or conten
   };
 
   return (
-    <div className={`search-container ${isExpanded ? 'expanded' : ''}`}>
+    <div className={`search-container ${isExpanded ? 'expanded' : ''} ${compact ? 'compact' : ''}`}>
       <div className="search-bar">
         <BsSearch className="search-icon" />
         <input
@@ -76,7 +83,7 @@ const SearchBar = ({ onSearch, placeholder = "Search projects, skills, or conten
           </button>
         )}
       </div>
-      {searchTerm && (
+      {searchTerm && !compact && (
         <div className="search-results-indicator">
           Searching for: <span className="search-term">{searchTerm}</span>
         </div>

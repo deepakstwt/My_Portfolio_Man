@@ -167,6 +167,77 @@
   }
 }
 
+/* Sticky Floating Search */
+.sticky-search-container {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 1000;
+  animation: slideInFromRight 0.3s ease-out;
+}
+
+.sticky-search {
+  background: var(--color-card-bg);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--color-border);
+  border-radius: 50px;
+  padding: 0.5rem;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+  width: 300px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.sticky-search:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.25);
+}
+
+/* Compact search bar styles */
+.search-container.compact {
+  max-width: 280px;
+  margin: 0;
+}
+
+.search-container.compact .search-bar {
+  padding: 0.6rem 1rem;
+  border: none;
+  background: transparent;
+  box-shadow: none;
+}
+
+.search-container.compact .search-bar:hover {
+  border: 1px solid var(--color-primary);
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.search-container.compact .search-bar:focus-within {
+  border: 1px solid var(--color-primary);
+  background: rgba(255, 255, 255, 0.05);
+  box-shadow: 0 0 0 2px var(--color-primary-variant);
+}
+
+.search-container.compact .search-input {
+  font-size: 0.9rem;
+}
+
+.search-container.compact .search-icon {
+  font-size: 1rem;
+  margin-right: 0.8rem;
+}
+
+/* Animation for sticky search */
+@keyframes slideInFromRight {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
 /* Responsive Design */
 @media screen and (max-width: 1024px) {
   .search-section {
@@ -205,6 +276,22 @@
   .results-title {
     font-size: 1.3rem;
   }
+  
+  .sticky-search-container {
+    top: 15px;
+    right: 15px;
+    left: 15px;
+    right: 15px;
+  }
+  
+  .sticky-search {
+    width: 100%;
+    max-width: calc(100vw - 30px);
+  }
+  
+  .search-container.compact {
+    max-width: 100%;
+  }
 }
 
 @media screen and (max-width: 600px) {
@@ -240,6 +327,17 @@
   .no-results h3 {
     font-size: 1.3rem;
   }
+  
+  .sticky-search-container {
+    top: 10px;
+    left: 10px;
+    right: 10px;
+  }
+  
+  .sticky-search {
+    width: 100%;
+    max-width: calc(100vw - 20px);
+  }
 }
 
 @media screen and (max-width: 480px) {
@@ -264,4 +362,8 @@
     font-size: 1.2rem;
     margin-bottom: 1.5rem;
   }
-} 
+  
+  .mobile-menu-open .sticky-search-container {
+    display: none;
+  }
+}

@@ -454,6 +454,37 @@
   20%, 40%, 60%, 80% { transform: translateX(5px); }
 }
 
+/* Dark mode specific styling for contact cards */
+body.dark-mode .contact__card {
+  background: #1a1a1a;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.5), 0 6px 12px rgba(255, 255, 255, 0.1);
+}
+
+body.dark-mode .contact__card:hover {
+  background: #2a2a2a;
+  border-color: var(--color-primary);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.7), 0 10px 20px var(--color-primary-variant);
+}
+
+body.dark-mode .contact__form {
+  background: #1a1a1a;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+body.dark-mode .contact__form input,
+body.dark-mode .contact__form textarea {
+  background: #2a2a2a;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: var(--color-text);
+}
+
+body.dark-mode .contact__form input:focus,
+body.dark-mode .contact__form textarea:focus {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 2px var(--color-primary-variant);
+}
+
 /* Responsive Design */
 @media screen and (max-width: 1024px) {
   .container.contact__container {

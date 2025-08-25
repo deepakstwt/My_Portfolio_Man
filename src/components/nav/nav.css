@@ -18,8 +18,7 @@
   box-shadow: 0 4px 15px var(--color-card-shadow);
   border: 1px solid var(--color-border);
   transition: var(--transition-bounce);
-  animation: fadeInUpCentered 0.8s 2s forwards;
-  opacity: 0;
+  opacity: 1;
   /* Ensure perfect centering */
   box-sizing: border-box;
 }

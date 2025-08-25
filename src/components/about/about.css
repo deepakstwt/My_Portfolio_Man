@@ -7,21 +7,16 @@
 .about__me {
   width: 100%;
   aspect-ratio: 1/1;
-  border-radius: var(--border-radius-lg);
-  background: linear-gradient(
-    135deg,
-    var(--color-primary-variant),
-    var(--color-secondary)
-  );
+  border-radius: var(--border-radius-md);
+  background: var(--color-bg-variant);
+  border: 1px solid var(--color-primary-variant);
   display: grid;
   place-items: center;
-  box-shadow: var(--shadow-lg);
+  transition: var(--transition);
   position: relative;
   overflow: hidden;
-  transition: var(--transition-bounce);
-  transform: translateY(40px);
-  opacity: 0;
-  animation: floatIn 1s ease forwards 0.3s;
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .about__me:hover {
@@ -38,10 +33,19 @@
   height: 100%;
   background: linear-gradient(
     135deg, 
-    rgba(255, 255, 255, 0.4),
+    rgba(255, 255, 255, 0.1),
     rgba(255, 255, 255, 0)
   );
   z-index: 1;
+}
+
+/* Dark mode specific styling for about section */
+body.dark-mode .about__me::before {
+  background: linear-gradient(
+    135deg, 
+    rgba(0, 0, 0, 0.3),
+    rgba(0, 0, 0, 0)
+  );
 }
 
 .about__me-image {
@@ -62,9 +66,8 @@
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 1.5rem;
-  opacity: 0;
-  transform: translateY(40px);
-  animation: floatIn 1s ease forwards 0.6s;
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .about__card {
@@ -101,6 +104,12 @@
   border-color: var(--color-primary-variant);
   transform: translateY(-8px);
   box-shadow: var(--shadow-xl);
+}
+
+/* Dark mode card hover */
+body.dark-mode .about__card:hover {
+  background: rgba(0, 0, 0, 0.95);
+  border-color: var(--color-primary-variant);
 }
 
 .about__card:hover::before {
@@ -152,13 +161,12 @@
   color: var(--color-text-light);
   font-size: 1rem;
   line-height: 1.8;
-  opacity: 0;
-  transform: translateY(20px);
-  animation: fadeIn 1s ease forwards 0.9s;
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .about__content p:nth-of-type(2) {
-  animation-delay: 1.2s;
+  margin-top: 1.5rem;
 }
 
 .about__content p a {
@@ -175,19 +183,7 @@
 
 .about__content .btn {
   margin-top: 1rem;
-  opacity: 0;
-  animation: fadeIn 1s ease forwards 1.5s;
-}
-
-@keyframes floatIn {
-  0% {
-    opacity: 0;
-    transform: translateY(40px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  opacity: 1;
 }
 
 /* MEDIA QUERIES (MEDIUM DEVICES) */

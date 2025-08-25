@@ -61,7 +61,7 @@ const ProjectModal = ({ isOpen, onClose, project }) => {
           rel="noopener noreferrer"
           className="modal__link modal__link--secondary"
         >
-          View Code
+          {project.github.includes('testflight.apple.com') ? 'Try on TestFlight' : 'View Code'}
         </a>
         {project.demo && project.demo !== "#" && (
           <a 

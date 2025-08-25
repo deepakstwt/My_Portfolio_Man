@@ -3,6 +3,7 @@ import "./portfolio.css";
 import IMG1 from "../../assets/AInteraView.jpeg";
 import IMG2 from "../../assets/Faby.jpeg";
 import IMG3 from "../../assets/FleetManagementSystem.jpeg";
+import IMG4 from "../../assets/Dash.jpeg";
 import ProjectModal from "./ProjectModal";
 
 const data = [
@@ -74,6 +75,29 @@ const data = [
     technologies: ["SwiftUI", "Supabase", "Firebase", "MapKit", "Core Location", "UserNotifications", "Core Data", "Charts Framework"],
     challenges: "The biggest challenge was implementing real-time location tracking while optimizing battery usage. I solved this by implementing intelligent location update intervals based on vehicle status and using background app refresh efficiently.",
     learnings: "This project taught me enterprise app development patterns, real-time data synchronization, location-based services optimization, and how to build scalable backend architectures. I also gained experience in fleet management domain knowledge and enterprise security requirements."
+  },
+  {
+    id: 4,
+    image: IMG4,
+    title: "Vehicle Registration Investor Dashboard",
+    category: "Data Analytics Web Application",
+    github: "https://github.com/deepakstwt/InteraDashboard",
+    demo: "#",
+    brief: "Data-driven Streamlit platform delivering actionable insights from Indian vehicle registration trends with growth analysis and market intelligence.",
+    description: "A comprehensive data analytics platform built with Streamlit that provides deep insights into Indian vehicle registration trends. The dashboard analyzes data across states, manufacturers, and vehicle categories to deliver actionable business intelligence for investors and industry stakeholders.",
+    features: [
+      "Interactive state-wise vehicle registration analysis",
+      "Manufacturer performance and market share tracking",
+      "Vehicle category trend analysis and forecasting",
+      "Growth rate calculations and volatility indicators",
+      "Market share visualization and comparison tools",
+      "Data export capabilities for further analysis",
+      "Real-time filtering and dynamic chart updates",
+      "Comprehensive statistical insights and summaries"
+    ],
+    technologies: ["Python", "Streamlit", "Pandas", "NumPy", "Plotly", "Matplotlib", "Seaborn", "Data Analysis"],
+    challenges: "The main challenge was processing and visualizing large datasets efficiently while maintaining interactive performance. I solved this by implementing optimized data processing pipelines and efficient caching mechanisms for real-time dashboard updates.",
+    learnings: "This project enhanced my data science and visualization skills, particularly in building interactive dashboards and deriving meaningful insights from complex datasets. I gained expertise in financial analytics, market trend analysis, and creating user-friendly data presentation interfaces."
   }
 ];
 

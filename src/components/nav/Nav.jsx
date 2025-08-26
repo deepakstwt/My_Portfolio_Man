@@ -15,9 +15,9 @@ const Nav = () => {
   const navItems = [
     { href: "#home", icon: <AiOutlineHome />, label: "Home" },
     { href: "#about", icon: <AiOutlineUser />, label: "About" },
-    { href: "#portfolio", icon: <RiServiceLine />, label: "Portfolio" },
+    { href: "#portfolio", icon: <RiServiceLine />, label: "My Projects" },
     { href: "#timeline", icon: <MdTimeline />, label: "Timeline" },
-    { href: "#experience", icon: <BiBook />, label: "Experience" },
+    { href: "#experience", icon: <BiBook />, label: "Skills" },
     { href: "#contact", icon: <BiMessageSquareDetail />, label: "Contact" }
   ];
 

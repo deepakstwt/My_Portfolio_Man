@@ -31,6 +31,65 @@
   text-align: center;
 }
 
+/* Contact Header with Title and Resume Button */
+.contact__header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  margin-bottom: 2.5rem;
+  flex-wrap: wrap;
+}
+
+.contact__header .section-title {
+  margin-bottom: 0;
+  flex-shrink: 0;
+}
+
+.resume-btn {
+  background: var(--color-primary);
+  color: var(--color-white);
+  padding: 0.8rem 1.5rem;
+  border-radius: 1rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  border: 2px solid var(--color-primary);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.resume-btn:hover {
+  background: transparent;
+  color: var(--color-primary);
+  border-color: var(--color-primary);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(var(--color-primary-rgb), 0.3);
+}
+
+.resume-btn::before {
+  content: '📄';
+  font-size: 1rem;
+}
+
+/* Dark Mode Styles for Resume Button */
+body.dark-mode .resume-btn {
+  background: var(--color-primary);
+  color: var(--color-white);
+  border-color: var(--color-primary);
+}
+
+body.dark-mode .resume-btn:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--color-primary);
+  border-color: var(--color-primary);
+  backdrop-filter: blur(10px);
+}
+
 /* Contact Card with Modern Effects */
 .contact__card {
   background: var(--color-card-bg);
@@ -499,6 +558,23 @@ body.dark-mode .contact__form textarea:focus {
   }
 }
 
+@media screen and (max-width: 768px) {
+  .contact__header {
+    flex-direction: column;
+    gap: 1.5rem;
+    text-align: center;
+  }
+  
+  .contact__header .section-title {
+    font-size: 1.8rem;
+  }
+  
+  .resume-btn {
+    padding: 0.7rem 1.2rem;
+    font-size: 0.85rem;
+  }
+}
+
 @media screen and (max-width: 600px) {
   .container.contact__container {
     padding: 0 1rem 8rem 1rem; /* Extra bottom padding for mobile tab bar */
@@ -526,5 +602,42 @@ body.dark-mode .contact__form textarea:focus {
   
   .status-icon {
     font-size: 1.3rem; /* Reduced from 1.5rem */
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .container.contact__container {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    padding: 0 1rem 3rem 1rem;
+  }
+  
+  .contact__card {
+    padding: 1.5rem;
+  }
+  
+  .contact__form {
+    padding: 1.5rem;
+  }
+  
+  .form-group input,
+  .form-group textarea {
+    padding: 0.9rem;
+    font-size: 0.9rem;
+  }
+  
+  .char-counter {
+    font-size: 0.7rem;
+  }
+  
+  .status-message {
+    padding: 0.9rem;
+    flex-direction: column;
+    text-align: center;
+    gap: 0.4rem;
+  }
+  
+  .status-icon {
+    font-size: 1.3rem;
   }
 }

@@ -3,6 +3,8 @@ import "./portfolio.css";
 import IMG1 from "../../assets/AInteraView.jpeg";
 import IMG2 from "../../assets/Faby.jpeg";
 import IMG3 from "../../assets/FleetManagementSystem.jpeg";
+import IMG4 from "../../assets/Dash.jpeg";
+import IMG5 from "../../assets/Medi1.png";
 import ProjectModal from "./ProjectModal";
 
 const data = [
@@ -74,6 +76,53 @@ const data = [
     technologies: ["SwiftUI", "Supabase", "Firebase", "MapKit", "Core Location", "UserNotifications", "Core Data", "Charts Framework"],
     challenges: "The biggest challenge was implementing real-time location tracking while optimizing battery usage. I solved this by implementing intelligent location update intervals based on vehicle status and using background app refresh efficiently.",
     learnings: "This project taught me enterprise app development patterns, real-time data synchronization, location-based services optimization, and how to build scalable backend architectures. I also gained experience in fleet management domain knowledge and enterprise security requirements."
+  },
+  {
+    id: 4,
+    image: IMG4,
+    title: "Vehicle Registration Investor Dashboard",
+    category: "Data Analytics Web Application",
+    github: "https://github.com/deepakstwt/InteraDashboard",
+    demo: "#",
+    brief: "Data-driven Streamlit platform delivering actionable insights from Indian vehicle registration trends with growth analysis and market intelligence.",
+    description: "A comprehensive data analytics platform built with Streamlit that provides deep insights into Indian vehicle registration trends. The dashboard analyzes data across states, manufacturers, and vehicle categories to deliver actionable business intelligence for investors and industry stakeholders.",
+    features: [
+      "Interactive state-wise vehicle registration analysis",
+      "Manufacturer performance and market share tracking",
+      "Vehicle category trend analysis and forecasting",
+      "Growth rate calculations and volatility indicators",
+      "Market share visualization and comparison tools",
+      "Data export capabilities for further analysis",
+      "Real-time filtering and dynamic chart updates",
+      "Comprehensive statistical insights and summaries"
+    ],
+    technologies: ["Python", "Streamlit", "Pandas", "NumPy", "Plotly", "Matplotlib", "Seaborn", "Data Analysis"],
+    challenges: "The main challenge was processing and visualizing large datasets efficiently while maintaining interactive performance. I solved this by implementing optimized data processing pipelines and efficient caching mechanisms for real-time dashboard updates.",
+    learnings: "This project enhanced my data science and visualization skills, particularly in building interactive dashboards and deriving meaningful insights from complex datasets. I gained expertise in financial analytics, market trend analysis, and creating user-friendly data presentation interfaces."
+  },
+  {
+    id: 5,
+    image: IMG5,
+    title: "MediCheck - Healthcare Management App",
+    category: "iOS Health Application",
+    github: "https://github.com/deepakstwt/MedicheckM",
+    demo: "#",
+    brief: "Modern iOS application designed to help users manage their healthcare and fitness needs with comprehensive tracking capabilities.",
+    description: "MediCheck is a comprehensive iOS health management application built with SwiftUI that empowers users to take control of their healthcare journey. The app provides an intuitive interface for medication tracking, health monitoring, and fitness management with smart notifications and gamification features.",
+    features: [
+      "Medicine tracking with expiration date monitoring",
+      "Dose scheduling and reminder notifications",
+      "Barcode scanning for quick medicine entry",
+      "Health status dashboard with visual indicators",
+      "Gamified experience with XP points and leaderboards",
+      "Missed dose tracking and catch-up reminders",
+      "Planned medications and appointment scheduling",
+      "Modern SwiftUI interface with dark/light mode support",
+      "iPhone and iPad compatibility with responsive design"
+    ],
+    technologies: ["Swift", "SwiftUI", "Core Data", "UserNotifications", "AVFoundation", "HealthKit", "iOS SDK"],
+    challenges: "The main challenge was creating an intuitive medication management system while ensuring HIPAA compliance and data security. I solved this by implementing encrypted local storage, secure notification scheduling, and user-friendly interfaces that don't compromise on functionality.",
+    learnings: "This project deepened my understanding of iOS health app development, particularly in notification management, data persistence, and creating engaging user experiences for healthcare applications. I gained expertise in SwiftUI animations, Core Data relationships, and health data privacy requirements."
   }
 ];
 

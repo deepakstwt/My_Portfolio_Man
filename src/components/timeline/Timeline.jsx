@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import './timeline.css';
-import { FaBriefcase, FaGraduationCap, FaCode, FaRocket, FaMobile } from 'react-icons/fa';
+import { FaBriefcase, FaGraduationCap, FaCode, FaRocket, FaMobile, FaChartBar, FaHeartbeat, FaLaptopCode } from 'react-icons/fa';
 
 const timelineData = [
   {
@@ -52,7 +52,56 @@ const timelineData = [
     ]
   },
   {
+    id: 3,
+    year: '2024',
+    title: 'MERN Stack Development Intern',
+    company: 'Main Flow Services and Technologies Pvt. Ltd.',
+    type: 'work',
+    icon: <FaLaptopCode />,
+    description: 'Worked as MERN Stack Development Intern at Main Flow Services and Technologies, Greater Noida. Developed full-stack applications and integrated AI chatbot functionality.',
+    skills: ['MongoDB', 'Express.js', 'React.js', 'Node.js', 'OpenAI GPT-4', 'Agile', 'Full-Stack Development'],
+    achievements: [
+      'Improved user experience by 30% through full-stack development',
+      'Enhanced user interaction by 25% with OpenAI GPT-4 chatbot',
+      'Achieved 95% project completion rate in Agile environment',
+      'Reduced development time by 20% through efficient collaboration',
+      'Improved team productivity by 25% with technical solutions'
+    ]
+  },
+  {
     id: 4,
+    year: '2024',
+    title: 'AI-Powered Project Development',
+    company: 'Personal Projects',
+    type: 'project',
+    icon: <FaRocket />,
+    description: 'Developed AInteraView - an AI-powered interview preparation platform with voice interviews and real-time feedback using cutting-edge technologies.',
+    skills: ['Next.js', 'Firebase', 'Tailwind CSS', 'Vapi AI', 'Google Gemini', 'Zod'],
+    achievements: [
+      'Built AI-powered interview platform',
+      'Implemented voice AI integration',
+      'Created real-time feedback system',
+      'Developed secure authentication'
+    ]
+  },
+  {
+    id: 5,
+    year: '2024',
+    title: 'Data Analytics Dashboard',
+    company: 'Personal Project',
+    type: 'project',
+    icon: <FaChartBar />,
+    description: 'Built Vehicle Registration Investor Dashboard - a comprehensive data analytics platform using Streamlit for analyzing Indian vehicle registration trends with actionable business intelligence.',
+    skills: ['Python', 'Streamlit', 'Pandas', 'NumPy', 'Plotly', 'Matplotlib', 'Data Analysis'],
+    achievements: [
+      'Processed large datasets efficiently',
+      'Created interactive visualizations',
+      'Implemented real-time filtering',
+      'Built comprehensive market analysis tools'
+    ]
+  },
+  {
+    id: 6,
     year: '2024',
     title: 'iOS App Development Projects',
     company: 'Personal & Team Projects',
@@ -68,13 +117,29 @@ const timelineData = [
     ]
   },
   {
-    id: 5,
+    id: 7,
     year: '2025',
+    title: 'Healthcare App Development',
+    company: 'Personal Project',
+    type: 'project',
+    icon: <FaHeartbeat />,
+    description: 'Created MediCheck - a modern iOS healthcare management application with SwiftUI for medication tracking, health monitoring, and fitness management with gamification features.',
+    skills: ['Swift', 'SwiftUI', 'Core Data', 'UserNotifications', 'HealthKit', 'AVFoundation'],
+    achievements: [
+      'Built comprehensive medicine tracking system',
+      'Implemented barcode scanning functionality',
+      'Created gamified user experience with XP system',
+      'Achieved HIPAA compliance for health data'
+    ]
+  },
+  {
+    id: 8,
+    year: 'Mar-Apr 2025',
     title: 'iOS Developer Intern',
     company: 'Infosys Campus, Mysore',
     type: 'work',
     icon: <FaBriefcase />,
-    description: 'Currently working as iOS Developer Intern at Infosys Campus, Mysore. Developing secure iOS applications and working on Fleet Management System.',
+    description: 'Completed iOS Developer Internship at Infosys Campus, Mysore. Developed secure iOS applications using Swift and SwiftUI with industry-standard protocols.',
     skills: ['Swift', 'SwiftUI', 'Firebase', 'Supabase', 'MapKit', 'EventKit', 'Xcode'],
     achievements: [
       'Developed secure iOS applications',

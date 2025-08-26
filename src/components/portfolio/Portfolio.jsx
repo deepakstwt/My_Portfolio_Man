@@ -4,6 +4,7 @@ import IMG1 from "../../assets/AInteraView.jpeg";
 import IMG2 from "../../assets/Faby.jpeg";
 import IMG3 from "../../assets/FleetManagementSystem.jpeg";
 import IMG4 from "../../assets/Dash.jpeg";
+import IMG5 from "../../assets/Medi1.png";
 import ProjectModal from "./ProjectModal";
 
 const data = [
@@ -98,6 +99,30 @@ const data = [
     technologies: ["Python", "Streamlit", "Pandas", "NumPy", "Plotly", "Matplotlib", "Seaborn", "Data Analysis"],
     challenges: "The main challenge was processing and visualizing large datasets efficiently while maintaining interactive performance. I solved this by implementing optimized data processing pipelines and efficient caching mechanisms for real-time dashboard updates.",
     learnings: "This project enhanced my data science and visualization skills, particularly in building interactive dashboards and deriving meaningful insights from complex datasets. I gained expertise in financial analytics, market trend analysis, and creating user-friendly data presentation interfaces."
+  },
+  {
+    id: 5,
+    image: IMG5,
+    title: "MediCheck - Healthcare Management App",
+    category: "iOS Health Application",
+    github: "https://github.com/deepakstwt/MedicheckM",
+    demo: "#",
+    brief: "Modern iOS application designed to help users manage their healthcare and fitness needs with comprehensive tracking capabilities.",
+    description: "MediCheck is a comprehensive iOS health management application built with SwiftUI that empowers users to take control of their healthcare journey. The app provides an intuitive interface for medication tracking, health monitoring, and fitness management with smart notifications and gamification features.",
+    features: [
+      "Medicine tracking with expiration date monitoring",
+      "Dose scheduling and reminder notifications",
+      "Barcode scanning for quick medicine entry",
+      "Health status dashboard with visual indicators",
+      "Gamified experience with XP points and leaderboards",
+      "Missed dose tracking and catch-up reminders",
+      "Planned medications and appointment scheduling",
+      "Modern SwiftUI interface with dark/light mode support",
+      "iPhone and iPad compatibility with responsive design"
+    ],
+    technologies: ["Swift", "SwiftUI", "Core Data", "UserNotifications", "AVFoundation", "HealthKit", "iOS SDK"],
+    challenges: "The main challenge was creating an intuitive medication management system while ensuring HIPAA compliance and data security. I solved this by implementing encrypted local storage, secure notification scheduling, and user-friendly interfaces that don't compromise on functionality.",
+    learnings: "This project deepened my understanding of iOS health app development, particularly in notification management, data persistence, and creating engaging user experiences for healthcare applications. I gained expertise in SwiftUI animations, Core Data relationships, and health data privacy requirements."
   }
 ];
 

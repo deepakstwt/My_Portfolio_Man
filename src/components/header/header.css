@@ -258,6 +258,47 @@ header::before {
   border-color: var(--color-primary);
 }
 
+.cta .btn-primary {
+  background: var(--color-primary);
+  color: var(--color-white);
+  border: 2px solid var(--color-primary);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.cta .btn-primary:hover {
+  background: transparent;
+  color: var(--color-primary);
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 6px 20px rgba(var(--color-primary-rgb), 0.3);
+}
+
+/* Dark Mode Styles for CTA Buttons */
+body.dark-mode .cta .btn-secondary {
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--color-white);
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+}
+
+body.dark-mode .cta .btn-secondary:hover {
+  background: rgba(255, 255, 255, 0.2);
+  color: var(--color-primary);
+  border-color: var(--color-primary);
+  box-shadow: 0 6px 20px rgba(var(--color-primary-rgb), 0.3);
+}
+
+body.dark-mode .cta .btn-primary {
+  background: var(--color-primary);
+  color: var(--color-white);
+  border-color: var(--color-primary);
+}
+
+body.dark-mode .cta .btn-primary:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--color-primary);
+  border-color: var(--color-primary);
+}
+
 /* Remove scroll down button styles */
 .scroll__down {
   display: none;

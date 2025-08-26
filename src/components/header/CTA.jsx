@@ -6,6 +6,13 @@ const CTA = () => {
       <a href="#contact" className="btn btn-secondary">
         Let's Connect
       </a>
+      <a 
+        href="/Deepak_Prajapati.pdf" 
+        download="Deepak_Prajapati_Resume.pdf"
+        className="btn btn-primary"
+      >
+        Download Resume
+      </a>
     </div>
   );
 };

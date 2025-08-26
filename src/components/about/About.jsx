@@ -26,6 +26,9 @@ const About = () => {
               </small> <br />
               <small>
                 Frontend Web Dev Intern
+              </small> <br />
+              <small>
+                MERN Stack Dev Intern
               </small>
             </article>
             <article className="about__card">
@@ -41,30 +44,33 @@ const About = () => {
               <VscFolderLibrary className="about__icon" />
               <h5>Projects</h5>
               <small>
-                3+ Major Projects
+                5+ Major Projects
                 <br />
-                iOS & Web Apps
+                iOS & Full Stack Apps
               </small>
             </article>
           </div>
           <p>
             I'm a passionate iOS Developer and Full Stack Developer currently pursuing B.Tech in Computer Science 
-            at Galgotias University with a CGPA of 8.57/10. Currently working as an iOS Developer Intern at 
-            Infosys Campus, Mysore, where I develop secure iOS applications using Swift and SwiftUI, implementing 
-            industry-standard protocols and achieving 95% test coverage in an Agile environment.
+            at Galgotias University with a CGPA of 8.57/10. I have completed internships as an iOS Developer at 
+            Infosys Campus, Mysore (Mar-Apr 2025), where I developed secure iOS applications using Swift and SwiftUI, 
+            implementing industry-standard protocols and achieving 95% test coverage in an Agile environment. I also 
+            completed a MERN Stack Development Internship at Main Flow Services and Technologies Pvt. Ltd. (Nov-Dec 2024), 
+            building modern full-stack web applications.
           </p>
           <p>
             My technical expertise spans across iOS development with Swift, SwiftUI, Firebase, and Supabase, 
-            as well as web development using React.js, Node.js, and modern JavaScript frameworks. I've successfully 
-            built comprehensive applications including AInteraView (AI-powered interview platform), Faby (iOS app 
-            for toddler tracking), and Fleet Management System with real-time monitoring and role-based access control.
+            as well as full-stack web development using the MERN stack (MongoDB, Express.js, React.js, Node.js). 
+            I've successfully built comprehensive applications including AInteraView (AI-powered interview platform), 
+            Faby (iOS app for toddler tracking), Fleet Management System, Vehicle Registration Dashboard, and 
+            MediCheck healthcare platform with real-time monitoring and role-based access control.
           </p>
           <p>
-            With hands-on experience in both frontend and backend development, I'm skilled in creating responsive 
-            web applications, implementing secure authentication systems, and optimizing performance. I've reduced 
+            With hands-on experience in both mobile and web development, I'm skilled in creating responsive 
+            applications, implementing secure authentication systems, and optimizing performance. I've reduced 
             page load times by 35% and login friction by 40% through code optimization and modern development techniques. 
             I thrive in collaborative environments and am passionate about leveraging cutting-edge technologies to 
-            solve real-world problems.
+            solve real-world problems and create meaningful user experiences.
           </p>
           <a href="#contact" className="btn btn-primary">
             Let's Talk

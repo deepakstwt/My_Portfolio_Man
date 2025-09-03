@@ -5,6 +5,8 @@ import IMG2 from "../../assets/Faby.jpeg";
 import IMG3 from "../../assets/FleetManagementSystem.jpeg";
 import IMG4 from "../../assets/Dash.jpeg";
 import IMG5 from "../../assets/Medi1.png";
+import IMG6 from "../../assets/NeighbourFit.jpeg";
+
 import ProjectModal from "./ProjectModal";
 
 const data = [
@@ -123,6 +125,25 @@ const data = [
     technologies: ["Swift", "SwiftUI", "Core Data", "UserNotifications", "AVFoundation", "HealthKit", "iOS SDK"],
     challenges: "The main challenge was creating an intuitive medication management system while ensuring HIPAA compliance and data security. I solved this by implementing encrypted local storage, secure notification scheduling, and user-friendly interfaces that don't compromise on functionality.",
     learnings: "This project deepened my understanding of iOS health app development, particularly in notification management, data persistence, and creating engaging user experiences for healthcare applications. I gained expertise in SwiftUI animations, Core Data relationships, and health data privacy requirements."
+  },
+  {
+    id: 6,
+    image: IMG6,
+    title: "NeighborFit - Neighborhood Discovery Web App",
+    category: "Full Stack Web Application",
+    github: "https://github.com/deepakstwt/NeighborFit",
+    demo: "#",
+    brief: "AI-powered neighborhood discovery platform serving 1,000+ daily queries.",
+    description: "Built NeighborFit web application using React.js, Express.js, Node.js, and MongoDB with RESTful APIs and GraphQL, serving 1,000+ daily queries.",
+    features: [
+      "Secure OAuth 2.0 authentication flow with JWT tokens, reducing user onboarding time by 15%.",
+      "AI-powered recommendation engine achieving 95% accuracy for neighborhood discovery and user matching.",
+      "Optimized database queries and implemented caching strategies, reducing API response time by 40%.",
+      "Modern UI/UX for seamless user experience."
+    ],
+    technologies: ["React.js", "Express.js", "Node.js", "MongoDB", "RESTful APIs", "GraphQL", "JWT", "OAuth 2.0", "AI"],
+    challenges: "Building a scalable recommendation engine and implementing secure authentication while maintaining high performance.",
+    learnings: "Learned advanced backend optimization, secure authentication flows, and AI-powered recommendation techniques."
   }
 ];
 

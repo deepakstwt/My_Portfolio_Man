@@ -107,6 +107,59 @@ header::before {
   font-weight: 500;
 }
 
+/* Typewriter subtitle container */
+.header__subtitle-wrapper {
+  position: relative;
+  min-height: 4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1rem;
+  overflow: hidden;
+}
+
+.header__subtitle {
+  font-size: 1.8rem;
+  color: var(--color-text-light);
+  line-height: 1.7;
+  font-weight: 400;
+  max-width: 900px;
+  text-align: center;
+  padding: 0 1rem;
+  min-height: 2rem;
+  display: inline-block;
+}
+
+.typewriter-text {
+  display: inline-block;
+  white-space: nowrap;
+}
+
+/* Allow text wrapping on smaller screens */
+@media screen and (max-width: 768px) {
+  .typewriter-text {
+    white-space: normal;
+    word-wrap: break-word;
+  }
+}
+
+.typewriter-cursor {
+  display: inline-block;
+  margin-left: 2px;
+  color: var(--color-primary);
+  font-weight: 300;
+  animation: blinkCursor 1s infinite;
+}
+
+@keyframes blinkCursor {
+  0%, 50% {
+    opacity: 1;
+  }
+  51%, 100% {
+    opacity: 0;
+  }
+}
+
 .typing-text {
   min-height: 2.5rem;
   display: flex;
@@ -118,6 +171,7 @@ header::before {
   color: var(--color-primary);
   font-weight: 300;
   margin-left: 2px;
+  animation: blink 1s infinite;
 }
 
 @keyframes blink {
@@ -385,6 +439,15 @@ body.dark-mode .cta .btn-primary:hover {
     font-size: 1.8rem;
   }
 
+  .header__subtitle-wrapper {
+    min-height: 3.5rem;
+  }
+
+  .header__subtitle {
+    font-size: 1.5rem;
+    padding: 0 0.5rem;
+  }
+
   /* Reposition social links for tablet */
   .header__socials {
     position: fixed;
@@ -428,6 +491,16 @@ body.dark-mode .cta .btn-primary:hover {
 
   .header__profile-text h2 {
     font-size: 1.4rem;
+  }
+
+  .header__subtitle-wrapper {
+    min-height: 3rem;
+  }
+
+  .header__subtitle {
+    font-size: 1.3rem;
+    line-height: 1.6;
+    padding: 0 0.5rem;
   }
 
   .header__profile-text h3 {

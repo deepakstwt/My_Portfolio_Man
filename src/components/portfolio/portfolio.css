@@ -1,8 +1,97 @@
 .portfolio__container {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
   gap: 2.5rem;
-  padding: 0 1rem;
+  padding: 1rem 1rem 1.5rem 1rem;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+  /* Visible scrollbar for manual scrolling */
+  scrollbar-width: auto;
+  scrollbar-color: var(--color-primary) rgba(0, 0, 0, 0.1);
+  /* Add scroll snap for better UX */
+  scroll-snap-type: x proximity;
+}
+
+.portfolio__container::-webkit-scrollbar {
+  height: 12px;
+}
+
+.portfolio__container::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.05);
+  border-radius: 10px;
+  margin: 0 1rem;
+}
+
+.portfolio__container::-webkit-scrollbar-thumb {
+  background: var(--color-primary);
+  border-radius: 10px;
+  border: 2px solid rgba(255, 255, 255, 0.1);
+}
+
+.portfolio__container::-webkit-scrollbar-thumb:hover {
+  background: var(--color-primary-variant);
+  border: 2px solid rgba(255, 255, 255, 0.15);
+}
+
+/* Dark mode scrollbar adjustments */
+body.dark-mode .portfolio__container {
+  scrollbar-color: var(--color-primary) rgba(255, 255, 255, 0.1);
+}
+
+body.dark-mode .portfolio__container::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+body.dark-mode .portfolio__container::-webkit-scrollbar-thumb {
+  border: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Portfolio count badge */
+.portfolio__count {
+  display: inline-block;
+  margin-left: 0.75rem;
+  padding: 0.25rem 0.75rem;
+  background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+  color: white;
+  border-radius: 20px;
+  font-size: 1rem;
+  font-weight: 600;
+  vertical-align: middle;
+  box-shadow: 0 4px 12px rgba(var(--color-primary-rgb, 107, 138, 255), 0.3);
+  transition: all 0.3s ease;
+}
+
+.portfolio__count:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 16px rgba(var(--color-primary-rgb, 107, 138, 255), 0.4);
+}
+
+body.dark-mode .portfolio__count {
+  box-shadow: 0 4px 12px rgba(107, 138, 255, 0.4);
+}
+
+body.dark-mode .portfolio__count:hover {
+  box-shadow: 0 6px 16px rgba(107, 138, 255, 0.5);
+}
+
+/* Responsive adjustments for count */
+@media screen and (max-width: 768px) {
+  .portfolio__count {
+    margin-left: 0.5rem;
+    padding: 0.2rem 0.6rem;
+    font-size: 0.9rem;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .portfolio__count {
+    margin-left: 0.4rem;
+    padding: 0.15rem 0.5rem;
+    font-size: 0.85rem;
+  }
 }
 
 .portfolio__item {
@@ -13,6 +102,14 @@
   overflow: hidden;
   cursor: pointer;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  
+  /* Fixed width for horizontal scroll */
+  min-width: 380px;
+  max-width: 380px;
+  flex-shrink: 0;
+  
+  /* Scroll snap alignment */
+  scroll-snap-align: start;
   
   /* Premium glass morphism effect */
   backdrop-filter: blur(10px);
@@ -387,8 +484,13 @@ body.dark-mode .portfolio__item:nth-child(6) .portfolio__item-image {
 /* MEDIA QUERIES (MEDIUM DEVICES) */
 @media screen and (max-width: 1024px) {
   .portfolio__container {
-    grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
     gap: 2rem;
+    padding: 1rem 0.5rem;
+  }
+  
+  .portfolio__item {
+    min-width: 340px;
+    max-width: 340px;
   }
   
   .portfolio__item-image {
@@ -408,9 +510,13 @@ body.dark-mode .portfolio__item:nth-child(6) .portfolio__item-image {
 /* MEDIA QUERIES (SMALL DEVICES) */
 @media screen and (max-width: 768px) {
   .portfolio__container {
-    grid-template-columns: 1fr;
-    gap: 2rem;
-    padding: 0 0.5rem;
+    gap: 1.5rem;
+    padding: 1rem 0.5rem;
+  }
+  
+  .portfolio__item {
+    min-width: 300px;
+    max-width: 300px;
   }
   
   .portfolio__item-image {
@@ -441,7 +547,13 @@ body.dark-mode .portfolio__item:nth-child(6) .portfolio__item-image {
 
 @media screen and (max-width: 480px) {
   .portfolio__container {
-    padding: 0;
+    padding: 1rem 0.5rem;
+    gap: 1.25rem;
+  }
+  
+  .portfolio__item {
+    min-width: 280px;
+    max-width: 280px;
   }
   
   .portfolio__item-image {

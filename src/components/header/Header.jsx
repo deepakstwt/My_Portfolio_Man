@@ -6,37 +6,49 @@ import ConditionalSocials from "./ConditionalSocials";
 
 const Header = () => {
   const [displayedText, setDisplayedText] = useState("");
-  const [currentIndex, setCurrentIndex] = useState(0);
+  const [currentLineIndex, setCurrentLineIndex] = useState(0);
   const [isDeleting, setIsDeleting] = useState(false);
-  const [currentRoleIndex, setCurrentRoleIndex] = useState(0);
-  
-  const roles = [
-    "iOS Developer",
-    "Full Stack Developer"
+  const [charIndex, setCharIndex] = useState(0);
+
+  const typewriterLines = [
+    "Full Stack & AI Developer",
+    "Building Intelligent Web and iOS Applications",
+    "Open-Source Contributor | Web, Backend & AI"
   ];
-  
+
   useEffect(() => {
-    const currentRole = roles[currentRoleIndex];
-    const typingSpeed = isDeleting ? 50 : 100;
-    const pauseTime = isDeleting ? 1000 : 2000;
+    const currentLine = typewriterLines[currentLineIndex];
     
-    const timer = setTimeout(() => {
-      if (!isDeleting && currentIndex < currentRole.length) {
-        setDisplayedText(currentRole.substring(0, currentIndex + 1));
-        setCurrentIndex(currentIndex + 1);
-      } else if (isDeleting && currentIndex > 0) {
-        setDisplayedText(currentRole.substring(0, currentIndex - 1));
-        setCurrentIndex(currentIndex - 1);
-      } else if (!isDeleting && currentIndex === currentRole.length) {
-        setTimeout(() => setIsDeleting(true), pauseTime);
-      } else if (isDeleting && currentIndex === 0) {
-        setIsDeleting(false);
-        setCurrentRoleIndex((currentRoleIndex + 1) % roles.length);
-      }
-    }, typingSpeed);
+    let timeout;
     
-    return () => clearTimeout(timer);
-  }, [currentIndex, isDeleting, currentRoleIndex, roles]);
+    if (!isDeleting && charIndex < currentLine.length) {
+      // Typing forward
+      timeout = setTimeout(() => {
+        const newIndex = charIndex + 1;
+        setDisplayedText(currentLine.substring(0, newIndex));
+        setCharIndex(newIndex);
+      }, 100); // Typing speed: 100ms per character
+    } else if (!isDeleting && charIndex === currentLine.length) {
+      // Finished typing, pause before deleting
+      timeout = setTimeout(() => {
+        setIsDeleting(true);
+      }, 2000); // Pause for 2 seconds after typing complete
+    } else if (isDeleting && charIndex > 0) {
+      // Deleting backward
+      timeout = setTimeout(() => {
+        const newIndex = charIndex - 1;
+        setCharIndex(newIndex);
+        setDisplayedText(currentLine.substring(0, newIndex));
+      }, 50); // Deleting speed: 50ms per character (faster)
+    } else if (isDeleting && charIndex === 0) {
+      // Finished deleting, move to next line
+      setIsDeleting(false);
+      setCurrentLineIndex((currentLineIndex + 1) % typewriterLines.length);
+      setDisplayedText("");
+    }
+    
+    return () => clearTimeout(timeout);
+  }, [charIndex, isDeleting, currentLineIndex, typewriterLines]);
 
   return (
     <header id="home">
@@ -47,10 +59,12 @@ const Header = () => {
           </div>
           <div className="header__profile-text">
             <h1>Deepak Prajapati</h1>
-            <h2 className="typing-text">
-              {displayedText}
-              <span className="typing-cursor">|</span>
-            </h2>
+            <div className="header__subtitle-wrapper">
+              <span className="header__subtitle typewriter-text">
+                {displayedText}
+                <span className="typewriter-cursor">|</span>
+              </span>
+            </div>
             <h3>Greater Noida, India</h3>
           </div>
         </div>

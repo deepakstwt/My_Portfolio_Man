@@ -164,7 +164,10 @@ const Portfolio = () => {
   return (
     <section id="portfolio">
       <h5>My Recent Work</h5>
-      <h2>My Projects</h2>
+      <h2>
+        My Projects
+        <span className="portfolio__count">({data.length})</span>
+      </h2>
       <div className="container portfolio__container">
         {data.map((project) => {
           return (

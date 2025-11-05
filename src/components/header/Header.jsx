@@ -11,8 +11,7 @@ const Header = () => {
   const [charIndex, setCharIndex] = useState(0);
 
   const typewriterLines = [
-    "Full Stack & AI Developer",
-    "Building Intelligent Web and iOS Applications",
+    "Software Developer",
     "Open-Source Contributor | Web, Backend & AI"
   ];
 

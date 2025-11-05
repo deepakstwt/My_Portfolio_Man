@@ -28,7 +28,7 @@ const About = () => {
                 Frontend Web Dev Intern
               </small> <br />
               <small>
-                MERN Stack Dev Intern
+                Full Stack Developer Intern
               </small>
             </article>
             <article className="about__card">
@@ -55,7 +55,7 @@ const About = () => {
             at Galgotias University with a CGPA of 8.57/10. I have completed internships as an iOS Developer at 
             Infosys Campus, Mysore (Mar-Apr 2025), where I developed secure iOS applications using Swift and SwiftUI, 
             implementing industry-standard protocols and achieving 95% test coverage in an Agile environment. I also 
-            completed a MERN Stack Development Internship at Main Flow Services and Technologies Pvt. Ltd. (Nov-Dec 2024), 
+            completed a Full Stack Development Internship at Main Flow Services and Technologies Pvt. Ltd. (Nov-Dec 2024), 
             building modern full-stack web applications.
           </p>
           <p>

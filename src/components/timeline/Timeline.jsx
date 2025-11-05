@@ -54,11 +54,11 @@ const timelineData = [
   {
     id: 3,
     year: '2024',
-    title: 'MERN Stack Development Intern',
+    title: 'Full Stack Developer Intern',
     company: 'Main Flow Services and Technologies Pvt. Ltd.',
     type: 'work',
     icon: <FaLaptopCode />,
-    description: 'Worked as MERN Stack Development Intern at Main Flow Services and Technologies, Greater Noida. Developed full-stack applications and integrated AI chatbot functionality.',
+    description: 'Worked as Full Stack Developer Intern at Main Flow Services and Technologies, Greater Noida. Developed full-stack applications and integrated AI chatbot functionality.',
     skills: ['MongoDB', 'Express.js', 'React.js', 'Node.js', 'OpenAI GPT-4', 'Agile', 'Full-Stack Development'],
     achievements: [
       'Improved user experience by 30% through full-stack development',

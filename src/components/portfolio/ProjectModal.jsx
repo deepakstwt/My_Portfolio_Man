@@ -11,11 +11,25 @@ const ProjectModal = ({ isOpen, onClose, project }) => {
         <p className="modal__subtitle">{project.category}</p>
       </div>
 
-      <img 
-        src={project.image} 
-        alt={project.title} 
-        className="modal__image"
-      />
+      <div className="modal__image-container">
+        <img 
+          src={project.image} 
+          alt={project.title} 
+          className="modal__image"
+        />
+        {project.additionalImages && project.additionalImages.length > 0 && (
+          <>
+            {project.additionalImages.map((img, index) => (
+              <img 
+                key={index}
+                src={img} 
+                alt={`${project.title} - View ${index + 2}`} 
+                className="modal__image"
+              />
+            ))}
+          </>
+        )}
+      </div>
 
       <div className="modal__section">
         <h3>Project Overview</h3>

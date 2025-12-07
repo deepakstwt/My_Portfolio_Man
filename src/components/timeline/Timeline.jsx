@@ -1,226 +1,182 @@
 import React, { useState, useEffect, useRef } from 'react';
 import './timeline.css';
-import { FaBriefcase, FaGraduationCap, FaCode, FaRocket, FaMobile, FaChartBar, FaHeartbeat, FaLaptopCode } from 'react-icons/fa';
+import { 
+  FaBriefcase, 
+  FaGraduationCap, 
+  FaRocket, 
+  FaLaptopCode,
+  FaApple,
+  FaChartLine
+} from 'react-icons/fa';
+import { BsArrowRight, BsCheckCircleFill } from 'react-icons/bs';
+import { HiOutlineExternalLink } from 'react-icons/hi';
 
 const timelineData = [
   {
     id: 1,
     year: '2022',
-    title: 'Started Computer Science Journey',
-    company: 'Galgotias University',
+    month: 'Aug',
+    title: 'B.Tech in Computer Science',
+    organization: 'Galgotias University',
+    location: 'Greater Noida, India',
     type: 'education',
     icon: <FaGraduationCap />,
-    description: 'Began my B.Tech in Computer Science at Galgotias University, Greater Noida. Achieved excellent academic performance with CGPA 8.57/10.',
-    skills: ['Java', 'JavaScript', 'Data Structures', 'Algorithms', 'Problem Solving'],
-    achievements: [
-      'Maintained CGPA of 8.57/10',
-      'Mastered programming fundamentals',
-      'Built strong foundation in computer science',
-      'Developed problem-solving skills'
-    ]
+    description: 'Started my journey in Computer Science with a focus on building strong fundamentals in programming and software development.',
+    highlights: [
+      'CGPA: 8.57/10',
+      'Core: Data Structures & Algorithms',
+      'Languages: Java, JavaScript, Python'
+    ],
+    color: '#10b981'
   },
   {
     id: 2,
     year: '2023',
-    title: 'Frontend Web Development Intern',
-    company: 'Motion Cut Video Studio',
-    type: 'work',
-    icon: <FaCode />,
-    description: 'Worked as Frontend Web Development Intern at Motion Cut Video Studio, Lucknow. Designed responsive web dashboards and optimized performance.',
-    skills: ['React.js', 'HTML5', 'CSS3', 'JavaScript', 'UI/UX Design'],
-    achievements: [
-      'Reduced page load time by 35%',
-      'Created reusable UI components',
-      'Improved development efficiency by 25%',
-      'Implemented secure form validation'
-    ]
-  },
-  {
-    id: 3,
-    year: '2024',
-    title: 'AI-Powered Project Development',
-    company: 'Personal Projects',
-    type: 'project',
-    icon: <FaRocket />,
-    description: 'Developed AInteraView - an AI-powered interview preparation platform with voice interviews and real-time feedback using cutting-edge technologies.',
-    skills: ['Next.js', 'Firebase', 'Tailwind CSS', 'Vapi AI', 'Google Gemini', 'Zod'],
-    achievements: [
-      'Built AI-powered interview platform',
-      'Implemented voice AI integration',
-      'Created real-time feedback system',
-      'Developed secure authentication'
-    ]
-  },
-  {
-    id: 3,
-    year: '2024',
-    title: 'Full Stack Developer Intern',
-    company: 'Main Flow Services and Technologies Pvt. Ltd.',
+    month: 'Jun - Aug',
+    title: 'Frontend Development Intern',
+    organization: 'Motion Cut Video Studio',
+    location: 'Lucknow, India',
     type: 'work',
     icon: <FaLaptopCode />,
-    description: 'Worked as Full Stack Developer Intern at Main Flow Services and Technologies, Greater Noida. Developed full-stack applications and integrated AI chatbot functionality.',
-    skills: ['MongoDB', 'Express.js', 'React.js', 'Node.js', 'OpenAI GPT-4', 'Agile', 'Full-Stack Development'],
-    achievements: [
-      'Improved user experience by 30% through full-stack development',
-      'Enhanced user interaction by 25% with OpenAI GPT-4 chatbot',
-      'Achieved 95% project completion rate in Agile environment',
-      'Reduced development time by 20% through efficient collaboration',
-      'Improved team productivity by 25% with technical solutions'
-    ]
+    description: 'Designed and developed responsive web dashboards, optimizing performance and user experience.',
+    highlights: [
+      '35% faster page load times',
+      'Built reusable UI components',
+      '25% improved dev efficiency'
+    ],
+    color: '#6366f1'
+  },
+  {
+    id: 3,
+    year: '2024',
+    month: 'Jan - Mar',
+    title: 'Full Stack Developer Intern',
+    organization: 'Main Flow Services & Technologies',
+    location: 'Greater Noida, India',
+    type: 'work',
+    icon: <FaRocket />,
+    description: 'Developed full-stack applications and integrated AI chatbot functionality using OpenAI GPT-4.',
+    highlights: [
+      '30% improved user experience',
+      'GPT-4 chatbot integration',
+      '95% project completion rate'
+    ],
+    color: '#8b5cf6'
   },
   {
     id: 4,
     year: '2024',
-    title: 'AI-Powered Project Development',
-    company: 'Personal Projects',
+    month: 'Throughout',
+    title: 'iOS & Full Stack Projects',
+    organization: 'Personal & Team Projects',
+    location: 'Remote',
     type: 'project',
-    icon: <FaRocket />,
-    description: 'Developed AInteraView - an AI-powered interview preparation platform with voice interviews and real-time feedback using cutting-edge technologies.',
-    skills: ['Next.js', 'Firebase', 'Tailwind CSS', 'Vapi AI', 'Google Gemini', 'Zod'],
-    achievements: [
-      'Built AI-powered interview platform',
-      'Implemented voice AI integration',
-      'Created real-time feedback system',
-      'Developed secure authentication'
-    ]
+    icon: <FaApple />,
+    description: 'Built production-ready applications including Faby, Fleet Management System, GitAid, and Skilio.',
+    highlights: [
+      '7+ projects delivered',
+      'Swift, SwiftUI, React, Next.js',
+      'AI/ML integrations'
+    ],
+    color: '#06b6d4'
   },
   {
     id: 5,
-    year: '2024',
-    title: 'Data Analytics Dashboard',
-    company: 'Personal Project',
-    type: 'project',
-    icon: <FaChartBar />,
-    description: 'Built Vehicle Registration Investor Dashboard - a comprehensive data analytics platform using Streamlit for analyzing Indian vehicle registration trends with actionable business intelligence.',
-    skills: ['Python', 'Streamlit', 'Pandas', 'NumPy', 'Plotly', 'Matplotlib', 'Data Analysis'],
-    achievements: [
-      'Processed large datasets efficiently',
-      'Created interactive visualizations',
-      'Implemented real-time filtering',
-      'Built comprehensive market analysis tools'
-    ]
+    year: '2025',
+    month: 'Mar - Apr',
+    title: 'Software Developer Intern - iOS',
+    organization: 'Infosys',
+    location: 'Mysore, India',
+    type: 'work',
+    icon: <FaBriefcase />,
+    description: 'Developed secure iOS applications using Swift and SwiftUI with industry-standard protocols at Infosys Campus.',
+    highlights: [
+      '40% reduced login friction',
+      '95% test coverage',
+      'Enterprise-grade security'
+    ],
+    color: '#f59e0b',
+    completed: true
   },
   {
     id: 6,
-    year: '2024',
-    title: 'iOS App Development Projects',
-    company: 'Personal & Team Projects',
-    type: 'project',
-    icon: <FaMobile />,
-    description: 'Developed comprehensive iOS applications including Faby (toddler tracking app) and Fleet Management System with advanced features and real-world functionality.',
-    skills: ['Swift', 'SwiftUI', 'Firebase', 'Supabase', 'MapKit', 'EventKit', 'Jira'],
-    achievements: [
-      'Built Faby - iOS app for toddler growth tracking',
-      'Developed Fleet Management System with role-based access',
-      'Implemented real-time notifications and SOS alerts',
-      'Used Agile methodology with Jira for project management'
-    ]
-  },
-  {
-    id: 7,
-    year: '2025',
-    title: 'Healthcare App Development',
-    company: 'Personal Project',
-    type: 'project',
-    icon: <FaHeartbeat />,
-    description: 'Created MediCheck - a modern iOS healthcare management application with SwiftUI for medication tracking, health monitoring, and fitness management with gamification features.',
-    skills: ['Swift', 'SwiftUI', 'Core Data', 'UserNotifications', 'HealthKit', 'AVFoundation'],
-    achievements: [
-      'Built comprehensive medicine tracking system',
-      'Implemented barcode scanning functionality',
-      'Created gamified user experience with XP system',
-      'Achieved HIPAA compliance for health data'
-    ]
-  },
-  {
-    id: 8,
-    year: 'Mar-Apr 2025',
-    title: 'iOS Developer Intern',
-    company: 'Infosys Campus, Mysore',
-    type: 'work',
-    icon: <FaBriefcase />,
-    description: 'Completed iOS Developer Internship at Infosys Campus, Mysore. Developed secure iOS applications using Swift and SwiftUI with industry-standard protocols.',
-    skills: ['Swift', 'SwiftUI', 'Firebase', 'Supabase', 'MapKit', 'EventKit', 'Xcode'],
-    achievements: [
-      'Developed secure iOS applications',
-      'Reduced login friction by 40%',
-      'Implemented real-time monitoring',
-      'Achieved 95% test coverage in Agile environment'
-    ]
+    year: '2026',
+    month: 'Expected',
+    title: 'B.Tech Graduation',
+    organization: 'Galgotias University',
+    location: 'Greater Noida, India',
+    type: 'education',
+    icon: <FaGraduationCap />,
+    description: 'Expected graduation with Bachelor of Technology in Computer Science.',
+    highlights: [
+      'Target: CGPA 8.5+',
+      'Full Stack Developer',
+      'iOS Specialist'
+    ],
+    color: '#10b981',
+    upcoming: true
   }
 ];
 
-const TimelineItem = ({ item, index, isVisible }) => {
-  const [isHovered, setIsHovered] = useState(false);
-  const [showDetails, setShowDetails] = useState(false);
-
-  const getTypeColor = (type) => {
-    switch (type) {
-      case 'education': return 'var(--color-success)';
-      case 'work': return 'var(--color-primary)';
-      case 'project': return 'var(--color-secondary)';
-      default: return 'var(--color-primary)';
-    }
-  };
+const TimelineCard = ({ item, index, isVisible }) => {
+  const [isExpanded, setIsExpanded] = useState(false);
 
   return (
     <div 
-      className={`timeline-item ${isVisible ? 'animate' : ''}`}
-      style={{ animationDelay: `${index * 0.2}s` }}
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
+      className={`timeline__card ${isVisible ? 'timeline__card--visible' : ''} ${item.completed ? 'timeline__card--completed' : ''} ${item.upcoming ? 'timeline__card--upcoming' : ''}`}
+      style={{ '--delay': `${index * 0.15}s`, '--accent': item.color }}
     >
-      <div className="timeline-content">
-        <div 
-          className="timeline-marker"
-          style={{ backgroundColor: getTypeColor(item.type) }}
-        >
+      {/* Timeline Node */}
+      <div className="timeline__node">
+        <div className="timeline__node-icon" style={{ background: item.color }}>
           {item.icon}
         </div>
-        
-        <div className={`timeline-card ${isHovered ? 'hovered' : ''}`}>
-          <div className="timeline-header">
-            <div className="timeline-year">{item.year}</div>
-            <h3 className="timeline-title">{item.title}</h3>
-            <h4 className="timeline-company">{item.company}</h4>
-          </div>
-          
-          <p className="timeline-description">{item.description}</p>
-          
-          <div className="timeline-skills">
-            {item.skills.map((skill, idx) => (
-              <span key={idx} className="skill-tag">{skill}</span>
-            ))}
-          </div>
-          
-          <button 
-            className="timeline-toggle"
-            onClick={() => setShowDetails(!showDetails)}
-          >
-            {showDetails ? 'Hide Details' : 'View Achievements'}
-          </button>
-          
-          {showDetails && (
-            <div className="timeline-details">
-              <h5>Key Achievements:</h5>
-              <ul>
-                {item.achievements.map((achievement, idx) => (
-                  <li key={idx}>{achievement}</li>
-                ))}
-              </ul>
-            </div>
-          )}
-        </div>
+        <div className="timeline__node-line"></div>
       </div>
-      
-      <div className="timeline-progress">
-        <div 
-          className="progress-line"
-          style={{ 
-            backgroundColor: getTypeColor(item.type),
-            animationDelay: `${index * 0.3}s`
-          }}
-        />
+
+      {/* Card Content */}
+      <div className="timeline__card-content">
+        {/* Date Badge */}
+        <div className="timeline__date">
+          <span className="timeline__year">{item.year}</span>
+          <span className="timeline__month">{item.month}</span>
+        </div>
+
+        {/* Header */}
+        <div className="timeline__header">
+          <h3 className="timeline__title">{item.title}</h3>
+          <div className="timeline__meta">
+            <span className="timeline__org">{item.organization}</span>
+            <span className="timeline__location">{item.location}</span>
+          </div>
+        </div>
+
+        {/* Description */}
+        <p className="timeline__description">{item.description}</p>
+
+        {/* Highlights */}
+        <div className="timeline__highlights">
+          {item.highlights.map((highlight, idx) => (
+            <div key={idx} className="timeline__highlight">
+              <BsCheckCircleFill className="timeline__highlight-icon" />
+              <span>{highlight}</span>
+            </div>
+          ))}
+        </div>
+
+        {/* Status Badge */}
+        {item.completed && (
+          <div className="timeline__status timeline__status--completed">
+            <BsCheckCircleFill />
+            Completed
+          </div>
+        )}
+        {item.upcoming && (
+          <div className="timeline__status timeline__status--upcoming">
+            <FaChartLine />
+            Upcoming
+          </div>
+        )}
       </div>
     </div>
   );
@@ -228,6 +184,7 @@ const TimelineItem = ({ item, index, isVisible }) => {
 
 const Timeline = () => {
   const [isVisible, setIsVisible] = useState(false);
+  const [activeFilter, setActiveFilter] = useState('all');
   const timelineRef = useRef(null);
 
   useEffect(() => {
@@ -237,29 +194,61 @@ const Timeline = () => {
           setIsVisible(true);
         }
       },
-      { threshold: 0.2 }
+      { threshold: 0.1 }
     );
 
     if (timelineRef.current) {
       observer.observe(timelineRef.current);
     }
 
-    return () => {
-      if (timelineRef.current) {
-        observer.unobserve(timelineRef.current);
-      }
-    };
+    return () => observer.disconnect();
   }, []);
 
+  const filters = [
+    { key: 'all', label: 'All' },
+    { key: 'work', label: 'Experience' },
+    { key: 'education', label: 'Education' },
+    { key: 'project', label: 'Projects' }
+  ];
+
+  const filteredData = activeFilter === 'all' 
+    ? timelineData 
+    : timelineData.filter(item => item.type === activeFilter);
+
   return (
-    <section id="timeline" ref={timelineRef}>
-      <h5>My Professional Journey</h5>
-      <h2>Career Timeline</h2>
-      
+    <section id="timeline" className={`timeline ${isVisible ? 'timeline--visible' : ''}`} ref={timelineRef}>
+      {/* Section Header */}
+      <div className="timeline__section-header">
+        <span className="timeline__label">
+          <span className="timeline__label-icon">⚡</span>
+          Career Journey
+        </span>
+        <h2 className="timeline__section-title">
+          My <span className="timeline__section-gradient">Timeline</span>
+        </h2>
+        <p className="timeline__section-subtitle">
+          A chronicle of my professional growth, from academic beginnings to industry experience
+        </p>
+
+        {/* Filters */}
+        <div className="timeline__filters">
+          {filters.map((filter) => (
+            <button
+              key={filter.key}
+              className={`timeline__filter ${activeFilter === filter.key ? 'timeline__filter--active' : ''}`}
+              onClick={() => setActiveFilter(filter.key)}
+            >
+              {filter.label}
+            </button>
+          ))}
+        </div>
+      </div>
+
+      {/* Timeline Container */}
       <div className="container timeline__container">
-        <div className="timeline-wrapper">
-          {timelineData.map((item, index) => (
-            <TimelineItem 
+        <div className="timeline__track">
+          {filteredData.map((item, index) => (
+            <TimelineCard 
               key={item.id}
               item={item}
               index={index}
@@ -267,9 +256,27 @@ const Timeline = () => {
             />
           ))}
         </div>
+
+        {/* Summary Stats */}
+        <div className="timeline__stats">
+          <div className="timeline__stat">
+            <span className="timeline__stat-number">3+</span>
+            <span className="timeline__stat-label">Internships</span>
+          </div>
+          <div className="timeline__stat-divider"></div>
+          <div className="timeline__stat">
+            <span className="timeline__stat-number">7+</span>
+            <span className="timeline__stat-label">Projects</span>
+          </div>
+          <div className="timeline__stat-divider"></div>
+          <div className="timeline__stat">
+            <span className="timeline__stat-number">2+</span>
+            <span className="timeline__stat-label">Years Coding</span>
+          </div>
+        </div>
       </div>
     </section>
   );
 };
 
-export default Timeline; 
+export default Timeline;

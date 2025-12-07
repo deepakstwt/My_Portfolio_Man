@@ -1,80 +1,148 @@
 import React from "react";
 import "./about.css";
 import profile_picture from "../../assets/profile3.jpg";
-import { FaAward } from "react-icons/fa";
-import { FiUsers } from "react-icons/fi";
-import { VscFolderLibrary } from "react-icons/vsc";
+import { FaCode, FaMobileAlt, FaRocket } from "react-icons/fa";
+import { HiOutlineSparkles } from "react-icons/hi";
 
 const About = () => {
   return (
-    <section id="about">
-      <h5>Get to know</h5>
-      <h2>About Me</h2>
-      <div className="container about__container">
-        <div className="about__me">
-          <div className="about__me-image">
-            <img src={profile_picture} alt="Deepak" />
-          </div>
+    <section id="about" className="about__section">
+      {/* Decorative Elements */}
+      <div className="about__bg-text">ABOUT</div>
+      <div className="about__decoration about__decoration--1"></div>
+      <div className="about__decoration about__decoration--2"></div>
+      
+      <div className="container">
+        {/* Section Header */}
+        <div className="about__header">
+          <span className="about__label">
+            <HiOutlineSparkles className="about__label-icon" />
+            Get to know me
+          </span>
+          <h2 className="about__title">
+            Crafting Digital
+            <span className="about__title-highlight"> Experiences</span>
+          </h2>
         </div>
-        <div className="about__content">
-          <div className="about__cards">
-            <article className="about__card">
-              <FaAward className="about__icon" />
-              <h5>Experience</h5>
-              <small>
-                iOS Developer Intern
-              </small> <br />
-              <small>
-                Frontend Web Dev Intern
-              </small> <br />
-              <small>
-                Full Stack Developer Intern
-              </small>
-            </article>
-            <article className="about__card">
-              <FiUsers className="about__icon" />
-              <h5>Education</h5>
-              <small>
-                B.Tech Computer Science
-                <br />
-                CGPA: 8.57/10
-              </small>
-            </article>
-            <article className="about__card">
-              <VscFolderLibrary className="about__icon" />
-              <h5>Projects</h5>
-              <small>
-                5+ Major Projects
-                <br />
-                iOS & Full Stack Apps
-              </small>
-            </article>
+
+        {/* Main Content */}
+        <div className="about__main">
+          {/* Profile Section */}
+          <div className="about__profile">
+            <div className="about__profile-wrapper">
+              <div className="about__profile-image">
+                <img src={profile_picture} alt="Deepak Prajapati" />
+                <div className="about__profile-overlay"></div>
+              </div>
+              <div className="about__profile-badge">
+                <span className="about__badge-dot"></span>
+                Open to Work
+              </div>
+            </div>
+            
+            {/* Quick Stats */}
+            <div className="about__stats">
+              <div className="about__stat">
+                <span className="about__stat-number">3+</span>
+                <span className="about__stat-label">Internships</span>
+              </div>
+              <div className="about__stat-divider"></div>
+              <div className="about__stat">
+                <span className="about__stat-number">8.57</span>
+                <span className="about__stat-label">CGPA</span>
+              </div>
+              <div className="about__stat-divider"></div>
+              <div className="about__stat">
+                <span className="about__stat-number">7+</span>
+                <span className="about__stat-label">Projects</span>
+              </div>
+            </div>
           </div>
-          <p>
-            I'm a passionate iOS Developer and Full Stack Developer currently pursuing B.Tech in Computer Science 
-            at Galgotias University with a CGPA of 8.57/10. I have completed internships as an iOS Developer at 
-            Infosys Campus, Mysore (Mar-Apr 2025), where I developed secure iOS applications using Swift and SwiftUI, 
-            implementing industry-standard protocols and achieving 95% test coverage in an Agile environment. I also 
-            completed a Full Stack Development Internship at Main Flow Services and Technologies Pvt. Ltd. (Nov-Dec 2024), 
-            building modern full-stack web applications.
-          </p>
-          <p>
-            My technical expertise spans across iOS development with Swift, SwiftUI, Firebase, and Supabase, 
-            as well as full-stack web development using the MERN stack (MongoDB, Express.js, React.js, Node.js). 
-            I've successfully built comprehensive applications including AInteraView (AI-powered interview platform), 
-            Faby (iOS app for toddler tracking), Fleet Management System, Vehicle Registration Dashboard, and 
-            MediCheck healthcare platform with real-time monitoring and role-based access control.
-          </p>
-          <p>
-            With hands-on experience in both mobile and web development, I'm skilled in creating responsive 
-            applications, implementing secure authentication systems, and optimizing performance. I've reduced 
-            page load times by 35% and login friction by 40% through code optimization and modern development techniques. 
-            I thrive in collaborative environments and am passionate about leveraging cutting-edge technologies to 
-            solve real-world problems and create meaningful user experiences.
-          </p>
-          <a href="#contact" className="btn btn-primary">
-            Let's Talk
-          </a>
+
+          {/* Story Section */}
+          <div className="about__story">
+            <div className="about__intro">
+              <p className="about__intro-text">
+                Hey there! I'm <strong>Deepak Prajapati</strong>, a passionate 
+                <span className="about__highlight"> Software Developer</span> who 
+                transforms ideas into elegant digital solutions.
+              </p>
+            </div>
+
+            <div className="about__narrative">
+              <p>
+                Currently pursuing B.Tech in Computer Science at <strong>Galgotias University</strong>, 
+                I've had the privilege to work with <strong>Infosys</strong> as a 
+                <em> Software Developer Intern - iOS</em>, where I crafted secure applications 
+                using Swift & SwiftUI, achieving <span className="about__metric">95% test coverage</span> in Agile sprints.
+              </p>
+              <p>
+                I also worked with <strong>Main Flow Services and Technologies Pvt. Ltd.</strong> as a 
+                <em> Full Stack Developer</em>, building robust web applications with MERN stack and 
+                integrating AI-powered chatbot functionality using OpenAI GPT-4.
+              </p>
+              <p>
+                My journey spans from building AI-powered platforms like <em>Skilio</em> and 
+                <em> GitAid</em> to creating healthcare apps that make a real difference. 
+                I've optimized performance by <span className="about__metric">35%</span> and 
+                reduced login friction by <span className="about__metric">40%</span> through 
+                innovative solutions.
+              </p>
+            </div>
+
+            {/* Expertise Cards */}
+            <div className="about__expertise">
+              <div className="about__expertise-card">
+                <div className="about__expertise-icon">
+                  <FaMobileAlt />
+                </div>
+                <div className="about__expertise-content">
+                  <h4>iOS Development</h4>
+                  <p>Swift, SwiftUI, Firebase, Core Data</p>
+                </div>
+              </div>
+              
+              <div className="about__expertise-card">
+                <div className="about__expertise-icon">
+                  <FaCode />
+                </div>
+                <div className="about__expertise-content">
+                  <h4>Full Stack</h4>
+                  <p>MERN Stack, Next.js, TypeScript</p>
+                </div>
+              </div>
+              
+              <div className="about__expertise-card">
+                <div className="about__expertise-icon">
+                  <FaRocket />
+                </div>
+                <div className="about__expertise-content">
+                  <h4>AI Integration</h4>
+                  <p>LangChain, RAG, Gemini AI</p>
+                </div>
+              </div>
+            </div>
+
+            {/* Quote */}
+            <blockquote className="about__quote">
+              <span className="about__quote-mark">"</span>
+              I believe great software is born where creativity meets code.
+              <span className="about__quote-mark">"</span>
+            </blockquote>
+
+            {/* CTA */}
+            <div className="about__cta">
+              <a href="#contact" className="about__cta-btn about__cta-btn--primary">
+                <span>Let's Collaborate</span>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                  <path d="M5 12h14M12 5l7 7-7 7"/>
+                </svg>
+              </a>
+              <a href="#portfolio" className="about__cta-btn about__cta-btn--secondary">
+                View My Work
+              </a>
+            </div>
+          </div>
         </div>
       </div>
     </section>

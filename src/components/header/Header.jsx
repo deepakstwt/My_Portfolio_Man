@@ -54,6 +54,18 @@ const Header = () => {
         <div className="hero__glow hero__glow--3"></div>
       </div>
 
+      {/* Floating AI/ML Keywords */}
+      <div className="hero__floating-words">
+        <span className="hero__float-word hero__float-word--1">AI</span>
+        <span className="hero__float-word hero__float-word--2">ML</span>
+        <span className="hero__float-word hero__float-word--3">GenAI</span>
+        <span className="hero__float-word hero__float-word--4">LLM</span>
+        <span className="hero__float-word hero__float-word--5">RAG</span>
+        <span className="hero__float-word hero__float-word--6">NLP</span>
+        <span className="hero__float-word hero__float-word--7">GPT</span>
+        <span className="hero__float-word hero__float-word--8">Neural</span>
+      </div>
+
 
       <div className="container hero__container">
         {/* Status Badge */}

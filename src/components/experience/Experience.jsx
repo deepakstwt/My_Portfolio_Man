@@ -1,119 +1,147 @@
-import React from "react";
+import React, { useState, useEffect, useRef } from "react";
 import "./experience.css";
-import { BsPatchCheckFill } from "react-icons/bs";
+import { 
+  SiSwift, SiReact, SiJavascript, SiTypescript, SiPython,
+  SiNodedotjs, SiExpress, SiMongodb, SiFirebase, SiSupabase,
+  SiPostgresql, SiTailwindcss, SiNextdotjs, SiGit, SiJira,
+  SiXcode, SiFigma, SiHtml5, SiCss3
+} from "react-icons/si";
+import { FaJava, FaApple, FaServer, FaTools, FaBrain } from "react-icons/fa";
+
+const skillsData = {
+  languages: {
+    title: "Languages",
+    icon: <FaBrain />,
+    skills: [
+      { name: "Swift", icon: <SiSwift /> },
+      { name: "JavaScript", icon: <SiJavascript /> },
+      { name: "TypeScript", icon: <SiTypescript /> },
+      { name: "Python", icon: <SiPython /> },
+      { name: "Java", icon: <FaJava /> },
+    ]
+  },
+  frontend: {
+    title: "Frontend & Mobile",
+    icon: <FaApple />,
+    skills: [
+      { name: "SwiftUI", icon: <SiSwift /> },
+      { name: "React.js", icon: <SiReact /> },
+      { name: "Next.js", icon: <SiNextdotjs /> },
+      { name: "Tailwind CSS", icon: <SiTailwindcss /> },
+      { name: "HTML5", icon: <SiHtml5 /> },
+      { name: "CSS3", icon: <SiCss3 /> },
+    ]
+  },
+  backend: {
+    title: "Backend & Database",
+    icon: <FaServer />,
+    skills: [
+      { name: "Node.js", icon: <SiNodedotjs /> },
+      { name: "Express.js", icon: <SiExpress /> },
+      { name: "MongoDB", icon: <SiMongodb /> },
+      { name: "PostgreSQL", icon: <SiPostgresql /> },
+      { name: "Firebase", icon: <SiFirebase /> },
+      { name: "Supabase", icon: <SiSupabase /> },
+    ]
+  },
+  tools: {
+    title: "Tools & Platforms",
+    icon: <FaTools />,
+    skills: [
+      { name: "Xcode", icon: <SiXcode /> },
+      { name: "Git", icon: <SiGit /> },
+      { name: "JIRA", icon: <SiJira /> },
+      { name: "Figma", icon: <SiFigma /> },
+      { name: "RAG & LangChain", icon: <FaBrain /> },
+    ]
+  }
+};
 
 const Experience = () => {
-  return (
-    <section id="experience">
-      <h5>Check out</h5>
-      <h2>Skills</h2>
-      <div className="container experience__container">
-        <div className="experience__frontend">
-          <h3>Frontend & Mobile Development</h3>
-          <div className="experience__content">
-            <article className="experience__details">
-              <BsPatchCheckFill className="experience__details-icon" />
-              <div>
-                <h4>Swift & SwiftUI</h4>
-              </div>
-            </article>
-            <article className="experience__details">
-              <BsPatchCheckFill className="experience__details-icon" />
-              <div>
-                <h4>React.js</h4>
-              </div>
-            </article>
-            <article className="experience__details">
-              <BsPatchCheckFill className="experience__details-icon" />
-              <div>
-                <h4>JavaScript</h4>
-              </div>
-            </article>
-            <article className="experience__details">
-              <BsPatchCheckFill className="experience__details-icon" />
-              <div>
-                <h4>Java</h4>
-              </div>
-            </article>
-            <article className="experience__details">
-              <BsPatchCheckFill className="experience__details-icon" />
-              <div>
-                <h4>HTML5</h4>
-              </div>
-            </article>
-            <article className="experience__details">
-              <BsPatchCheckFill className="experience__details-icon" />
-              <div>
-                <h4>CSS3</h4>
-              </div>
-            </article>
-            <article className="experience__details">
-              <BsPatchCheckFill className="experience__details-icon" />
-              <div>
-                <h4>Tailwind CSS</h4>
-              </div>
-            </article>
-            <article className="experience__details">
-              <BsPatchCheckFill className="experience__details-icon" />
-              <div>
-                <h4>Xcode</h4>
-              </div>
-            </article>
-          </div>
-        </div>
+  const [isVisible, setIsVisible] = useState(false);
+  const sectionRef = useRef(null);
 
-        <div className="experience__backend">
-          <h3>Backend & Tools</h3>
-          <div className="experience__content">
-            <article className="experience__details">
-              <BsPatchCheckFill className="experience__details-icon" />
-              <div>
-                <h4>Node.js</h4>
-              </div>
-            </article>
-            <article className="experience__details">
-              <BsPatchCheckFill className="experience__details-icon" />
-              <div>
-                <h4>Express.js</h4>
-              </div>
-            </article>
-            <article className="experience__details">
-              <BsPatchCheckFill className="experience__details-icon" />
-              <div>
-                <h4>Firebase</h4>
-              </div>
-            </article>
-            <article className="experience__details">
-              <BsPatchCheckFill className="experience__details-icon" />
-              <div>
-                <h4>Supabase</h4>
-              </div>
-            </article>
-            <article className="experience__details">
-              <BsPatchCheckFill className="experience__details-icon" />
-              <div>
-                <h4>MySQL</h4>
-              </div>
-            </article>
-            <article className="experience__details">
-              <BsPatchCheckFill className="experience__details-icon" />
-              <div>
-                <h4>MongoDB</h4>
-              </div>
-            </article>
-            <article className="experience__details">
-              <BsPatchCheckFill className="experience__details-icon" />
-              <div>
-                <h4>Git & GitHub</h4>
-              </div>
-            </article>
-            <article className="experience__details">
-              <BsPatchCheckFill className="experience__details-icon" />
-              <div>
-                <h4>JIRA</h4>
-              </div>
-            </article>
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+        }
+      },
+      { threshold: 0.1 }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
+
+  const allSkills = Object.values(skillsData).flatMap(cat => cat.skills);
+
+  return (
+    <section 
+      id="experience" 
+      className={`skills ${isVisible ? 'skills--visible' : ''}`} 
+      ref={sectionRef}
+    >
+      {/* Section Header */}
+      <div className="skills__header">
+        <span className="skills__label">
+          <span className="skills__label-icon">🛠</span>
+          Technical Expertise
+        </span>
+        <h2 className="skills__title">
+          Skills & <span className="skills__title-gradient">Technologies</span>
+        </h2>
+        <p className="skills__subtitle">
+          Technologies I work with to bring ideas to life
+        </p>
+      </div>
+
+      {/* Skills Grid */}
+      <div className="container skills__container">
+        {Object.entries(skillsData).map(([key, category], catIndex) => (
+          <div 
+            key={key} 
+            className="skills__category"
+            style={{ '--delay': `${catIndex * 0.1}s` }}
+          >
+            <div className="skills__category-header">
+              <span className="skills__category-icon">{category.icon}</span>
+              <h3 className="skills__category-title">{category.title}</h3>
+            </div>
+            <div className="skills__category-items">
+              {category.skills.map((skill, skillIndex) => (
+                <div 
+                  key={skill.name} 
+                  className="skills__item"
+                  style={{ '--skill-delay': `${(catIndex * 0.1) + (skillIndex * 0.05)}s` }}
+                >
+                  <span className="skills__item-icon">{skill.icon}</span>
+                  <span className="skills__item-name">{skill.name}</span>
+                </div>
+              ))}
+            </div>
           </div>
+        ))}
+      </div>
+
+      {/* All Skills Cloud */}
+      <div className="skills__cloud">
+        <p className="skills__cloud-label">Full Stack</p>
+        <div className="skills__cloud-items">
+          {allSkills.map((skill, index) => (
+            <span 
+              key={skill.name} 
+              className="skills__cloud-item"
+              style={{ '--cloud-delay': `${index * 0.03}s` }}
+            >
+              {skill.icon}
+              {skill.name}
+            </span>
+          ))}
         </div>
       </div>
     </section>

@@ -7,15 +7,17 @@ import { RiServiceLine } from "react-icons/ri";
 import { BiMessageSquareDetail } from "react-icons/bi";
 import { MdTimeline } from "react-icons/md";
 import { HiMenuAlt3, HiX } from "react-icons/hi";
+import { BsChevronLeft, BsChevronRight } from "react-icons/bs";
 
 const Nav = () => {
   const [activeNav, setActiveNav] = useState("#home");
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isExpanded, setIsExpanded] = useState(false);
 
   const navItems = [
     { href: "#home", icon: <AiOutlineHome />, label: "Home" },
     { href: "#about", icon: <AiOutlineUser />, label: "About" },
-    { href: "#portfolio", icon: <RiServiceLine />, label: "My Projects" },
+    { href: "#portfolio", icon: <RiServiceLine />, label: "Projects" },
     { href: "#timeline", icon: <MdTimeline />, label: "Timeline" },
     { href: "#experience", icon: <BiBook />, label: "Skills" },
     { href: "#contact", icon: <BiMessageSquareDetail />, label: "Contact" }
@@ -25,7 +27,7 @@ const Nav = () => {
   useEffect(() => {
     const handleScroll = () => {
       const sections = navItems.map(item => item.href.substring(1));
-      const scrollPosition = window.scrollY + 100; // Offset for better detection
+      const scrollPosition = window.scrollY + 100;
 
       for (let i = sections.length - 1; i >= 0; i--) {
         const section = document.getElementById(sections[i]);
@@ -40,30 +42,28 @@ const Nav = () => {
         }
       }
 
-      // Handle home section (header)
       if (scrollPosition < 100) {
         setActiveNav("#home");
       }
     };
 
     window.addEventListener('scroll', handleScroll);
-    handleScroll(); // Call once to set initial state
+    handleScroll();
 
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Enhanced navigation click handler with smooth scrolling
+  // Enhanced navigation click handler
   const handleNavClick = (href, event) => {
     event.preventDefault();
     setActiveNav(href);
-    setIsMobileMenuOpen(false); // Close mobile menu when item is clicked
+    setIsMobileMenuOpen(false);
 
-    // Enhanced smooth scrolling
     const targetId = href.substring(1);
     const targetElement = document.getElementById(targetId);
     
     if (targetElement) {
-      const headerOffset = 80; // Offset for fixed navigation
+      const headerOffset = 80;
       const elementPosition = targetElement.offsetTop;
       const offsetPosition = elementPosition - headerOffset;
 
@@ -76,6 +76,10 @@ const Nav = () => {
 
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
+  };
+
+  const toggleExpanded = () => {
+    setIsExpanded(!isExpanded);
   };
 
   // Close mobile menu when clicking outside
@@ -106,18 +110,31 @@ const Nav = () => {
   return (
     <>
       {/* Desktop Navigation */}
-      <nav className="nav-desktop">
-        {navItems.map((item) => (
-          <a
-            key={item.href}
-            href={item.href}
-            onClick={(e) => handleNavClick(item.href, e)}
-            className={activeNav === item.href ? "active" : ""}
-            data-tooltip={item.label}
-          >
-            {item.icon}
-          </a>
-        ))}
+      <nav className={`nav-desktop ${isExpanded ? 'nav-desktop--expanded' : ''}`}>
+        {/* Toggle Button */}
+        <button 
+          className="nav-toggle"
+          onClick={toggleExpanded}
+          aria-label={isExpanded ? "Collapse navigation" : "Expand navigation"}
+        >
+          {isExpanded ? <BsChevronRight /> : <BsChevronLeft />}
+        </button>
+
+        {/* Nav Items */}
+        <div className="nav-items">
+          {navItems.map((item) => (
+            <a
+              key={item.href}
+              href={item.href}
+              onClick={(e) => handleNavClick(item.href, e)}
+              className={activeNav === item.href ? "active" : ""}
+              data-tooltip={item.label}
+            >
+              <span className="nav-icon">{item.icon}</span>
+              <span className="nav-label">{item.label}</span>
+            </a>
+          ))}
+        </div>
       </nav>
 
       {/* Mobile Navigation */}

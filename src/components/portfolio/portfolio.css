@@ -23,10 +23,298 @@
 }
 
 /* ============================================
+   FLOATING TECH STACK & CHALLENGES
+   ============================================ */
+
+.portfolio__floating-elements {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.portfolio__float-tech,
+.portfolio__float-challenge {
+  position: absolute;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(var(--color-primary-rgb), 0.08);
+  opacity: 0;
+  user-select: none;
+  font-size: clamp(1.5rem, 4vw, 3rem);
+}
+
+.portfolio--visible .portfolio__float-tech,
+.portfolio--visible .portfolio__float-challenge {
+  opacity: 1;
+  animation: float-portfolio 25s ease-in-out infinite;
+}
+
+/* Tech Stack - Larger, more prominent */
+.portfolio__float-tech {
+  font-size: clamp(2rem, 5vw, 4rem);
+  -webkit-text-stroke-width: 1.5px;
+  -webkit-text-stroke-color: rgba(var(--color-primary-rgb), 0.1);
+}
+
+/* Challenges - Smaller, subtle */
+.portfolio__float-challenge {
+  font-size: clamp(1.2rem, 3vw, 2.5rem);
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: rgba(var(--color-primary-rgb), 0.06);
+  font-weight: 700;
+}
+
+/* Positioning for Tech Stack */
+.portfolio__float-tech:nth-child(1) {
+  top: 10%;
+  left: 5%;
+  animation-delay: 0s;
+}
+
+.portfolio__float-tech:nth-child(2) {
+  top: 15%;
+  right: 8%;
+  animation-delay: -2s;
+}
+
+.portfolio__float-tech:nth-child(3) {
+  bottom: 25%;
+  left: 3%;
+  animation-delay: -4s;
+}
+
+.portfolio__float-tech:nth-child(4) {
+  bottom: 30%;
+  right: 5%;
+  animation-delay: -6s;
+}
+
+.portfolio__float-tech:nth-child(5) {
+  top: 45%;
+  left: 10%;
+  animation-delay: -8s;
+}
+
+.portfolio__float-tech:nth-child(6) {
+  top: 50%;
+  right: 12%;
+  animation-delay: -10s;
+}
+
+.portfolio__float-tech:nth-child(7) {
+  bottom: 15%;
+  left: 15%;
+  animation-delay: -12s;
+}
+
+.portfolio__float-tech:nth-child(8) {
+  top: 30%;
+  right: 3%;
+  animation-delay: -14s;
+}
+
+.portfolio__float-tech:nth-child(9) {
+  bottom: 40%;
+  right: 18%;
+  animation-delay: -16s;
+}
+
+.portfolio__float-tech:nth-child(10) {
+  top: 60%;
+  left: 8%;
+  animation-delay: -18s;
+}
+
+.portfolio__float-tech:nth-child(11) {
+  bottom: 20%;
+  right: 10%;
+  animation-delay: -20s;
+}
+
+.portfolio__float-tech:nth-child(12) {
+  top: 25%;
+  left: 20%;
+  animation-delay: -22s;
+}
+
+.portfolio__float-tech:nth-child(13) {
+  bottom: 50%;
+  left: 12%;
+  animation-delay: -24s;
+}
+
+.portfolio__float-tech:nth-child(14) {
+  top: 70%;
+  right: 15%;
+  animation-delay: -1s;
+}
+
+.portfolio__float-tech:nth-child(15) {
+  bottom: 10%;
+  left: 22%;
+  animation-delay: -3s;
+}
+
+.portfolio__float-tech:nth-child(16) {
+  top: 35%;
+  left: 18%;
+  animation-delay: -5s;
+}
+
+.portfolio__float-tech:nth-child(17) {
+  bottom: 35%;
+  right: 8%;
+  animation-delay: -7s;
+}
+
+.portfolio__float-tech:nth-child(18) {
+  top: 55%;
+  right: 20%;
+  animation-delay: -9s;
+}
+
+/* Positioning for Challenges */
+.portfolio__float-challenge:nth-child(19) {
+  top: 8%;
+  left: 25%;
+  animation-delay: -1s;
+}
+
+.portfolio__float-challenge:nth-child(20) {
+  bottom: 35%;
+  right: 15%;
+  animation-delay: -3s;
+}
+
+.portfolio__float-challenge:nth-child(21) {
+  top: 55%;
+  left: 12%;
+  animation-delay: -5s;
+}
+
+.portfolio__float-challenge:nth-child(22) {
+  bottom: 18%;
+  right: 22%;
+  animation-delay: -7s;
+}
+
+.portfolio__float-challenge:nth-child(23) {
+  top: 35%;
+  right: 25%;
+  animation-delay: -9s;
+}
+
+.portfolio__float-challenge:nth-child(24) {
+  bottom: 45%;
+  left: 18%;
+  animation-delay: -11s;
+}
+
+.portfolio__float-challenge:nth-child(25) {
+  top: 70%;
+  right: 8%;
+  animation-delay: -13s;
+}
+
+.portfolio__float-challenge:nth-child(26) {
+  bottom: 12%;
+  left: 25%;
+  animation-delay: -15s;
+}
+
+.portfolio__float-challenge:nth-child(27) {
+  top: 20%;
+  left: 30%;
+  animation-delay: -17s;
+}
+
+.portfolio__float-challenge:nth-child(28) {
+  bottom: 28%;
+  right: 28%;
+  animation-delay: -19s;
+}
+
+.portfolio__float-challenge:nth-child(29) {
+  top: 65%;
+  left: 28%;
+  animation-delay: -21s;
+}
+
+.portfolio__float-challenge:nth-child(30) {
+  bottom: 5%;
+  right: 12%;
+  animation-delay: -23s;
+}
+
+.portfolio__float-challenge:nth-child(31) {
+  top: 40%;
+  left: 35%;
+  animation-delay: -25s;
+}
+
+.portfolio__float-challenge:nth-child(32) {
+  bottom: 22%;
+  left: 32%;
+  animation-delay: -2s;
+}
+
+@keyframes float-portfolio {
+  0%, 100% {
+    transform: translate(0, 0) rotate(0deg) scale(1);
+  }
+  25% {
+    transform: translate(20px, -25px) rotate(1deg) scale(1.05);
+  }
+  50% {
+    transform: translate(-15px, 20px) rotate(-1deg) scale(0.95);
+  }
+  75% {
+    transform: translate(25px, 15px) rotate(0.5deg) scale(1.02);
+  }
+}
+
+/* Dark mode adjustments */
+body.dark-mode .portfolio__float-tech {
+  -webkit-text-stroke-color: rgba(var(--color-primary-rgb), 0.15);
+}
+
+body.dark-mode .portfolio__float-challenge {
+  -webkit-text-stroke-color: rgba(var(--color-primary-rgb), 0.1);
+}
+
+/* Responsive - hide some on mobile */
+@media screen and (max-width: 768px) {
+  .portfolio__float-tech:nth-child(n+10),
+  .portfolio__float-challenge:nth-child(n+25) {
+    display: none;
+  }
+  
+  .portfolio__float-tech,
+  .portfolio__float-challenge {
+    -webkit-text-stroke-width: 1px;
+    opacity: 0.7;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .portfolio__float-tech:nth-child(n+6),
+  .portfolio__float-challenge:nth-child(n+21) {
+    display: none;
+  }
+}
+
+/* ============================================
    SECTION HEADER
    ============================================ */
 
 .portfolio__header {
+  position: relative;
+  z-index: 2;
   max-width: 1200px;
   margin: 0 auto 4rem;
   padding: 0 2rem;
@@ -141,6 +429,8 @@
    ============================================ */
 
 .portfolio__container {
+  position: relative;
+  z-index: 2;
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
   gap: 2rem;
@@ -384,6 +674,8 @@
    ============================================ */
 
 .portfolio__cta {
+  position: relative;
+  z-index: 2;
   display: flex;
   justify-content: center;
   margin-top: 4rem;

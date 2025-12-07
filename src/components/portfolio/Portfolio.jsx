@@ -239,6 +239,39 @@ const Portfolio = () => {
 
   return (
     <section id="portfolio" className={`portfolio ${isVisible ? 'portfolio--visible' : ''}`} ref={sectionRef}>
+      {/* Floating Tech Stack & Challenges */}
+      <div className="portfolio__floating-elements">
+        {/* Tech Stack Keywords */}
+        {[
+          "React", "Node.js", "Swift", "SwiftUI", "Next.js", "TypeScript",
+          "MongoDB", "PostgreSQL", "Firebase", "Supabase", "RAG", "LangChain",
+          "AI/ML", "Gemini", "pgvector", "Prisma", "tRPC", "Express.js"
+        ].map((tech, index) => (
+          <span 
+            key={`tech-${index}`}
+            className="portfolio__float-tech"
+            style={{ '--delay': `${index * 0.3}s` }}
+          >
+            {tech}
+          </span>
+        ))}
+        
+        {/* Challenges Keywords */}
+        {[
+          "Scalability", "Performance", "Real-time", "Security", "Optimization",
+          "Vector Search", "Low Latency", "Data Privacy", "HIPAA", "ATS",
+          "Recommendation Engine", "Semantic Search", "Caching", "Agile"
+        ].map((challenge, index) => (
+          <span 
+            key={`challenge-${index}`}
+            className="portfolio__float-challenge"
+            style={{ '--delay': `${index * 0.4}s` }}
+          >
+            {challenge}
+          </span>
+        ))}
+      </div>
+
       {/* Section Header */}
       <div className="portfolio__header">
         <div className="portfolio__header-content">
@@ -248,7 +281,7 @@ const Portfolio = () => {
           </span>
           <h2 className="portfolio__title">
             Projects I've <span className="portfolio__title-gradient">Built</span>
-          </h2>
+      </h2>
           <p className="portfolio__subtitle">
             A collection of projects that showcase my expertise in iOS development, 
             full-stack engineering, and AI-powered solutions.
@@ -273,15 +306,15 @@ const Portfolio = () => {
       {/* Projects Grid */}
       <div className="container portfolio__container">
         {filteredProjects.map((project, index) => (
-          <article 
-            key={project.id} 
+            <article 
+              key={project.id} 
             className={`portfolio__card ${project.featured ? 'portfolio__card--featured' : ''}`}
-            onClick={() => handleProjectClick(project)}
+              onClick={() => handleProjectClick(project)}
             style={{ '--delay': `${index * 0.1}s` }}
-          >
+            >
             {/* Card Image */}
             <div className="portfolio__card-image">
-              <img src={project.image} alt={project.title} />
+                <img src={project.image} alt={project.title} />
               <div className="portfolio__card-overlay">
                 <span className="portfolio__card-view">
                   View Project <BsArrowUpRight />
@@ -306,13 +339,13 @@ const Portfolio = () => {
 
               {/* Card Footer */}
               <div className="portfolio__card-footer">
-                <a 
-                  href={project.github} 
+                  <a 
+                    href={project.github} 
                   className="portfolio__card-link"
-                  target="_blank" 
-                  rel="noreferrer"
-                  onClick={(e) => e.stopPropagation()}
-                >
+                    target="_blank" 
+                    rel="noreferrer"
+                    onClick={(e) => e.stopPropagation()}
+                  >
                   {project.github.includes('drive.google.com') ? (
                     <>
                       <HiOutlineExternalLink /> Demo
@@ -327,8 +360,8 @@ const Portfolio = () => {
                   Details <BsArrowRight />
                 </button>
               </div>
-            </div>
-          </article>
+              </div>
+            </article>
         ))}
       </div>
 

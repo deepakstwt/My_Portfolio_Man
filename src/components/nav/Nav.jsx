@@ -8,6 +8,7 @@ import { BiMessageSquareDetail } from "react-icons/bi";
 import { MdTimeline } from "react-icons/md";
 import { HiMenuAlt3, HiX } from "react-icons/hi";
 import { BsChevronLeft, BsChevronRight } from "react-icons/bs";
+import { HiOutlineMenuAlt2 } from "react-icons/hi";
 
 const Nav = () => {
   const [activeNav, setActiveNav] = useState("#home");
@@ -117,7 +118,7 @@ const Nav = () => {
           onClick={toggleExpanded}
           aria-label={isExpanded ? "Collapse navigation" : "Expand navigation"}
         >
-          {isExpanded ? <BsChevronRight /> : <BsChevronLeft />}
+          <HiOutlineMenuAlt2 />
         </button>
 
         {/* Nav Items */}

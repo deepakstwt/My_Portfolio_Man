@@ -10,7 +10,7 @@
   top: 50%;
   transform: translateY(-50%);
   z-index: var(--z-fixed);
-  display: flex;
+  display: none; /* Hidden by default, shown via media query */
   flex-direction: column;
   align-items: flex-start;
   gap: 0;
@@ -456,23 +456,25 @@ body.dark-mode .nav-desktop a:hover .nav-icon {
    RESPONSIVE DESIGN
    ============================================ */
 
+/* Desktop Navigation - Show only on large screens */
 @media screen and (min-width: 1025px) {
   .nav-desktop {
-    display: flex;
+    display: flex !important;
   }
   
   .nav-mobile {
-    display: none;
+    display: none !important;
   }
 }
 
+/* Mobile Navigation - Show only on small/medium screens */
 @media screen and (max-width: 1024px) {
   .nav-desktop {
-    display: none;
+    display: none !important;
   }
   
   .nav-mobile {
-    display: block;
+    display: block !important;
   }
   
   html {

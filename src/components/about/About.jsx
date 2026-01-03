@@ -75,13 +75,13 @@ const About = () => {
                 I've had the privilege to work with <strong>Infosys</strong> as a 
                 <em> Software Developer Intern - iOS</em>, where I crafted secure applications 
                 using Swift & SwiftUI, achieving <span className="about__metric">95% test coverage</span> in Agile sprints.
-              </p>
-              <p>
+          </p>
+          <p>
                 I also worked with <strong>Main Flow Services and Technologies Pvt. Ltd.</strong> as a 
                 <em> Full Stack Developer</em>, building robust web applications with MERN stack and 
                 integrating AI-powered chatbot functionality using OpenAI GPT-4.
-              </p>
-              <p>
+          </p>
+          <p>
                 My journey spans from building AI-powered platforms like <em>Skilio</em> and 
                 <em> GitAid</em> to creating healthcare apps that make a real difference. 
                 I've optimized performance by <span className="about__metric">35%</span> and 

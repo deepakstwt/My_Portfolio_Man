@@ -486,7 +486,7 @@ body.dark-mode .about__bg-text {
     grid-template-columns: 1fr;
     gap: 4rem;
   }
-
+  
   .about__profile {
     position: relative;
     top: 0;
@@ -499,12 +499,12 @@ body.dark-mode .about__bg-text {
     max-width: 320px;
     width: 100%;
   }
-
+  
   .about__stats {
     max-width: 400px;
     width: 100%;
   }
-
+  
   .about__header {
     margin-bottom: 4rem;
   }
@@ -523,30 +523,30 @@ body.dark-mode .about__bg-text {
   .about__header {
     margin-bottom: 3rem;
   }
-
+  
   .about__expertise {
     grid-template-columns: 1fr;
     gap: 0.75rem;
   }
-
+  
   .about__expertise-card {
     padding: 1rem;
   }
-
+  
   .about__quote {
     padding: 1.5rem;
     font-size: 1rem;
   }
-
+  
   .about__quote-mark {
     font-size: 2rem;
   }
-
+  
   .about__cta {
     flex-direction: column;
     align-items: stretch;
   }
-
+  
   .about__cta-btn {
     justify-content: center;
     padding: 0.875rem 1.5rem;
@@ -572,7 +572,7 @@ body.dark-mode .about__bg-text {
   .about__title {
     font-size: 2rem;
   }
-
+  
   .about__profile-wrapper {
     max-width: 280px;
   }
@@ -594,7 +594,7 @@ body.dark-mode .about__bg-text {
   .about__stat-label {
     font-size: 0.65rem;
   }
-
+  
   .about__stat-divider {
     height: 30px;
   }
@@ -606,7 +606,7 @@ body.dark-mode .about__bg-text {
   .about__narrative p {
     font-size: 0.9375rem;
   }
-
+  
   .about__expertise-icon {
     width: 40px;
     height: 40px;
@@ -628,8 +628,8 @@ body.dark-mode .about__profile-image {
   box-shadow: 
     0 25px 50px -12px rgba(0, 0, 0, 0.5),
     0 0 0 1px rgba(255, 255, 255, 0.05);
-}
-
+  }
+  
 body.dark-mode .about__profile-image:hover {
   box-shadow: 
     0 35px 60px -15px rgba(0, 0, 0, 0.6),
@@ -644,8 +644,8 @@ body.dark-mode .about__profile-badge {
 body.dark-mode .about__stats {
   background: rgba(30, 30, 35, 0.8);
   border-color: rgba(255, 255, 255, 0.08);
-}
-
+  }
+  
 body.dark-mode .about__expertise-card {
   background: rgba(30, 30, 35, 0.8);
   border-color: rgba(255, 255, 255, 0.08);
@@ -654,8 +654,8 @@ body.dark-mode .about__expertise-card {
 body.dark-mode .about__expertise-card:hover {
   background: rgba(40, 40, 50, 0.95);
   border-color: var(--color-primary-variant);
-}
-
+  }
+  
 body.dark-mode .about__quote {
   background: rgba(30, 30, 35, 0.5);
 }

@@ -123,18 +123,18 @@ const Nav = () => {
 
         {/* Nav Items */}
         <div className="nav-items">
-          {navItems.map((item) => (
-            <a
-              key={item.href}
-              href={item.href}
-              onClick={(e) => handleNavClick(item.href, e)}
-              className={activeNav === item.href ? "active" : ""}
-              data-tooltip={item.label}
-            >
+        {navItems.map((item) => (
+          <a
+            key={item.href}
+            href={item.href}
+            onClick={(e) => handleNavClick(item.href, e)}
+            className={activeNav === item.href ? "active" : ""}
+            data-tooltip={item.label}
+          >
               <span className="nav-icon">{item.icon}</span>
               <span className="nav-label">{item.label}</span>
-            </a>
-          ))}
+          </a>
+        ))}
         </div>
       </nav>
 

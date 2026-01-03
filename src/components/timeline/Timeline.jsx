@@ -132,16 +132,16 @@ const TimelineCard = ({ item, index, isVisible }) => {
           {item.icon}
         </div>
         <div className="timeline__node-line"></div>
-      </div>
-
+        </div>
+        
       {/* Card Content */}
       <div className="timeline__card-content">
         {/* Date Badge */}
         <div className="timeline__date">
           <span className="timeline__year">{item.year}</span>
           <span className="timeline__month">{item.month}</span>
-        </div>
-
+          </div>
+          
         {/* Header */}
         <div className="timeline__header">
           <h3 className="timeline__title">{item.title}</h3>
@@ -149,11 +149,11 @@ const TimelineCard = ({ item, index, isVisible }) => {
             <span className="timeline__org">{item.organization}</span>
             <span className="timeline__location">{item.location}</span>
           </div>
-        </div>
-
+          </div>
+          
         {/* Description */}
         <p className="timeline__description">{item.description}</p>
-
+          
         {/* Highlights */}
         <div className="timeline__highlights">
           {item.highlights.map((highlight, idx) => (
@@ -175,7 +175,7 @@ const TimelineCard = ({ item, index, isVisible }) => {
           <div className="timeline__status timeline__status--upcoming">
             <FaChartLine />
             Upcoming
-          </div>
+      </div>
         )}
       </div>
     </div>
@@ -279,4 +279,4 @@ const Timeline = () => {
   );
 };
 
-export default Timeline;
+export default Timeline; 

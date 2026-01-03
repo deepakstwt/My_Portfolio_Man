@@ -12,11 +12,11 @@ const ProjectModal = ({ isOpen, onClose, project }) => {
       </div>
 
       <div className="modal__image-container">
-        <img 
-          src={project.image} 
-          alt={project.title} 
-          className="modal__image"
-        />
+      <img 
+        src={project.image} 
+        alt={project.title} 
+        className="modal__image"
+      />
         {project.additionalImages && project.additionalImages.length > 0 && (
           <>
             {project.additionalImages.map((img, index) => (

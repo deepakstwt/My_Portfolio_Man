@@ -98,7 +98,7 @@ const Experience = () => {
         <p className="skills__subtitle">
           Technologies I work with to bring ideas to life
         </p>
-      </div>
+              </div>
 
       {/* Skills Grid */}
       <div className="container skills__container">
@@ -111,7 +111,7 @@ const Experience = () => {
             <div className="skills__category-header">
               <span className="skills__category-icon">{category.icon}</span>
               <h3 className="skills__category-title">{category.title}</h3>
-            </div>
+              </div>
             <div className="skills__category-items">
               {category.skills.map((skill, skillIndex) => (
                 <div 
@@ -121,12 +121,12 @@ const Experience = () => {
                 >
                   <span className="skills__item-icon">{skill.icon}</span>
                   <span className="skills__item-name">{skill.name}</span>
-                </div>
+              </div>
               ))}
-            </div>
+              </div>
           </div>
         ))}
-      </div>
+        </div>
 
       {/* All Skills Cloud */}
       <div className="skills__cloud">

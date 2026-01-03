@@ -250,8 +250,8 @@ body.dark-mode .hero__float-word--3 {
 @media screen and (max-width: 768px) {
   .hero__float-word {
     -webkit-text-stroke-width: 1px;
-  }
-  
+}
+
   .hero__float-word--4,
   .hero__float-word--6,
   .hero__float-word--8 {
@@ -277,8 +277,8 @@ body.dark-mode .hero__float-word--3 {
   .hero__float-word--5,
   .hero__float-word--7 {
     display: none;
-  }
-  
+}
+
   .hero__float-word--1,
   .hero__float-word--2,
   .hero__float-word--3 {
@@ -773,7 +773,7 @@ body.dark-mode .hero__role-carousel {
   }
   50% {
     transform: translateY(4px);
-  }
+}
 }
 
 /* ============================================
@@ -798,27 +798,27 @@ body.dark-mode .hero__role-carousel {
 body.dark-mode .hero__status {
   background: rgba(30, 30, 35, 0.8);
   border-color: rgba(255, 255, 255, 0.1);
-}
+  }
 
 body.dark-mode .hero__float {
   background: rgba(30, 30, 35, 0.9);
   border-color: rgba(255, 255, 255, 0.1);
-}
+  }
 
 body.dark-mode .hero__btn--secondary {
   background: rgba(30, 30, 35, 0.8);
   border-color: rgba(255, 255, 255, 0.15);
-}
+  }
 
 body.dark-mode .hero__btn--secondary:hover {
   background: rgba(var(--color-primary-rgb, 79, 70, 229), 0.1);
   border-color: var(--color-primary);
-}
+  }
 
 body.dark-mode .hero__social {
   background: rgba(30, 30, 35, 0.8);
   border-color: rgba(255, 255, 255, 0.1);
-}
+  }
 
 body.dark-mode .hero__stats {
   background: rgba(30, 30, 35, 0.9);
@@ -974,7 +974,7 @@ body.dark-mode .hero__stats {
   .hero__name-line {
     margin-bottom: 0.2em;
   }
-  
+
   .hero__name-text {
     white-space: normal;
     word-break: keep-all;

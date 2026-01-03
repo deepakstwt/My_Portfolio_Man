@@ -45,7 +45,7 @@ const Footer = () => {
               Software Developer crafting elegant digital solutions with iOS & Full Stack expertise.
             </p>
             {/* Social Links */}
-            <div className="footer__socials">
+        <div className="footer__socials">
               {socialLinks.map((social, index) => (
                 <a 
                   key={index}

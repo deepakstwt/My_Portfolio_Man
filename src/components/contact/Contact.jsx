@@ -192,8 +192,8 @@ const Contact = () => {
                 <a 
                   key={index}
                   href={method.link}
-                  target="_blank"
-                  rel="noreferrer"
+              target="_blank" 
+              rel="noreferrer"
                   className="contact__method"
                   style={{ '--delay': `${index * 0.1}s`, '--accent': method.color }}
                 >
@@ -221,74 +221,74 @@ const Contact = () => {
             <div className="contact__availability">
               <span className="contact__availability-dot"></span>
               <span>Available for freelance & full-time opportunities</span>
-            </div>
           </div>
+        </div>
 
           {/* Right Side - Contact Form */}
           <div className="contact__form-container">
-            {/* Status Messages */}
-            {submitStatus === 'success' && (
+          {/* Status Messages */}
+          {submitStatus === 'success' && (
               <div className="contact__status contact__status--success">
                 <FaCheckCircle />
-                <div>
+              <div>
                   <h4>Message Sent!</h4>
                   <p>Thanks for reaching out. I'll get back to you soon.</p>
-                </div>
               </div>
-            )}
+            </div>
+          )}
 
-            {submitStatus === 'error' && (
+          {submitStatus === 'error' && (
               <div className="contact__status contact__status--error">
                 <FaExclamationTriangle />
-                <div>
+              <div>
                   <h4>Failed to Send</h4>
                   <p>Please try again or contact me directly.</p>
-                </div>
               </div>
-            )}
+            </div>
+          )}
 
             {/* Form */}
-            <form ref={form} onSubmit={handleSubmit} className="contact__form">
+          <form ref={form} onSubmit={handleSubmit} className="contact__form">
               <div className="contact__form-row">
                 <div className="contact__form-group">
                   <label htmlFor="name">Your Name</label>
-                  <input
-                    type="text"
-                    id="name"
-                    name="name"
-                    value={formData.name}
-                    onChange={handleInputChange}
-                    onBlur={handleInputBlur}
+                <input
+                  type="text"
+                  id="name"
+                  name="name"
+                  value={formData.name}
+                  onChange={handleInputChange}
+                  onBlur={handleInputBlur}
                     placeholder="John Doe"
                     className={`contact__input ${getFieldStatus('name')}`}
-                    disabled={isSubmitting}
-                  />
-                  {touched.name && errors.name && (
+                  disabled={isSubmitting}
+                />
+              {touched.name && errors.name && (
                     <span className="contact__error">{errors.name}</span>
-                  )}
-                </div>
+              )}
+            </div>
 
                 <div className="contact__form-group">
-                  <label htmlFor="email">Your Email</label>
-                  <input
-                    type="email"
-                    id="email"
-                    name="email"
-                    value={formData.email}
-                    onChange={handleInputChange}
-                    onBlur={handleInputBlur}
+              <label htmlFor="email">Your Email</label>
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  value={formData.email}
+                  onChange={handleInputChange}
+                  onBlur={handleInputBlur}
                     placeholder="john@example.com"
                     className={`contact__input ${getFieldStatus('email')}`}
-                    disabled={isSubmitting}
-                  />
+                  disabled={isSubmitting}
+                />
                   {touched.email && errors.email && (
                     <span className="contact__error">{errors.email}</span>
                   )}
                 </div>
-              </div>
+            </div>
 
               <div className="contact__form-group">
-                <label htmlFor="message">Your Message</label>
+              <label htmlFor="message">Your Message</label>
                 <textarea
                   id="message"
                   name="message"
@@ -300,29 +300,29 @@ const Contact = () => {
                   className={`contact__input contact__textarea ${getFieldStatus('message')}`}
                   disabled={isSubmitting}
                 ></textarea>
-                {touched.message && errors.message && (
+              {touched.message && errors.message && (
                   <span className="contact__error">{errors.message}</span>
-                )}
-              </div>
+              )}
+            </div>
 
-              <button 
-                type="submit" 
+            <button 
+              type="submit" 
                 className={`contact__submit ${isSubmitting ? 'contact__submit--loading' : ''}`}
                 disabled={isSubmitting}
-              >
-                {isSubmitting ? (
-                  <>
+            >
+              {isSubmitting ? (
+                <>
                     <FaSpinner className="contact__spinner" />
-                    Sending...
-                  </>
-                ) : (
+                  Sending...
+                </>
+              ) : (
                   <>
                     Send Message
                     <BsSend />
                   </>
-                )}
-              </button>
-            </form>
+              )}
+            </button>
+          </form>
           </div>
         </div>
       </div>

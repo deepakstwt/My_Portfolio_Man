@@ -26,7 +26,7 @@ const Header = () => {
     return () => window.removeEventListener('mousemove', handleMouseMove);
   }, []);
 
-  const roles = ["iOS Developer", "Full Stack Developer", "Open Source Contributor"];
+  const roles = ["Full Stack Developer", "Open Source Contributor"];
   const [currentRole, setCurrentRole] = useState(0);
 
   useEffect(() => {

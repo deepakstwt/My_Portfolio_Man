@@ -355,11 +355,11 @@ const Portfolio = () => {
                       <BsGithub /> Code
                     </>
                   )}
-                </a>
+                  </a>
                 <button className="portfolio__card-btn">
                   Details <BsArrowRight />
                 </button>
-              </div>
+                </div>
               </div>
             </article>
         ))}

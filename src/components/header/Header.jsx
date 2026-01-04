@@ -109,10 +109,10 @@ const Header = () => {
           </div>
 
           <p className="hero__description">
-            Building exceptional <strong>iOS applications</strong> and{" "}
-            <strong>full-stack platforms</strong> that merge beautiful design 
-            with powerful functionality. Currently transforming ideas into 
-            reality at <em className="hero__location">Greater Noida, India</em>.
+            Building exceptional <strong>full-stack platforms</strong> and{" "}
+            <strong>AI-powered solutions</strong> using GenAI, LLMs, and RAG pipelines 
+            that merge beautiful design with powerful functionality. Currently transforming 
+            ideas into reality at <em className="hero__location">Greater Noida, India</em>.
           </p>
 
           {/* CTA Buttons */}

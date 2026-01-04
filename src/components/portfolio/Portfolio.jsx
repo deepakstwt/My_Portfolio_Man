@@ -29,10 +29,10 @@ const data = [
     github: "https://github.com/deepakstwt/Skilio",
     demo: "#",
     brief: "AI-powered resume builder with job recommendations, generating 1,000+ resumes and improving match accuracy by 35%.",
-    description: "Skilio is a comprehensive AI-powered resume builder and job recommendation platform that helps job seekers create professional resumes and find matching opportunities. The platform combines intelligent resume building with advanced job matching algorithms to streamline the job search process.",
+    description: "Skilio is an AI-powered resume builder and job platform that helps job seekers create professional resumes and find matching opportunities. Engineered a full-stack resume builder with real-time preview and template support, generating 1,000+ resumes. Built a job recommendation engine using LLM-based skill extraction, improving match accuracy by 35%. Integrated AI-driven resume optimization and keyword suggestions, raising ATS score alignment by 40%.",
     features: [
       "Engineered a full-stack resume builder with real-time preview and template support, generating 1,000+ resumes",
-      "Built a job recommendation engine using skill extraction and similarity scoring, improving match accuracy by 35%",
+      "Built a job recommendation engine using LLM-based skill extraction, improving match accuracy by 35%",
       "Integrated AI-driven resume optimization and keyword suggestions, raising ATS score alignment by 40%",
       "Designed responsive UI using Tailwind and optimized REST APIs in Node.js/Express, improving user retention"
     ],
@@ -53,11 +53,11 @@ const data = [
     github: "https://github.com/deepakstwt/GitAid",
     demo: "#",
     brief: "AI-powered Git management platform with RAG-based semantic code search achieving 98% retrieval accuracy.",
-    description: "GitAid is an advanced AI-powered Git management platform that revolutionizes how developers interact with their code repositories. The platform uses cutting-edge RAG (Retrieval-Augmented Generation) technology and semantic search to provide intelligent code insights, commit summaries, and repository management.",
+    description: "GitAid is an AI-powered Git management platform that revolutionizes how developers interact with their code repositories. Deployed RAG pipelines for semantic code search using LangChain and pgvector, achieving 98% accuracy in multi-repository retrieval. Built Gemini LLM-powered commit summaries and meeting insights, boosting productivity by 60%. Scaled Next.js + TypeScript APIs using Prisma ORM and tRPC to handle 10k+ requests with 150ms latency.",
     features: [
-      "Implemented RAG-based semantic code search using LangChain and pgvector, delivering 98% retrieval accuracy for multi-repository lookup",
-      "Deployed Gemini-powered commit summaries and meeting insights, boosting developer productivity by 60%",
-      "Scaled Next.js + TypeScript APIs using Prisma ORM and tRPC to handle 10k+ daily requests with 150ms latency",
+      "Deployed RAG pipelines for semantic code search using LangChain and pgvector, achieving 98% accuracy in multi-repository retrieval",
+      "Built Gemini LLM-powered commit summaries and meeting insights, boosting productivity by 60%",
+      "Scaled Next.js + TypeScript APIs using Prisma ORM and tRPC to handle 10k+ requests with 150ms latency",
       "Increased user engagement by 35% through real-time activity tracking and drag-and-drop repository uploads"
     ],
     technologies: ["Next.js", "TypeScript", "PostgreSQL", "LangChain", "RAG", "pgvector", "Prisma", "tRPC", "Gemini AI"],

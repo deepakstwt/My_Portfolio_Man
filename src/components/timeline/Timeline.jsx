@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useMemo, useState, useEffect, useRef, useId } from 'react';
 import './timeline.css';
 import { 
   FaBriefcase, 
@@ -9,19 +9,18 @@ import {
   FaChartLine
 } from 'react-icons/fa';
 import { BsArrowRight, BsCheckCircleFill } from 'react-icons/bs';
-import { HiOutlineExternalLink } from 'react-icons/hi';
 
 const timelineData = [
   {
     id: 1,
     year: '2022',
-    month: 'Aug',
+    month: 'Nov',
     title: 'B.Tech in Computer Science',
     organization: 'Galgotias University',
     location: 'Greater Noida, India',
     type: 'education',
     icon: <FaGraduationCap />,
-    description: 'Started my journey in Computer Science with a focus on building strong fundamentals in programming and software development.',
+    description: 'B.Tech in Computer Science Engineering with a focus on software engineering fundamentals and applied development.',
     highlights: [
       'CGPA: 8.57/10',
       'Core: Data Structures & Algorithms',
@@ -31,42 +30,42 @@ const timelineData = [
   },
   {
     id: 2,
-    year: '2023',
-    month: 'Jun - Aug',
-    title: 'Frontend Development Intern',
-    organization: 'Motion Cut Video Studio',
-    location: 'Lucknow, India',
-    type: 'work',
-    icon: <FaLaptopCode />,
-    description: 'Designed and developed responsive web dashboards, optimizing performance and user experience.',
-    highlights: [
-      '35% faster page load times',
-      'Built reusable UI components',
-      '25% improved dev efficiency'
-    ],
-    color: '#6366f1'
-  },
-  {
-    id: 3,
     year: '2024',
-    month: 'Jan - Mar',
+    month: 'Jul - Sep',
     title: 'Full Stack Developer Intern',
-    organization: 'Main Flow Services & Technologies',
+    organization: 'Main Flow Services & Technologies Pvt. Ltd.',
     location: 'Greater Noida, India',
     type: 'work',
     icon: <FaRocket />,
-    description: 'Developed full-stack applications and integrated AI chatbot functionality using OpenAI GPT-4.',
+    description: 'Designed and implemented scalable backend services and RESTful APIs with clean architecture.',
     highlights: [
-      '30% improved user experience',
-      'GPT-4 chatbot integration',
-      '95% project completion rate'
+      'RESTful APIs + MongoDB integration',
+      'LLM-powered backend automation',
+      'AWS deployment & monitoring'
     ],
     color: '#8b5cf6'
   },
   {
+    id: 3,
+    year: '2024',
+    month: 'Oct - Jan',
+    title: 'AI Intern',
+    organization: 'Dislapharm',
+    location: 'Fort Lauderdale, Florida, United States · Remote',
+    type: 'work',
+    icon: <FaLaptopCode />,
+    description: 'Analyzed manufacturing datasets and built anomaly detection models to improve data quality and detection accuracy.',
+    highlights: [
+      'Analyzed datasets (5k+ records)',
+      'Anomaly detection (+25% accuracy)',
+      'Automated preprocessing (40% less manual work)'
+    ],
+    color: '#6366f1'
+  },
+  {
     id: 4,
     year: '2024',
-    month: 'Throughout',
+    month: 'Projects',
     title: 'iOS & Full Stack Projects',
     organization: 'Personal & Team Projects',
     location: 'Remote',
@@ -89,11 +88,11 @@ const timelineData = [
     location: 'Mysore, India',
     type: 'work',
     icon: <FaBriefcase />,
-    description: 'Developed secure iOS applications using Swift and SwiftUI with industry-standard protocols at Infosys Campus.',
+    description: 'Optimized iOS backend services/APIs and implemented scalable data layers to improve reliability and responsiveness.',
     highlights: [
-      '40% reduced login friction',
-      '95% test coverage',
-      'Enterprise-grade security'
+      'API reliability + 30% faster response',
+      'PostgreSQL-backed data layer',
+      'Firestore sync (40% lower latency)'
     ],
     color: '#f59e0b',
     completed: true
@@ -101,7 +100,7 @@ const timelineData = [
   {
     id: 6,
     year: '2026',
-    month: 'Expected',
+    month: 'Jun (Expected)',
     title: 'B.Tech Graduation',
     organization: 'Galgotias University',
     location: 'Greater Noida, India',
@@ -109,7 +108,7 @@ const timelineData = [
     icon: <FaGraduationCap />,
     description: 'Expected graduation with Bachelor of Technology in Computer Science.',
     highlights: [
-      'Target: CGPA 8.5+',
+      'CGPA: 8.57/10',
       'Full Stack Developer',
       'iOS Specialist'
     ],
@@ -118,8 +117,8 @@ const timelineData = [
   }
 ];
 
-const TimelineCard = ({ item, index, isVisible }) => {
-  const [isExpanded, setIsExpanded] = useState(false);
+const TimelineCard = ({ item, index, isVisible, isExpanded, onToggle }) => {
+  const contentId = useId();
 
   return (
     <div 
@@ -135,48 +134,77 @@ const TimelineCard = ({ item, index, isVisible }) => {
         </div>
         
       {/* Card Content */}
-      <div className="timeline__card-content">
-        {/* Date Badge */}
-        <div className="timeline__date">
-          <span className="timeline__year">{item.year}</span>
-          <span className="timeline__month">{item.month}</span>
-          </div>
-          
-        {/* Header */}
-        <div className="timeline__header">
-          <h3 className="timeline__title">{item.title}</h3>
-          <div className="timeline__meta">
-            <span className="timeline__org">{item.organization}</span>
-            <span className="timeline__location">{item.location}</span>
-          </div>
-          </div>
-          
-        {/* Description */}
-        <p className="timeline__description">{item.description}</p>
-          
-        {/* Highlights */}
-        <div className="timeline__highlights">
-          {item.highlights.map((highlight, idx) => (
-            <div key={idx} className="timeline__highlight">
-              <BsCheckCircleFill className="timeline__highlight-icon" />
-              <span>{highlight}</span>
+      <div className={`timeline__card-content ${isExpanded ? 'timeline__card-content--expanded' : ''}`}>
+        <button
+          type="button"
+          className="timeline__summary"
+          aria-expanded={isExpanded}
+          aria-controls={contentId}
+          onClick={onToggle}
+        >
+          <div className="timeline__summary-left">
+            {/* Date Badge */}
+            <div className="timeline__date">
+              <span className="timeline__year">{item.year}</span>
+              <span className="timeline__month">{item.month}</span>
             </div>
-          ))}
-        </div>
 
-        {/* Status Badge */}
-        {item.completed && (
-          <div className="timeline__status timeline__status--completed">
-            <BsCheckCircleFill />
-            Completed
+            {/* Header */}
+            <div className="timeline__header">
+              <h3 className="timeline__title">{item.title}</h3>
+              <div className="timeline__meta">
+                <span className="timeline__org">{item.organization}</span>
+                <span className="timeline__location">{item.location}</span>
+              </div>
+            </div>
           </div>
-        )}
-        {item.upcoming && (
-          <div className="timeline__status timeline__status--upcoming">
-            <FaChartLine />
-            Upcoming
-      </div>
-        )}
+
+          <div className="timeline__summary-right">
+            <div className="timeline__peek">
+              <span className="timeline__peek-label">Highlights</span>
+              <span className="timeline__peek-count">{item.highlights.length}</span>
+            </div>
+            <span className={`timeline__chevron ${isExpanded ? 'timeline__chevron--open' : ''}`} aria-hidden="true">
+              <BsArrowRight />
+            </span>
+          </div>
+        </button>
+
+        <div
+          id={contentId}
+          className={`timeline__details ${isExpanded ? 'timeline__details--open' : ''}`}
+          role="region"
+          aria-hidden={!isExpanded}
+        >
+          <div className="timeline__details-inner">
+            {/* Description */}
+            <p className="timeline__description">{item.description}</p>
+
+            {/* Highlights */}
+            <div className="timeline__highlights">
+              {item.highlights.map((highlight, idx) => (
+                <div key={idx} className="timeline__highlight">
+                  <BsCheckCircleFill className="timeline__highlight-icon" />
+                  <span>{highlight}</span>
+                </div>
+              ))}
+            </div>
+
+            {/* Status Badge */}
+            {item.completed && (
+              <div className="timeline__status timeline__status--completed">
+                <BsCheckCircleFill />
+                Completed
+              </div>
+            )}
+            {item.upcoming && (
+              <div className="timeline__status timeline__status--upcoming">
+                <FaChartLine />
+                Upcoming
+              </div>
+            )}
+          </div>
+        </div>
       </div>
     </div>
   );
@@ -185,6 +213,7 @@ const TimelineCard = ({ item, index, isVisible }) => {
 const Timeline = () => {
   const [isVisible, setIsVisible] = useState(false);
   const [activeFilter, setActiveFilter] = useState('all');
+  const [expandedId, setExpandedId] = useState(null);
   const timelineRef = useRef(null);
 
   useEffect(() => {
@@ -211,9 +240,17 @@ const Timeline = () => {
     { key: 'project', label: 'Projects' }
   ];
 
-  const filteredData = activeFilter === 'all' 
-    ? timelineData 
-    : timelineData.filter(item => item.type === activeFilter);
+  const filteredData = useMemo(() => {
+    return activeFilter === 'all'
+      ? timelineData
+      : timelineData.filter(item => item.type === activeFilter);
+  }, [activeFilter]);
+
+  useEffect(() => {
+    if (!filteredData.length) return;
+    if (expandedId && filteredData.some(i => i.id === expandedId)) return;
+    setExpandedId(filteredData[0].id);
+  }, [filteredData, expandedId]);
 
   return (
     <section id="timeline" className={`timeline ${isVisible ? 'timeline--visible' : ''}`} ref={timelineRef}>
@@ -253,6 +290,8 @@ const Timeline = () => {
               item={item}
               index={index}
               isVisible={isVisible}
+              isExpanded={expandedId === item.id}
+              onToggle={() => setExpandedId(prev => (prev === item.id ? null : item.id))}
             />
           ))}
         </div>

@@ -212,7 +212,7 @@
   background: var(--color-card-bg);
   border: 1px solid var(--color-border);
   border-radius: 16px;
-  padding: 1.75rem;
+  padding: 0;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
   overflow: hidden;
@@ -238,6 +238,144 @@
 
 .timeline__card:hover .timeline__card-content::before {
   opacity: 1;
+}
+
+/* ============================================
+   IMMERSIVE ACCORDION (SUMMARY + DETAILS)
+   ============================================ */
+
+.timeline__summary {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.25rem;
+  padding: 1.5rem 1.75rem;
+  background: transparent;
+  border: 0;
+  color: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+
+.timeline__summary:focus-visible {
+  outline: 2px solid rgba(var(--color-primary-rgb, 79, 70, 229), 0.7);
+  outline-offset: 4px;
+  border-radius: 14px;
+}
+
+.timeline__summary-left {
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+  min-width: 0;
+}
+
+.timeline__summary .timeline__date,
+.timeline__summary .timeline__header {
+  margin-bottom: 0;
+}
+
+.timeline__summary-right {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.9rem;
+  flex-shrink: 0;
+}
+
+.timeline__peek {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.4rem 0.65rem;
+  border-radius: 999px;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  background: rgba(0, 0, 0, 0.02);
+}
+
+.timeline__peek-label {
+  font-size: 0.75rem;
+  color: var(--color-text-light);
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+.timeline__peek-count {
+  font-size: 0.75rem;
+  font-weight: 800;
+  color: var(--color-text);
+  padding: 0.1rem 0.45rem;
+  border-radius: 999px;
+  background: rgba(var(--color-primary-rgb, 79, 70, 229), 0.10);
+  border: 1px solid rgba(var(--color-primary-rgb, 79, 70, 229), 0.18);
+}
+
+.timeline__chevron {
+  width: 40px;
+  height: 40px;
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  background: rgba(0, 0, 0, 0.02);
+  transition: transform 0.25s ease, background 0.25s ease, border-color 0.25s ease;
+  color: var(--color-text);
+}
+
+.timeline__chevron svg {
+  transform: rotate(90deg);
+}
+
+.timeline__chevron--open {
+  transform: rotate(90deg);
+  background: rgba(var(--color-primary-rgb, 79, 70, 229), 0.10);
+  border-color: rgba(var(--color-primary-rgb, 79, 70, 229), 0.22);
+}
+
+.timeline__details {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.timeline__details-inner {
+  overflow: hidden;
+  padding: 0 1.75rem 1.75rem;
+}
+
+.timeline__details--open {
+  grid-template-rows: 1fr;
+}
+
+.timeline__details--open .timeline__details-inner {
+  padding-top: 1.25rem;
+  border-top: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.timeline__card-content--expanded {
+  border-color: rgba(var(--color-primary-rgb, 79, 70, 229), 0.28);
+  box-shadow:
+    0 24px 60px rgba(0, 0, 0, 0.10),
+    0 0 0 1px rgba(var(--color-primary-rgb, 79, 70, 229), 0.06) inset;
+  background:
+    radial-gradient(1200px 240px at 20% -20%, rgba(var(--color-primary-rgb, 79, 70, 229), 0.14), transparent 60%),
+    radial-gradient(900px 220px at 90% 0%, rgba(6, 182, 212, 0.12), transparent 55%),
+    var(--color-card-bg);
+}
+
+.timeline__card-content--expanded::before {
+  opacity: 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .timeline__chevron,
+  .timeline__card,
+  .timeline__card-content,
+  .timeline__filter {
+    transition: none !important;
+    animation: none !important;
+  }
 }
 
 /* Completed Card */
@@ -439,6 +577,27 @@ body.dark-mode .timeline__card:hover .timeline__card-content {
   border-color: rgba(var(--color-primary-rgb, 79, 70, 229), 0.3);
 }
 
+body.dark-mode .timeline__peek {
+  border-color: rgba(255, 255, 255, 0.10);
+  background: rgba(255, 255, 255, 0.04);
+}
+
+body.dark-mode .timeline__chevron {
+  border-color: rgba(255, 255, 255, 0.10);
+  background: rgba(255, 255, 255, 0.04);
+}
+
+body.dark-mode .timeline__details--open .timeline__details-inner {
+  border-top-color: rgba(255, 255, 255, 0.10);
+}
+
+body.dark-mode .timeline__card-content--expanded {
+  background:
+    radial-gradient(1200px 240px at 20% -20%, rgba(var(--color-primary-rgb, 79, 70, 229), 0.20), transparent 60%),
+    radial-gradient(900px 220px at 90% 0%, rgba(6, 182, 212, 0.16), transparent 55%),
+    rgba(25, 25, 30, 0.86);
+}
+
 body.dark-mode .timeline__card--completed .timeline__card-content {
   background: linear-gradient(
     135deg,
@@ -526,11 +685,19 @@ body.dark-mode .timeline__stats {
   }
 
   .timeline__card-content {
-    padding: 1.5rem;
+    padding: 0;
   }
 
   .timeline__card:hover .timeline__card-content {
     transform: translateX(4px);
+  }
+
+  .timeline__summary {
+    padding: 1.25rem 1.5rem;
+  }
+
+  .timeline__details-inner {
+    padding: 0 1.5rem 1.5rem;
   }
   
   .timeline__title {
@@ -586,8 +753,25 @@ body.dark-mode .timeline__stats {
   }
 
   .timeline__card-content {
-    padding: 1.25rem;
+    padding: 0;
     border-radius: 12px;
+  }
+
+  .timeline__summary {
+    padding: 1.1rem 1.25rem;
+    gap: 0.9rem;
+  }
+
+  .timeline__summary-right {
+    gap: 0.65rem;
+  }
+
+  .timeline__peek {
+    display: none;
+  }
+
+  .timeline__details-inner {
+    padding: 0 1.25rem 1.25rem;
   }
   
   .timeline__date {

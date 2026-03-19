@@ -124,8 +124,10 @@ h1 {
   letter-spacing: -0.025em;
 }
 
+/* Spacing is owned by each section component (padding). A global margin-top
+   here doubled spacing and created a large empty band after #home → #about. */
 section {
-  margin-top: 8rem;
+  margin-top: 0;
   padding-top: 1rem;
   padding-bottom: 2rem;
   position: relative;
@@ -346,7 +348,7 @@ img {
   }
   
   section {
-    margin-top: 5rem;
+    margin-top: 0;
     padding-top: 0.5rem;
     padding-bottom: 1.5rem;
   }
@@ -381,7 +383,7 @@ img {
   }
   
   section {
-    margin-top: 4rem;
+    margin-top: 0;
     padding-top: 0.5rem;
     padding-bottom: 1rem;
   }

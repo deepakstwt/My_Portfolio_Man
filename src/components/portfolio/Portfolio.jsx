@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useMemo, useState, useRef, useEffect, useId } from "react";
 import "./portfolio.css";
 import IMG2 from "../../assets/Faby.png";
 import IMG3 from "../../assets/FleetManagementSystem.jpeg";
@@ -13,7 +13,7 @@ import IMG7 from "../../assets/Skilio.jpeg";
 import IMG8 from "../../assets/GitAid.jpeg";
 import IMG8_2 from "../../assets/GitAid2.jpeg";
 
-import { BsArrowRight, BsGithub, BsArrowUpRight } from "react-icons/bs";
+import { BsGithub, BsArrowUpRight, BsPlusLg } from "react-icons/bs";
 import { HiOutlineExternalLink } from "react-icons/hi";
 
 import ProjectModal from "./ProjectModal";
@@ -53,18 +53,18 @@ const data = [
     github: "https://github.com/deepakstwt/GitAid",
     demo: "#",
     brief: "AI-powered Git management platform with RAG-based semantic code search achieving 98% retrieval accuracy.",
-    description: "GitAid is an AI-powered Git management platform that revolutionizes how developers interact with their code repositories. Deployed RAG pipelines for semantic code search using LangChain and pgvector, achieving 98% accuracy in multi-repository retrieval. Built Gemini LLM-powered commit summaries and meeting insights, boosting productivity by 60%. Scaled Next.js + TypeScript APIs using Prisma ORM and tRPC to handle 10k+ requests with 150ms latency.",
+    description: "GitAid is an AI-powered Git management platform that streamlines how developers navigate and understand repositories. Deployed RAG pipelines for semantic code search using LangChain and pgvector, achieving 98% retrieval accuracy. Built Gemini LLM-powered commit summaries and meeting insights, boosting productivity by 60%. Scaled Next.js + TypeScript APIs using Prisma ORM and tRPC to handle 1k+ requests with ~150ms latency.",
     features: [
       "Deployed RAG pipelines for semantic code search using LangChain and pgvector, achieving 98% accuracy in multi-repository retrieval",
       "Built Gemini LLM-powered commit summaries and meeting insights, boosting productivity by 60%",
-      "Scaled Next.js + TypeScript APIs using Prisma ORM and tRPC to handle 10k+ requests with 150ms latency",
+      "Scaled Next.js + TypeScript APIs using Prisma ORM and tRPC to handle 1k+ requests with ~150ms latency",
       "Increased user engagement by 35% through real-time activity tracking and drag-and-drop repository uploads"
     ],
     technologies: ["Next.js", "TypeScript", "PostgreSQL", "LangChain", "RAG", "pgvector", "Prisma", "tRPC", "Gemini AI"],
     challenges: "The biggest challenge was implementing RAG-based semantic search with high accuracy across multiple repositories while maintaining low latency. I solved this by using pgvector for efficient vector storage, optimizing LangChain retrieval pipelines, and implementing intelligent caching strategies.",
     learnings: "This project taught me advanced AI/ML integration techniques, vector database optimization, and how to build high-performance full-stack applications. I gained expertise in RAG systems, semantic search, TypeScript best practices, and scaling applications to handle high traffic with minimal latency.",
     featured: true,
-    stats: { accuracy: "98%", requests: "10K+", latency: "150ms" }
+    stats: { accuracy: "98%", requests: "1K+", latency: "~150ms" }
   },
   {
     id: 2,
@@ -199,10 +199,94 @@ const data = [
 
 const categories = ["All", "Full Stack", "iOS", "Data"];
 
+const ProjectAccordionItem = ({ project, index, isOpen, onToggle, onHoverOpen, onOpenModal }) => {
+  const contentId = useId();
+  const itemNumber = String(index + 1).padStart(2, "0");
+
+  return (
+    <div
+      className={`portfolio__acc-item ${isOpen ? "portfolio__acc-item--open" : ""}`}
+      style={{ "--delay": `${index * 0.06}s` }}
+      onMouseEnter={onHoverOpen}
+    >
+      <button
+        type="button"
+        className="portfolio__acc-summary"
+        onClick={onToggle}
+        onFocus={onHoverOpen}
+        aria-expanded={isOpen}
+        aria-controls={contentId}
+      >
+        <div className="portfolio__acc-left">
+          <span className="portfolio__acc-index">{itemNumber}</span>
+          <div className="portfolio__acc-main">
+          <div className="portfolio__acc-titleRow">
+            <h3 className="portfolio__acc-title">{project.title}</h3>
+            {project.featured && <span className="portfolio__acc-badge">Featured</span>}
+          </div>
+          <p className="portfolio__acc-subtitle">{project.subtitle}</p>
+          <p className="portfolio__acc-summaryline">{project.brief}</p>
+          </div>
+        </div>
+
+        <div className="portfolio__acc-right">
+          <span className={`portfolio__acc-chevron ${isOpen ? "portfolio__acc-chevron--open" : ""}`} aria-hidden="true">
+            <BsPlusLg />
+          </span>
+        </div>
+      </button>
+
+      <div
+        id={contentId}
+        className={`portfolio__acc-details ${isOpen ? "portfolio__acc-details--open" : ""}`}
+        role="region"
+        aria-hidden={!isOpen}
+      >
+        <div className="portfolio__acc-detailsInner">
+          <div className="portfolio__acc-tags" aria-label="Tech tags">
+            {project.tags.slice(0, 5).map((t) => (
+              <span key={t} className="portfolio__acc-tag">
+                {t}
+              </span>
+            ))}
+          </div>
+
+          <p className="portfolio__acc-brief">{project.description}</p>
+
+          <div className="portfolio__acc-actions">
+            <a
+              href={project.github}
+              className="portfolio__acc-link"
+              target="_blank"
+              rel="noreferrer"
+              onClick={(e) => e.stopPropagation()}
+            >
+              {project.github.includes("drive.google.com") ? (
+                <>
+                  <HiOutlineExternalLink /> Demo
+                </>
+              ) : (
+                <>
+                  <BsGithub /> Code
+                </>
+              )}
+            </a>
+
+            <button type="button" className="portfolio__acc-btn" onClick={onOpenModal}>
+              View details <BsArrowUpRight />
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
 const Portfolio = () => {
   const [selectedProject, setSelectedProject] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [activeCategory, setActiveCategory] = useState("All");
+  const [expandedId, setExpandedId] = useState(null);
   const [isVisible, setIsVisible] = useState(false);
   const sectionRef = useRef(null);
 
@@ -223,9 +307,15 @@ const Portfolio = () => {
     return () => observer.disconnect();
   }, []);
 
-  const filteredProjects = activeCategory === "All" 
-    ? data 
-    : data.filter(project => project.category === activeCategory);
+  const filteredProjects = useMemo(() => {
+    return activeCategory === "All" ? data : data.filter((project) => project.category === activeCategory);
+  }, [activeCategory]);
+
+  useEffect(() => {
+    if (!filteredProjects.length) return;
+    if (expandedId && filteredProjects.some((p) => p.id === expandedId)) return;
+    setExpandedId(filteredProjects[0].id);
+  }, [filteredProjects, expandedId]);
 
   const handleProjectClick = (project) => {
     setSelectedProject(project);
@@ -304,64 +394,20 @@ const Portfolio = () => {
       </div>
 
       {/* Projects Grid */}
-      <div className="container portfolio__container">
+      <div className="container portfolio__accordion">
         {filteredProjects.map((project, index) => (
-            <article 
-              key={project.id} 
-            className={`portfolio__card ${project.featured ? 'portfolio__card--featured' : ''}`}
-              onClick={() => handleProjectClick(project)}
-            style={{ '--delay': `${index * 0.1}s` }}
-            >
-            {/* Card Image */}
-            <div className="portfolio__card-image">
-                <img src={project.image} alt={project.title} />
-              <div className="portfolio__card-overlay">
-                <span className="portfolio__card-view">
-                  View Project <BsArrowUpRight />
-                </span>
-              </div>
-              {project.featured && (
-                <span className="portfolio__card-badge">Featured</span>
-              )}
-            </div>
-
-            {/* Card Content */}
-            <div className="portfolio__card-content">
-              <div className="portfolio__card-tags">
-                {project.tags.slice(0, 3).map((tag, i) => (
-                  <span key={i} className="portfolio__card-tag">{tag}</span>
-                ))}
-              </div>
-
-              <h3 className="portfolio__card-title">{project.title}</h3>
-              <p className="portfolio__card-subtitle">{project.subtitle}</p>
-              <p className="portfolio__card-brief">{project.brief}</p>
-
-              {/* Card Footer */}
-              <div className="portfolio__card-footer">
-                  <a 
-                    href={project.github} 
-                  className="portfolio__card-link"
-                    target="_blank" 
-                    rel="noreferrer"
-                    onClick={(e) => e.stopPropagation()}
-                  >
-                  {project.github.includes('drive.google.com') ? (
-                    <>
-                      <HiOutlineExternalLink /> Demo
-                    </>
-                  ) : (
-                    <>
-                      <BsGithub /> Code
-                    </>
-                  )}
-                  </a>
-                <button className="portfolio__card-btn">
-                  Details <BsArrowRight />
-                </button>
-                </div>
-              </div>
-            </article>
+          <ProjectAccordionItem
+            key={project.id}
+            project={project}
+            index={index}
+            isOpen={expandedId === project.id}
+            onToggle={() => setExpandedId((prev) => (prev === project.id ? null : project.id))}
+            onHoverOpen={() => setExpandedId(project.id)}
+            onOpenModal={(e) => {
+              e.stopPropagation();
+              handleProjectClick(project);
+            }}
+          />
         ))}
       </div>
 

@@ -1,10 +1,13 @@
-import React from "react";
+import React, { useId, useState } from "react";
 import "./about.css";
 import profile_picture from "../../assets/profile3.jpg";
 import { FaCode, FaMobileAlt, FaRocket } from "react-icons/fa";
 import { HiOutlineSparkles } from "react-icons/hi";
 
 const About = () => {
+  const [showMore, setShowMore] = useState(false);
+  const detailsId = useId();
+
   return (
     <section id="about" className="about__section">
       {/* Decorative Elements */}
@@ -69,25 +72,49 @@ const About = () => {
               </p>
             </div>
 
-            <div className="about__narrative">
-              <p>
-                Currently pursuing B.Tech in Computer Science at <strong>Galgotias University</strong>, 
-                I've had the privilege to work with <strong>Infosys</strong> as a 
-                <em> Software Developer Intern - iOS</em>, where I crafted secure applications 
-                using Swift & SwiftUI, achieving <span className="about__metric">95% test coverage</span> in Agile sprints.
-          </p>
-          <p>
-                I also worked with <strong>Main Flow Services and Technologies Pvt. Ltd.</strong> as a 
-                <em> Full Stack Developer</em>, building robust web applications with MERN stack and 
-                integrating AI-powered chatbot functionality using OpenAI GPT-4.
-          </p>
-          <p>
-                My journey spans from building AI-powered platforms like <em>Skilio</em> and 
-                <em> GitAid</em> to creating healthcare apps that make a real difference. 
-                I've optimized performance by <span className="about__metric">35%</span> and 
-                reduced login friction by <span className="about__metric">40%</span> through 
-                innovative solutions.
+            <div className="about__body">
+              <p className="about__lead">
+                I build production-ready apps across iOS + full stack—focused on performance, clean UI, and real outcomes.
               </p>
+
+              <ul className="about__bullets">
+                <li>
+                  <strong>iOS Intern @ Infosys</strong> — improved API reliability and cut response time by <span className="about__metric">30%</span>.
+                </li>
+                <li>
+                  <strong>AI Intern @ Dislapharm</strong> — anomaly detection + automated pipelines (datasets: <span className="about__metric">5k+</span> records).
+                </li>
+                <li>
+                  <strong>Full Stack Intern @ Main Flow</strong> — shipped REST APIs + LLM automation; reduced manual effort by <span className="about__metric">40%</span>.
+                </li>
+              </ul>
+
+              <button
+                type="button"
+                className="about__more"
+                aria-expanded={showMore}
+                aria-controls={detailsId}
+                onClick={() => setShowMore((v) => !v)}
+              >
+                {showMore ? "Show less" : "Read more"}
+              </button>
+
+              <div
+                id={detailsId}
+                className={`about__more-content ${showMore ? "about__more-content--open" : ""}`}
+                aria-hidden={!showMore}
+              >
+                <div className="about__more-inner">
+                  <p>
+                    Currently pursuing B.Tech in Computer Science at <strong>Galgotias University</strong>. I enjoy working end-to-end—from
+                    architecture to UI polish—and I love building products that feel fast, modern, and reliable.
+                  </p>
+                  <p>
+                    My journey spans from AI-powered platforms like <em>Skilio</em> and <em>GitAid</em> to healthcare apps that make a real
+                    difference. I’m always exploring better DX, smoother UX, and practical AI integrations.
+                  </p>
+                </div>
+              </div>
             </div>
 
             {/* Expertise Cards */}
@@ -123,25 +150,6 @@ const About = () => {
               </div>
             </div>
 
-            {/* Quote */}
-            <blockquote className="about__quote">
-              <span className="about__quote-mark">"</span>
-              I believe great software is born where creativity meets code.
-              <span className="about__quote-mark">"</span>
-            </blockquote>
-
-            {/* CTA */}
-            <div className="about__cta">
-              <a href="#contact" className="about__cta-btn about__cta-btn--primary">
-                <span>Let's Collaborate</span>
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                  <path d="M5 12h14M12 5l7 7-7 7"/>
-                </svg>
-              </a>
-              <a href="#portfolio" className="about__cta-btn about__cta-btn--secondary">
-                View My Work
-              </a>
-            </div>
           </div>
         </div>
       </div>

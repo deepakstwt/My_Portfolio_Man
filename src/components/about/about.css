@@ -6,7 +6,7 @@
 .about__section {
   position: relative;
   /* Tighter top gap after hero (#home) — keep comfortable bottom rhythm */
-  padding: 3rem 0 6.5rem;
+  padding: 1rem 0 6.5rem;
   overflow: hidden;
   background: var(--color-bg);
 }

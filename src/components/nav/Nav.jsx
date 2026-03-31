@@ -7,22 +7,22 @@ import { RiServiceLine } from "react-icons/ri";
 import { BiMessageSquareDetail } from "react-icons/bi";
 import { MdTimeline } from "react-icons/md";
 import { HiMenuAlt3, HiX } from "react-icons/hi";
-import { BsChevronLeft, BsChevronRight } from "react-icons/bs";
 import { HiOutlineMenuAlt2 } from "react-icons/hi";
+
+const navItems = [
+  { href: "#home", icon: <AiOutlineHome />, label: "Home" },
+  { href: "#about", icon: <AiOutlineUser />, label: "About" },
+  { href: "#portfolio", icon: <RiServiceLine />, label: "Projects" },
+  { href: "#timeline", icon: <MdTimeline />, label: "Timeline" },
+  { href: "#experience", icon: <BiBook />, label: "Skills" },
+  { href: "#contact", icon: <BiMessageSquareDetail />, label: "Contact" }
+];
 
 const Nav = () => {
   const [activeNav, setActiveNav] = useState("#home");
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isExpanded, setIsExpanded] = useState(false);
 
-  const navItems = [
-    { href: "#home", icon: <AiOutlineHome />, label: "Home" },
-    { href: "#about", icon: <AiOutlineUser />, label: "About" },
-    { href: "#portfolio", icon: <RiServiceLine />, label: "Projects" },
-    { href: "#timeline", icon: <MdTimeline />, label: "Timeline" },
-    { href: "#experience", icon: <BiBook />, label: "Skills" },
-    { href: "#contact", icon: <BiMessageSquareDetail />, label: "Contact" }
-  ];
 
   // Enhanced scroll detection for active state
   useEffect(() => {

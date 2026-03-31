@@ -5,9 +5,9 @@
 
 .hero {
   position: relative;
-  /* Slightly shorter than full viewport so About sits closer after Home */
-  min-height: 92vh;
-  min-height: 92dvh;
+  /* Reduced height to keep content more compact and closer to next section */
+  min-height: 85vh;
+  min-height: 85dvh;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -300,9 +300,9 @@ body.dark-mode .hero__float-word--3 {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  min-height: 92vh;
-  min-height: 92dvh;
-  padding: 4rem 2rem 3rem;
+  min-height: 85vh;
+  min-height: 85dvh;
+  padding: 3rem 2rem 2rem;
   text-align: center;
   max-width: 900px;
   margin: 0 auto;
@@ -322,7 +322,7 @@ body.dark-mode .hero__float-word--3 {
   font-size: 0.8rem;
   font-weight: 500;
   color: var(--color-text-light);
-  margin-bottom: 2rem;
+  margin-bottom: 1.5rem;
   opacity: 0;
   transform: translateY(20px);
   animation: fadeInUp 0.8s ease forwards;
@@ -372,11 +372,11 @@ body.dark-mode .hero__float-word--3 {
 
 /* Hero Name - Massive Typography */
 .hero__name {
-  font-size: clamp(3.5rem, 12vw, 8rem);
+  font-size: clamp(3rem, 10vw, 6.5rem);
   font-weight: 900;
-  line-height: 1.2;
+  line-height: 1.1;
   letter-spacing: -0.02em;
-  margin-bottom: 1.5rem;
+  margin-bottom: 0.5rem;
   display: block;
   width: 100%;
   overflow: visible;
@@ -443,14 +443,14 @@ body.dark-mode .hero__float-word--3 {
 
 /* Main Role Title */
 .hero__main-role {
-  margin-bottom: 0.75rem;
+  margin-bottom: 0.5rem;
   opacity: 0;
   animation: fadeInUp 0.8s ease forwards;
   animation-delay: 0.9s;
 }
 
 .hero__role-primary {
-  font-size: clamp(1.5rem, 4vw, 2.25rem);
+  font-size: clamp(1.25rem, 3.5vw, 1.85rem);
   font-weight: 700;
   color: var(--color-text);
   letter-spacing: -0.02em;
@@ -463,7 +463,7 @@ body.dark-mode .hero__float-word--3 {
   justify-content: center;
   gap: 0.5rem;
   font-size: clamp(1rem, 2vw, 1.25rem);
-  margin-bottom: 2rem;
+  margin-bottom: 1.25rem;
   flex-wrap: wrap;
     opacity: 0;
   animation: fadeInUp 0.8s ease forwards;
@@ -477,9 +477,9 @@ body.dark-mode .hero__float-word--3 {
 
 .hero__role-carousel {
   position: relative;
-  height: 1.6em;
+  height: 1.4em;
   overflow: hidden;
-  min-width: 260px;
+  min-width: 240px;
   padding: 0.25rem 1rem;
   background: rgba(var(--color-primary-rgb, 79, 70, 229), 0.08);
   border-radius: 100px;
@@ -514,7 +514,7 @@ body.dark-mode .hero__role-carousel {
   line-height: 1.8;
   color: var(--color-text-light);
   max-width: 580px;
-  margin: 0 auto 2.5rem;
+  margin: 0 auto 1.5rem;
     opacity: 0;
   animation: fadeInUp 0.8s ease forwards;
   animation-delay: 1.2s;
@@ -543,7 +543,7 @@ body.dark-mode .hero__role-carousel {
   gap: 1rem;
   justify-content: center;
   flex-wrap: wrap;
-  margin-bottom: 3rem;
+  margin-bottom: 1.5rem;
   opacity: 0;
   animation: fadeInUp 0.8s ease forwards;
   animation-delay: 1.4s;
@@ -641,7 +641,7 @@ body.dark-mode .hero__role-carousel {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 1rem;
+  gap: 0.75rem;
   opacity: 0;
   animation: fadeInUp 0.8s ease forwards;
   animation-delay: 1.6s;
@@ -697,7 +697,7 @@ body.dark-mode .hero__role-carousel {
   border-radius: 100px;
   backdrop-filter: blur(20px);
   box-shadow: 0 10px 40px rgba(0, 0, 0, 0.05);
-  margin-top: 3rem;
+  margin-top: 2rem;
   opacity: 0;
   animation: fadeInUp 0.8s ease forwards;
   animation-delay: 1.8s;
@@ -740,7 +740,7 @@ body.dark-mode .hero__role-carousel {
   gap: 0.5rem;
   text-decoration: none;
   color: var(--color-text-light);
-  margin-top: 2.5rem;
+  margin-top: 1rem;
   opacity: 0;
   animation: fadeInUp 0.8s ease forwards;
   animation-delay: 2s;
@@ -762,11 +762,11 @@ body.dark-mode .hero__role-carousel {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 28px;
-  height: 42px;
+  width: 24px;
+  height: 36px;
   border: 2px solid currentColor;
   border-radius: 100px;
-  font-size: 1.25rem;
+  font-size: 1.1rem;
   animation: scroll-bounce 2s ease-in-out infinite;
 }
 

@@ -5,10 +5,8 @@ import {
   FaGraduationCap, 
   FaRocket, 
   FaLaptopCode,
-  FaApple,
-  FaChartLine
+  FaApple
 } from 'react-icons/fa';
-import { BsArrowRight, BsCheckCircleFill } from 'react-icons/bs';
 
 const timelineData = [
   {

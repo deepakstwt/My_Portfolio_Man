@@ -1,8 +1,8 @@
 import React, { useState, useRef, useEffect } from "react";
 import emailjs from '@emailjs/browser';
 import "./contact.css";
-import { BsLinkedin, BsGithub, BsArrowRight, BsSend } from "react-icons/bs";
-import { HiOutlineMail, HiOutlineLocationMarker } from "react-icons/hi";
+import { BsLinkedin, BsGithub, BsSend } from "react-icons/bs";
+import { HiOutlineMail } from "react-icons/hi";
 import { FaCheckCircle, FaExclamationTriangle, FaSpinner } from "react-icons/fa";
 import emailjsConfig from './emailjs-config';
 

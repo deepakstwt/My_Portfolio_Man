@@ -1,6 +1,6 @@
 import React from "react";
 import "./footer.css";
-import { BsLinkedin, BsGithub, BsArrowUp, BsHeart } from "react-icons/bs";
+import { BsLinkedin, BsGithub, BsArrowUp } from "react-icons/bs";
 import { HiOutlineMail } from "react-icons/hi";
 import { FaXTwitter } from "react-icons/fa6";
 

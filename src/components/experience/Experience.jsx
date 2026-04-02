@@ -78,7 +78,6 @@ const Experience = () => {
     return () => observer.disconnect();
   }, []);
 
-  const [activeCategory, setActiveCategory] = useState(null);
 
   // Group skills for the hub
   const hubCategories = [
@@ -121,8 +120,6 @@ const Experience = () => {
             <div 
               key={cat.key}
               className={`skills-hub__module skills-hub__module--${cat.size}`}
-              onMouseEnter={() => setActiveCategory(cat.key)}
-              onMouseLeave={() => setActiveCategory(null)}
               style={{ '--idx': idx }}
             >
               <div className="skills-hub__module-inner">

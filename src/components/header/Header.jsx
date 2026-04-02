@@ -1,7 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
 import "./header.css";
-import { BsLinkedin, BsGithub, BsArrowDownShort } from "react-icons/bs";
-import { HiOutlineMail } from "react-icons/hi";
 import { FaPlay } from "react-icons/fa";
 
 const Header = () => {

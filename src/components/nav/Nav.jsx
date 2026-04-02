@@ -7,7 +7,6 @@ import { RiServiceLine } from "react-icons/ri";
 import { BiMessageSquareDetail } from "react-icons/bi";
 import { MdTimeline } from "react-icons/md";
 import { HiMenuAlt3, HiX } from "react-icons/hi";
-import { HiOutlineMenuAlt2 } from "react-icons/hi";
 
 const navItems = [
   { href: "#home", icon: <AiOutlineHome />, label: "Home" },
@@ -21,7 +20,6 @@ const navItems = [
 const Nav = () => {
   const [activeNav, setActiveNav] = useState("#home");
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [isExpanded, setIsExpanded] = useState(false);
 
 
   // Enhanced scroll detection for active state
@@ -79,9 +77,6 @@ const Nav = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
   };
 
-  const toggleExpanded = () => {
-    setIsExpanded(!isExpanded);
-  };
 
   // Close mobile menu when clicking outside
   useEffect(() => {

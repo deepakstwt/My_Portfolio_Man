@@ -1,8 +1,7 @@
 import React from "react";
 import "./about.css";
 import profile_picture from "../../assets/profile3.jpg";
-import { FaCode, FaMobileAlt, FaRocket, FaShieldAlt } from "react-icons/fa";
-import { HiOutlineSparkles } from "react-icons/hi";
+import { FaCode, FaMobileAlt, FaRocket } from "react-icons/fa";
 
 const About = () => {
   return (

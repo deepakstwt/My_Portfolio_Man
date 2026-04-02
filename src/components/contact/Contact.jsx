@@ -152,177 +152,167 @@ const Contact = () => {
   return (
     <section 
       id="contact" 
-      className={`contact ${isVisible ? 'contact--visible' : ''}`}
+      className={`contact-hub ${isVisible ? 'contact-hub--visible' : ''}`}
       ref={sectionRef}
     >
       {/* Background Elements */}
-      <div className="contact__bg">
-        <div className="contact__bg-gradient"></div>
-        <div className="contact__bg-grid"></div>
+      <div className="contact-hub__bg">
+        <div className="contact-hub__void">
+          <div className="contact-hub__grid"></div>
+        </div>
+        <div className="contact-hub__particles">
+          {[...Array(20)].map((_, i) => (
+            <div key={i} className="contact-hub__shard"></div>
+          ))}
+        </div>
       </div>
 
-      <div className="container contact__wrapper">
+      <div className="container contact-hub__wrapper">
         {/* Section Header */}
-        <div className="contact__header">
-          <span className="contact__label">
-            <span className="contact__label-icon">💬</span>
-            Get In Touch
-          </span>
-          <h2 className="contact__title">
-            Let's Work <span className="contact__title-gradient">Together</span>
+        <div className="contact-hub__header">
+          <div className="contact-hub__label">
+            <span className="contact-hub__label-tag">Communication Link</span>
+            <span className="contact-hub__label-line"></span>
+          </div>
+          <h2 className="contact-hub__title">
+            Let's Architect <span className="contact-hub__title-gradient">Together</span>
           </h2>
-          <p className="contact__subtitle">
-            Have a project in mind or want to collaborate? I'd love to hear from you. 
-            Let's create something amazing together.
+          <p className="contact-hub__subtitle">
+            Initiate a high-performance collaboration. My systems are operational and ready for your project directives.
           </p>
         </div>
 
-        {/* Main Content */}
-        <div className="contact__content">
-          {/* Left Side - Contact Info */}
-          <div className="contact__info">
-            <div className="contact__info-header">
-              <h3>Contact Information</h3>
-              <p>Feel free to reach out through any of these platforms</p>
+        {/* Main Content Hub */}
+        <div className="contact-hub__content">
+          {/* Animated Core Pilot (The 'Cartoon' / Technical Character) */}
+          <div className="contact-hub__pilot-wrap">
+            <div className="contact-hub__pilot">
+              <div className="contact-hub__pilot-head">
+                <div className="contact-hub__pilot-visor">
+                  <div className="contact-hub__pilot-eye"></div>
+                  <div className="contact-hub__pilot-eye"></div>
+                </div>
+              </div>
+              <div className="contact-hub__pilot-body">
+                <div className="contact-hub__pilot-core"></div>
+              </div>
+              <div className="contact-hub__pilot-signals">
+                <div className="contact-hub__signal"></div>
+                <div className="contact-hub__signal"></div>
+                <div className="contact-hub__signal"></div>
+              </div>
             </div>
+            <div className="contact-hub__pilot-stats">
+              <span className="contact-hub__stat">ACT_MODE: COMM_READY</span>
+              <span className="contact-hub__stat">LOC: 28.47°N 77.50°E</span>
+            </div>
+          </div>
 
-            {/* Contact Methods */}
-            <div className="contact__methods">
+          {/* Contact Module (The 3D Card) */}
+          <div className="contact-hub__module">
+            {/* Contact Methods (Quick Links) */}
+            <div className="contact-hub__sidebar">
               {contactMethods.map((method, index) => (
                 <a 
                   key={index}
                   href={method.link}
-              target="_blank" 
-              rel="noreferrer"
-                  className="contact__method"
+                  target="_blank" 
+                  rel="noreferrer"
+                  className="contact-hub__method"
                   style={{ '--delay': `${index * 0.1}s`, '--accent': method.color }}
+                  title={method.title}
                 >
-                  <div className="contact__method-icon">
-                    {method.icon}
-                  </div>
-                  <div className="contact__method-info">
-                    <span className="contact__method-title">{method.title}</span>
-                    <span className="contact__method-value">{method.value}</span>
-                  </div>
-                  <span className="contact__method-action">
-                    {method.action} <BsArrowRight />
-                  </span>
+                  <span className="contact-hub__method-icon">{method.icon}</span>
                 </a>
               ))}
             </div>
 
-            {/* Location */}
-            <div className="contact__location">
-              <HiOutlineLocationMarker />
-              <span>Greater Noida, India</span>
-            </div>
-
-            {/* Availability Badge */}
-            <div className="contact__availability">
-              <span className="contact__availability-dot"></span>
-              <span>Available for freelance & full-time opportunities</span>
-          </div>
-        </div>
-
-          {/* Right Side - Contact Form */}
-          <div className="contact__form-container">
-          {/* Status Messages */}
-          {submitStatus === 'success' && (
-              <div className="contact__status contact__status--success">
-                <FaCheckCircle />
-              <div>
-                  <h4>Message Sent!</h4>
-                  <p>Thanks for reaching out. I'll get back to you soon.</p>
-              </div>
-            </div>
-          )}
-
-          {submitStatus === 'error' && (
-              <div className="contact__status contact__status--error">
-                <FaExclamationTriangle />
-              <div>
-                  <h4>Failed to Send</h4>
-                  <p>Please try again or contact me directly.</p>
-              </div>
-            </div>
-          )}
-
-            {/* Form */}
-          <form ref={form} onSubmit={handleSubmit} className="contact__form">
-              <div className="contact__form-row">
-                <div className="contact__form-group">
-                  <label htmlFor="name">Your Name</label>
-                <input
-                  type="text"
-                  id="name"
-                  name="name"
-                  value={formData.name}
-                  onChange={handleInputChange}
-                  onBlur={handleInputBlur}
-                    placeholder="John Doe"
-                    className={`contact__input ${getFieldStatus('name')}`}
-                  disabled={isSubmitting}
-                />
-              {touched.name && errors.name && (
-                    <span className="contact__error">{errors.name}</span>
-              )}
-            </div>
-
-                <div className="contact__form-group">
-              <label htmlFor="email">Your Email</label>
-                <input
-                  type="email"
-                  id="email"
-                  name="email"
-                  value={formData.email}
-                  onChange={handleInputChange}
-                  onBlur={handleInputBlur}
-                    placeholder="john@example.com"
-                    className={`contact__input ${getFieldStatus('email')}`}
-                  disabled={isSubmitting}
-                />
-                  {touched.email && errors.email && (
-                    <span className="contact__error">{errors.email}</span>
-                  )}
+            {/* Form Interface */}
+            <div className="contact-hub__form-wrap">
+              {submitStatus && (
+                <div className={`contact-hub__status contact-hub__status--${submitStatus}`}>
+                  <div className="contact-hub__status-icon">
+                    {submitStatus === 'success' ? <FaCheckCircle /> : <FaExclamationTriangle />}
+                  </div>
+                  <div className="contact-hub__status-text">
+                    <h4>{submitStatus === 'success' ? 'Transmission Successful' : 'Transmission Failure'}</h4>
+                    <p>{submitStatus === 'success' ? 'Your data packet has been received.' : 'Packet loss detected. Please retry.'}</p>
+                  </div>
                 </div>
-            </div>
+              )}
 
-              <div className="contact__form-group">
-              <label htmlFor="message">Your Message</label>
-                <textarea
-                  id="message"
-                  name="message"
-                  value={formData.message}
-                  onChange={handleInputChange}
-                  onBlur={handleInputBlur}
-                  rows="5"
-                  placeholder="Tell me about your project..."
-                  className={`contact__input contact__textarea ${getFieldStatus('message')}`}
+              <form ref={form} onSubmit={handleSubmit} className="contact-hub__form">
+                <div className="contact-hub__form-grid">
+                  <div className="contact-hub__form-group">
+                    <label className="contact-hub__bp-code">USER_ID</label>
+                    <input
+                      type="text"
+                      name="name"
+                      value={formData.name}
+                      onChange={handleInputChange}
+                      onBlur={handleInputBlur}
+                      placeholder="Ident Name"
+                      className={`contact-hub__input ${getFieldStatus('name')}`}
+                      disabled={isSubmitting}
+                    />
+                  </div>
+
+                  <div className="contact-hub__form-group">
+                    <label className="contact-hub__bp-code">COMM_CHANNEL</label>
+                    <input
+                      type="email"
+                      name="email"
+                      value={formData.email}
+                      onChange={handleInputChange}
+                      onBlur={handleInputBlur}
+                      placeholder="Access Email"
+                      className={`contact-hub__input ${getFieldStatus('email')}`}
+                      disabled={isSubmitting}
+                    />
+                  </div>
+                </div>
+
+                <div className="contact-hub__form-group">
+                  <label className="contact-hub__bp-code">TRANS_DATA</label>
+                  <textarea
+                    name="message"
+                    value={formData.message}
+                    onChange={handleInputChange}
+                    onBlur={handleInputBlur}
+                    rows="4"
+                    placeholder="Enter project directives..."
+                    className={`contact-hub__input contact-hub__textarea ${getFieldStatus('message')}`}
+                    disabled={isSubmitting}
+                  ></textarea>
+                </div>
+
+                <button 
+                  type="submit" 
+                  className={`contact-hub__submit ${isSubmitting ? 'contact-hub__submit--loading' : ''}`}
                   disabled={isSubmitting}
-                ></textarea>
-              {touched.message && errors.message && (
-                  <span className="contact__error">{errors.message}</span>
-              )}
+                >
+                  <div className="contact-hub__submit-inner">
+                    {isSubmitting ? (
+                      <FaSpinner className="contact-hub__spinner" />
+                    ) : (
+                      <>
+                        <span className="contact-hub__submit-text">Launch Transmission</span>
+                        <BsSend className="contact-hub__submit-icon" />
+                      </>
+                    )}
+                  </div>
+                  <div className="contact-hub__submit-glow"></div>
+                </button>
+              </form>
             </div>
 
-            <button 
-              type="submit" 
-                className={`contact__submit ${isSubmitting ? 'contact__submit--loading' : ''}`}
-                disabled={isSubmitting}
-            >
-              {isSubmitting ? (
-                <>
-                    <FaSpinner className="contact__spinner" />
-                  Sending...
-                </>
-              ) : (
-                  <>
-                    Send Message
-                    <BsSend />
-                  </>
-              )}
-            </button>
-          </form>
+            {/* Blueprint Decorative Accents */}
+            <div className="contact-hub__bp-accents">
+              <div className="contact-hub__bp-corner"></div>
+              <div className="contact-hub__bp-corner"></div>
+              <div className="contact-hub__bp-corner"></div>
+              <div className="contact-hub__bp-corner"></div>
+            </div>
           </div>
         </div>
       </div>

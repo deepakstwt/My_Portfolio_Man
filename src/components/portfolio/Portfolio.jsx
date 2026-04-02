@@ -202,18 +202,44 @@ const categories = ["All", "Full Stack", "iOS", "Data"];
 const ProjectAccordionItem = ({ project, index, isOpen, onToggle, onHoverOpen, onOpenModal }) => {
   const contentId = useId();
   const itemNumber = String(index + 1).padStart(2, "0");
+  const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
+  const [isHovered, setIsHovered] = useState(false);
+
+  const handleMouseMove = (e) => {
+    const rect = e.currentTarget.getBoundingClientRect();
+    setMousePos({
+      x: e.clientX - rect.left,
+      y: e.clientY - rect.top
+    });
+  };
 
   return (
     <div
-      className={`portfolio__acc-item ${isOpen ? "portfolio__acc-item--open" : ""}`}
+      className={`portfolio__acc-item ${isOpen ? "portfolio__acc-item--open" : ""} ${isHovered ? "portfolio__acc-item--hovered" : ""}`}
       style={{ "--delay": `${index * 0.06}s` }}
-      onMouseEnter={onHoverOpen}
+      onMouseEnter={() => {
+        setIsHovered(true);
+      }}
+      onMouseLeave={() => setIsHovered(false)}
+      onMouseMove={handleMouseMove}
     >
+      {/* Floating Image Preview */}
+      <div 
+        className="portfolio__acc-preview"
+        style={{
+          left: `${mousePos.x}px`,
+          top: `${mousePos.y}px`,
+          opacity: isHovered && !isOpen ? 1 : 0,
+          transform: `translate(-50%, -50%) scale(${isHovered && !isOpen ? 1 : 0.8})`
+        }}
+      >
+        <img src={project.image} alt={project.title} />
+      </div>
+
       <button
         type="button"
         className="portfolio__acc-summary"
         onClick={onToggle}
-        onFocus={onHoverOpen}
         aria-expanded={isOpen}
         aria-controls={contentId}
       >
@@ -225,7 +251,13 @@ const ProjectAccordionItem = ({ project, index, isOpen, onToggle, onHoverOpen, o
             {project.featured && <span className="portfolio__acc-badge">Featured</span>}
           </div>
           <p className="portfolio__acc-subtitle">{project.subtitle}</p>
-          <p className="portfolio__acc-summaryline">{project.brief}</p>
+          <div className="portfolio__acc-tags" aria-label="Tech tags">
+            {project.tags.slice(0, 3).map((t) => (
+              <span key={t} className="portfolio__acc-tag-small">
+                {t}
+              </span>
+            ))}
+          </div>
           </div>
         </div>
 
@@ -243,44 +275,60 @@ const ProjectAccordionItem = ({ project, index, isOpen, onToggle, onHoverOpen, o
         aria-hidden={!isOpen}
       >
         <div className="portfolio__acc-detailsInner">
-          <div className="portfolio__acc-tags" aria-label="Tech tags">
-            {project.tags.slice(0, 5).map((t) => (
-              <span key={t} className="portfolio__acc-tag">
-                {t}
-              </span>
-            ))}
-          </div>
+          <div className="portfolio__acc-content">
+            <div className="portfolio__acc-image-wrapper">
+              <img src={project.image} alt={project.title} className="portfolio__acc-image" />
+              <div className="portfolio__acc-stats">
+                {project.stats && Object.entries(project.stats).map(([key, value]) => (
+                  <div key={key} className="portfolio__acc-stat">
+                    <span className="portfolio__acc-stat-value">{value}</span>
+                    <span className="portfolio__acc-stat-key">{key}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+            <div className="portfolio__acc-info">
+              <div className="portfolio__acc-tags-full" aria-label="Full tech tags">
+                {project.tags.map((t) => (
+                  <span key={t} className="portfolio__acc-tag">
+                    {t}
+                  </span>
+                ))}
+              </div>
 
-          <p className="portfolio__acc-brief">{project.description}</p>
+              <p className="portfolio__acc-description">{project.description}</p>
 
-          <div className="portfolio__acc-actions">
-            <a
-              href={project.github}
-              className="portfolio__acc-link"
-              target="_blank"
-              rel="noreferrer"
-              onClick={(e) => e.stopPropagation()}
-            >
-              {project.github.includes("drive.google.com") ? (
-                <>
-                  <HiOutlineExternalLink /> Demo
-                </>
-              ) : (
-                <>
-                  <BsGithub /> Code
-                </>
-              )}
-            </a>
+              <div className="portfolio__acc-actions">
+                <a
+                  href={project.github}
+                  className="portfolio__acc-link"
+                  target="_blank"
+                  rel="noreferrer"
+                  onClick={(e) => e.stopPropagation()}
+                >
+                  {project.github.includes("drive.google.com") ? (
+                    <>
+                      <HiOutlineExternalLink /> Demo
+                    </>
+                  ) : (
+                    <>
+                      <BsGithub /> Code
+                    </>
+                  )}
+                </a>
 
-            <button type="button" className="portfolio__acc-btn" onClick={onOpenModal}>
-              View details <BsArrowUpRight />
-            </button>
+                <button type="button" className="portfolio__acc-btn-premium" onClick={onOpenModal}>
+                  Deep Dive <BsArrowUpRight />
+                </button>
+              </div>
+            </div>
           </div>
         </div>
       </div>
     </div>
   );
 };
+
 
 const Portfolio = () => {
   const [selectedProject, setSelectedProject] = useState(null);
@@ -402,7 +450,6 @@ const Portfolio = () => {
             index={index}
             isOpen={expandedId === project.id}
             onToggle={() => setExpandedId((prev) => (prev === project.id ? null : project.id))}
-            onHoverOpen={() => setExpandedId(project.id)}
             onOpenModal={(e) => {
               e.stopPropagation();
               handleProjectClick(project);

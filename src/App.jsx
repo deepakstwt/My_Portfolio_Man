@@ -11,10 +11,13 @@ import Footer from "./components/footer/Footer";
 import { ThemeProvider } from "./context/ThemeContext";
 import ThemeToggle from "./components/theme/ThemeToggle";
 
+import Cursor from "./components/cursor/Cursor";
+
 const App = () => {
   return (
     <ThemeProvider>
         <div className="app-container">
+      <Cursor />
       <Header />
       <Nav />
       <About />
@@ -28,5 +31,6 @@ const App = () => {
     </ThemeProvider>
   );
 };
+
 
 export default App;

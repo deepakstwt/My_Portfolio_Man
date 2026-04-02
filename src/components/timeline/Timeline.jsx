@@ -117,98 +117,106 @@ const timelineData = [
   }
 ];
 
-const TimelineCard = ({ item, index, isVisible, isExpanded, onToggle }) => {
+const TimelineItem = ({ item, index, isExpanded, onToggle }) => {
   const contentId = useId();
+  const itemNumber = String(index + 1).padStart(2, "0");
 
   return (
     <div 
-      className={`timeline__card ${isVisible ? 'timeline__card--visible' : ''} ${item.completed ? 'timeline__card--completed' : ''} ${item.upcoming ? 'timeline__card--upcoming' : ''}`}
+      className={`timeline__leaf ${isExpanded ? 'timeline__leaf--active' : ''}`}
       style={{ '--delay': `${index * 0.15}s`, '--accent': item.color }}
     >
-      {/* Timeline Node */}
-      <div className="timeline__node">
-        <div className="timeline__node-icon" style={{ background: item.color }}>
-          {item.icon}
-        </div>
-        <div className="timeline__node-line"></div>
-        </div>
-        
-      {/* Card Content */}
-      <div className={`timeline__card-content ${isExpanded ? 'timeline__card-content--expanded' : ''}`}>
+      {/* The Branch Connector */}
+      <div className="timeline__branch">
+        <div className="timeline__branch-dot"></div>
+        <div className="timeline__branch-line"></div>
+      </div>
+
+      <div className="timeline__leaf-content">
         <button
           type="button"
-          className="timeline__summary"
+          className="timeline__leaf-header"
+          onClick={onToggle}
           aria-expanded={isExpanded}
           aria-controls={contentId}
-          onClick={onToggle}
         >
-          <div className="timeline__summary-left">
-            {/* Date Badge */}
-            <div className="timeline__date">
-              <span className="timeline__year">{item.year}</span>
-              <span className="timeline__month">{item.month}</span>
-            </div>
-
-            {/* Header */}
-            <div className="timeline__header">
-              <h3 className="timeline__title">{item.title}</h3>
-              <div className="timeline__meta">
-                <span className="timeline__org">{item.organization}</span>
-                <span className="timeline__location">{item.location}</span>
+          <div className="timeline__leaf-meta">
+            <span className="timeline__leaf-index">{itemNumber}</span>
+            <div className="timeline__leaf-title-group">
+              <span className="timeline__leaf-date">{item.month} {item.year}</span>
+              <div className="timeline__leaf-heading">
+                <h3 className="timeline__leaf-title">{item.title}</h3>
+                <span className="timeline__leaf-org">| {item.organization}</span>
               </div>
             </div>
           </div>
-
-          <div className="timeline__summary-right">
-            <div className="timeline__peek">
-              <span className="timeline__peek-label">Highlights</span>
-              <span className="timeline__peek-count">{item.highlights.length}</span>
+          
+          <div className="timeline__leaf-actions">
+            <div className={`timeline__leaf-indicator ${isExpanded ? 'timeline__leaf-indicator--open' : ''}`}>
+              <span className="timeline__indicator-line"></span>
+              <span className="timeline__indicator-line"></span>
             </div>
-            <span className={`timeline__chevron ${isExpanded ? 'timeline__chevron--open' : ''}`} aria-hidden="true">
-              <BsArrowRight />
-            </span>
           </div>
         </button>
 
         <div
           id={contentId}
-          className={`timeline__details ${isExpanded ? 'timeline__details--open' : ''}`}
+          className={`timeline__leaf-details ${isExpanded ? 'timeline__leaf-details--open' : ''}`}
           role="region"
           aria-hidden={!isExpanded}
         >
-          <div className="timeline__details-inner">
-            {/* Description */}
-            <p className="timeline__description">{item.description}</p>
-
-            {/* Highlights */}
-            <div className="timeline__highlights">
-              {item.highlights.map((highlight, idx) => (
-                <div key={idx} className="timeline__highlight">
-                  <BsCheckCircleFill className="timeline__highlight-icon" />
-                  <span>{highlight}</span>
+          <div className="timeline__leaf-details-inner">
+            <div className="timeline__schematic">
+              <div className="timeline__schematic-desc">
+                <div className="timeline__blueprint-label">Context \& Description</div>
+                <p className="timeline__description-text">{item.description}</p>
+                
+                <div className="timeline__metric-grid">
+                  {item.highlights.filter(h => h.includes('%') || h.includes('+')).map((h, i) => {
+                    const match = h.match(/(\+?\d+%?)/);
+                    const val = match ? match[1] : h.split(' ').pop();
+                    const label = h.replace(val, '').trim();
+                    return (
+                      <div key={i} className="timeline__metric-node">
+                        <span className="timeline__metric-value">{val}</span>
+                        <span className="timeline__metric-tag">{label}</span>
+                      </div>
+                    );
+                  })}
                 </div>
-              ))}
+              </div>
+
+              <div className="timeline__schematic-highlights">
+                <div className="timeline__blueprint-label">Execution \& Impact</div>
+                <div className="timeline__highlight-tree">
+                  {item.highlights.map((highlight, idx) => (
+                    <div key={idx} className="timeline__highlight-node" style={{ '--idx': idx }}>
+                      <div className="timeline__node-connector"></div>
+                      <span className="timeline__node-text">{highlight}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
             </div>
 
-            {/* Status Badge */}
-            {item.completed && (
-              <div className="timeline__status timeline__status--completed">
-                <BsCheckCircleFill />
-                Completed
+            <div className="timeline__leaf-footer">
+              <div className="timeline__type-badge" style={{ background: `${item.color}15`, color: item.color, borderColor: `${item.color}30` }}>
+                {item.icon}
+                <span>{item.type}</span>
               </div>
-            )}
-            {item.upcoming && (
-              <div className="timeline__status timeline__status--upcoming">
-                <FaChartLine />
-                Upcoming
+              <div className="timeline__location-stamp">
+                <span className="timeline__stamp-label">Origin:</span>
+                <span className="timeline__stamp-value">{item.location}</span>
               </div>
-            )}
+            </div>
           </div>
         </div>
       </div>
     </div>
   );
 };
+
+
 
 const Timeline = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -282,19 +290,18 @@ const Timeline = () => {
       </div>
 
       {/* Timeline Container */}
-      <div className="container timeline__container">
-        <div className="timeline__track">
-          {filteredData.map((item, index) => (
-            <TimelineCard 
-              key={item.id}
-              item={item}
-              index={index}
-              isVisible={isVisible}
-              isExpanded={expandedId === item.id}
-              onToggle={() => setExpandedId(prev => (prev === item.id ? null : item.id))}
-            />
-          ))}
-        </div>
+      <div className="timeline__tree">
+        <div className="timeline__trunk"></div>
+        {filteredData.map((item, index) => (
+          <TimelineItem 
+            key={item.id}
+            item={item}
+            index={index}
+            isExpanded={expandedId === item.id}
+            onToggle={() => setExpandedId(prev => (prev === item.id ? null : item.id))}
+          />
+        ))}
+      </div>
 
         {/* Summary Stats */}
         <div className="timeline__stats">
@@ -312,10 +319,10 @@ const Timeline = () => {
             <span className="timeline__stat-number">2+</span>
             <span className="timeline__stat-label">Years Coding</span>
           </div>
-        </div>
       </div>
     </section>
   );
 };
+
 
 export default Timeline; 

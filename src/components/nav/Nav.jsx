@@ -108,33 +108,34 @@ const Nav = () => {
     };
   }, [isMobileMenuOpen]);
 
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 50);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
     <>
-      {/* Desktop Navigation */}
-      <nav className={`nav-desktop ${isExpanded ? 'nav-desktop--expanded' : ''}`}>
-        {/* Toggle Button */}
-        <button 
-          className="nav-toggle"
-          onClick={toggleExpanded}
-          aria-label={isExpanded ? "Collapse navigation" : "Expand navigation"}
-        >
-          <HiOutlineMenuAlt2 />
-        </button>
-
-        {/* Nav Items */}
-        <div className="nav-items">
-        {navItems.map((item) => (
-          <a
-            key={item.href}
-            href={item.href}
-            onClick={(e) => handleNavClick(item.href, e)}
-            className={activeNav === item.href ? "active" : ""}
-            data-tooltip={item.label}
-          >
-              <span className="nav-icon">{item.icon}</span>
-              <span className="nav-label">{item.label}</span>
-          </a>
-        ))}
+      {/* Desktop Navigation - Horizontal Top Floating Bar */}
+      <nav className={`nav-desktop ${isScrolled ? 'nav-desktop--scrolled' : ''}`}>
+        <div className="nav-container">
+          <div className="nav-items">
+            {navItems.map((item) => (
+              <a
+                key={item.href}
+                href={item.href}
+                onClick={(e) => handleNavClick(item.href, e)}
+                className={activeNav === item.href ? "active" : ""}
+              >
+                  <span className="nav-icon">{item.icon}</span>
+                  <span className="nav-label">{item.label}</span>
+              </a>
+            ))}
+          </div>
         </div>
       </nav>
 

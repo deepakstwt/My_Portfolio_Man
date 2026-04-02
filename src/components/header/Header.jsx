@@ -7,6 +7,7 @@ import { FaPlay } from "react-icons/fa";
 const Header = () => {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [isLoaded, setIsLoaded] = useState(false);
+  const [isExpanded, setIsExpanded] = useState(false);
   const heroRef = useRef(null);
 
   useEffect(() => {
@@ -26,7 +27,7 @@ const Header = () => {
     return () => window.removeEventListener('mousemove', handleMouseMove);
   }, []);
 
-  const roles = ["Full Stack Developer", "Open Source Contributor"];
+  const roles = ["Full Stack Developer", "iOS Developer", "AI/ML Enthusiast"];
   const [currentRole, setCurrentRole] = useState(0);
 
   useEffect(() => {
@@ -37,7 +38,7 @@ const Header = () => {
   }, [roles.length]);
 
   return (
-    <header id="home" ref={heroRef} className={`hero ${isLoaded ? 'hero--loaded' : ''}`}>
+    <header id="home" ref={heroRef} className={`hero ${isLoaded ? 'hero--loaded' : ''} ${isExpanded ? 'hero--expanded' : ''}`}>
       {/* Animated Background */}
       <div className="hero__bg">
         <div className="hero__grid"></div>
@@ -54,7 +55,7 @@ const Header = () => {
         <div className="hero__glow hero__glow--3"></div>
       </div>
 
-      {/* Floating AI/ML Keywords */}
+      {/* Floating AI/ML Keywords - More subtle */}
       <div className="hero__floating-words">
         <span className="hero__float-word hero__float-word--1">AI</span>
         <span className="hero__float-word hero__float-word--2">ML</span>
@@ -66,10 +67,9 @@ const Header = () => {
         <span className="hero__float-word hero__float-word--8">Neural</span>
       </div>
 
-
       <div className="container hero__container">
         {/* Status Badge */}
-        <div className="hero__status">
+        <div className="hero__status glass-card">
           <span className="hero__status-dot"></span>
           <span>Available for opportunities</span>
         </div>
@@ -89,112 +89,64 @@ const Header = () => {
             </span>
           </h1>
 
-          {/* Main Role */}
-          <div className="hero__main-role">
-            <span className="hero__role-primary">Software Developer</span>
-          </div>
+          {/* Interactive Toggle */}
+          <button 
+            className={`hero__reveal-btn glass-card ${isExpanded ? 'hero__reveal-btn--active' : ''}`}
+            onClick={() => setIsExpanded(!isExpanded)}
+            aria-label={isExpanded ? "Show Less" : "Show More Details"}
+          >
+            <span className="hero__reveal-label">
+              {isExpanded ? "Simplify" : "Explore Identity"}
+            </span>
+            <span className="hero__reveal-icon">
+              {isExpanded ? "−" : "+"}
+            </span>
+          </button>
 
-          {/* Role Carousel */}
-          <div className="hero__role-wrapper">
-            <div className="hero__role-carousel">
-              {roles.map((role, index) => (
-                <span 
-                  key={role}
-                  className={`hero__role ${index === currentRole ? 'hero__role--active' : ''}`}
+          {/* Hidden/Revealed Content */}
+          <div className={`hero__identity-reveal ${isExpanded ? 'hero__identity-reveal--open' : ''}`}>
+            <div className="hero__reveal-inner">
+              <div className="hero__main-role">
+                <span className="hero__role-primary">Software Developer</span>
+              </div>
+
+              <div className="hero__role-wrapper">
+                <div className="hero__role-carousel">
+                  {roles.map((role, index) => (
+                    <span 
+                      key={role}
+                      className={`hero__role ${index === currentRole ? 'hero__role--active' : ''}`}
+                    >
+                      {role}
+                    </span>
+                  ))}
+                </div>
+              </div>
+
+              <div className="hero__cta">
+
+                <a href="#portfolio" className="hero__btn hero__btn--primary">
+                  <span className="hero__btn-text">View My Work</span>
+                  <span className="hero__btn-icon"><FaPlay /></span>
+                </a>
+                <a 
+                  href="/Deepak_Prajapati.pdf" 
+                  download="Deepak_Prajapati_Resume.pdf"
+                  className="hero__btn hero__btn--secondary"
                 >
-                  {role}
-                </span>
-              ))}
-            </div>
-          </div>
-
-          <p className="hero__description">
-            Building exceptional <strong>full-stack platforms</strong> and{" "}
-            <strong>AI-powered solutions</strong> using GenAI, LLMs, and RAG pipelines 
-            that merge beautiful design with powerful functionality. Currently transforming 
-            ideas into reality at <em className="hero__location">Greater Noida, India</em>.
-          </p>
-
-          {/* CTA Buttons */}
-          <div className="hero__cta">
-            <a href="#portfolio" className="hero__btn hero__btn--primary">
-              <span className="hero__btn-text">View My Work</span>
-              <span className="hero__btn-icon">
-                <FaPlay />
-              </span>
-            </a>
-            <a 
-              href="/Deepak_Prajapati.pdf" 
-              download="Deepak_Prajapati_Resume.pdf"
-              className="hero__btn hero__btn--secondary"
-            >
-              <span className="hero__btn-text">Download CV</span>
-              <svg className="hero__btn-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                <path d="M12 5v14M19 12l-7 7-7-7"/>
-              </svg>
-            </a>
-          </div>
-
-          {/* Social Links */}
-          <div className="hero__socials">
-            <span className="hero__socials-label">Connect with me</span>
-            <div className="hero__socials-links">
-              <a 
-                href="mailto:deepakprajapatiproplus@gmail.com" 
-                target="_blank" 
-                rel="noreferrer"
-                className="hero__social"
-                aria-label="Email"
-              >
-                <HiOutlineMail />
-              </a>
-              <a 
-                href="https://www.linkedin.com/in/deepak-prajapati123/" 
-                target="_blank" 
-                rel="noreferrer"
-                className="hero__social"
-                aria-label="LinkedIn"
-              >
-                <BsLinkedin />
-              </a>
-              <a 
-                href="https://github.com/deepakstwt" 
-                target="_blank" 
-                rel="noreferrer"
-                className="hero__social"
-                aria-label="GitHub"
-              >
-                <BsGithub />
-              </a>
+                  <span className="hero__btn-text">Resume</span>
+                  <svg className="hero__btn-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                    <path d="M12 5v14M19 12l-7 7-7-7"/>
+                  </svg>
+                </a>
+              </div>
             </div>
           </div>
         </div>
 
-        {/* Stats */}
-        <div className="hero__stats">
-          <div className="hero__stat">
-            <span className="hero__stat-number">7+</span>
-            <span className="hero__stat-label">Projects</span>
-          </div>
-          <div className="hero__stat-divider"></div>
-          <div className="hero__stat">
-            <span className="hero__stat-number">3+</span>
-            <span className="hero__stat-label">Internships</span>
-          </div>
-          <div className="hero__stat-divider"></div>
-          <div className="hero__stat">
-            <span className="hero__stat-number">2+</span>
-            <span className="hero__stat-label">Years</span>
-          </div>
-        </div>
 
-        {/* Scroll Indicator */}
-        <a href="#about" className="hero__scroll">
-          <span className="hero__scroll-text">Scroll</span>
-          <div className="hero__scroll-icon">
-            <BsArrowDownShort />
-          </div>
-        </a>
+
+
       </div>
     </header>
   );

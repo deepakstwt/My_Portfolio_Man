@@ -78,72 +78,105 @@ const Experience = () => {
     return () => observer.disconnect();
   }, []);
 
-  const allSkills = Object.values(skillsData).flatMap(cat => cat.skills);
+  const [activeCategory, setActiveCategory] = useState(null);
+
+  // Group skills for the hub
+  const hubCategories = [
+    { key: 'languages', ...skillsData.languages, size: 'large' },
+    { key: 'frontend', ...skillsData.frontend, size: 'medium' },
+    { key: 'backend', ...skillsData.backend, size: 'medium' },
+    { key: 'tools', ...skillsData.tools, size: 'tall' }
+  ];
 
   return (
     <section 
       id="experience" 
-      className={`skills ${isVisible ? 'skills--visible' : ''}`} 
+      className={`skills-hub ${isVisible ? 'skills-hub--visible' : ''}`} 
       ref={sectionRef}
     >
-      {/* Section Header */}
-      <div className="skills__header">
-        <span className="skills__label">
-          <span className="skills__label-icon">🛠</span>
-          Technical Expertise
-        </span>
-        <h2 className="skills__title">
-          Skills & <span className="skills__title-gradient">Technologies</span>
-        </h2>
-        <p className="skills__subtitle">
-          Technologies I work with to bring ideas to life
-        </p>
-              </div>
+      {/* Background Schematic */}
+      <div className="skills-hub__schematic">
+        <div className="skills-hub__grid"></div>
+        <div className="skills-hub__circles"></div>
+      </div>
 
-      {/* Skills Grid */}
-      <div className="container skills__container">
-        {Object.entries(skillsData).map(([key, category], catIndex) => (
-          <div 
-            key={key} 
-            className="skills__category"
-            style={{ '--delay': `${catIndex * 0.1}s` }}
-          >
-            <div className="skills__category-header">
-              <span className="skills__category-icon">{category.icon}</span>
-              <h3 className="skills__category-title">{category.title}</h3>
-              </div>
-            <div className="skills__category-items">
-              {category.skills.map((skill, skillIndex) => (
-                <div 
-                  key={skill.name} 
-                  className="skills__item"
-                  style={{ '--skill-delay': `${(catIndex * 0.1) + (skillIndex * 0.05)}s` }}
-                >
-                  <span className="skills__item-icon">{skill.icon}</span>
-                  <span className="skills__item-name">{skill.name}</span>
-              </div>
-              ))}
-              </div>
+      <div className="container skills-hub__container">
+        {/* Section Header */}
+        <div className="skills-hub__header">
+          <div className="skills-hub__label">
+            <span className="skills-hub__label-tag">Technical Arsenal</span>
+            <span className="skills-hub__label-line"></span>
           </div>
-        ))}
+          <h2 className="skills-hub__title">
+            Mastery & <span className="skills-hub__title-gradient">Tooling</span>
+          </h2>
+          <p className="skills-hub__subtitle">
+            An overview of the technologies I deploy to architect high-performance digital experiences
+          </p>
         </div>
 
-      {/* All Skills Cloud */}
-      <div className="skills__cloud">
-        <p className="skills__cloud-label">Full Stack</p>
-        <div className="skills__cloud-items">
-          {allSkills.map((skill, index) => (
-            <span 
-              key={skill.name} 
-              className="skills__cloud-item"
-              style={{ '--cloud-delay': `${index * 0.03}s` }}
+        {/* The Bento Hub */}
+        <div className="skills-hub__bento">
+          {hubCategories.map((cat, idx) => (
+            <div 
+              key={cat.key}
+              className={`skills-hub__module skills-hub__module--${cat.size}`}
+              onMouseEnter={() => setActiveCategory(cat.key)}
+              onMouseLeave={() => setActiveCategory(null)}
+              style={{ '--idx': idx }}
             >
-              {skill.icon}
-              {skill.name}
-            </span>
+              <div className="skills-hub__module-inner">
+                {/* Visual Flair */}
+                <div className="skills-hub__module-bg">
+                  <div className="skills-hub__pattern"></div>
+                </div>
+                
+                <div className="skills-hub__module-header">
+                  <div className="skills-hub__cat-info">
+                    <span className="skills-hub__cat-icon">{cat.icon}</span>
+                    <h3 className="skills-hub__cat-title">{cat.title}</h3>
+                  </div>
+                  <span className="skills-hub__cat-count">{cat.skills.length} units</span>
+                </div>
+
+                <div className="skills-hub__skill-list">
+                  {cat.skills.map((skill, sIdx) => (
+                    <div 
+                      key={skill.name} 
+                      className="skills-hub__skill-tag"
+                      style={{ '--sIdx': sIdx }}
+                    >
+                      <span className="skills-hub__skill-icon">{skill.icon}</span>
+                      <span className="skills-hub__skill-name">{skill.name}</span>
+                    </div>
+                  ))}
+                </div>
+
+                {/* Technical Label */}
+                <div className="skills-hub__blueprint-info">
+                  <span className="skills-hub__bp-code">SYS-MOD-{idx + 1}</span>
+                  <div className="skills-hub__bp-line"></div>
+                </div>
+              </div>
+            </div>
           ))}
+
+          {/* Central Hub Detail (Static or context aware) */}
+          <div className="skills-hub__core">
+            <div className="skills-hub__core-sphere">
+              <div className="skills-hub__core-ring"></div>
+              <div className="skills-hub__core-ring"></div>
+              <div className="skills-hub__core-ring"></div>
+              <FaBrain className="skills-hub__core-icon" />
+            </div>
+            <div className="skills-hub__core-text">
+              <span className="skills-hub__core-label">System Intelligence</span>
+              <span className="skills-hub__core-status">Online // Operational</span>
+            </div>
+          </div>
         </div>
       </div>
+
     </section>
   );
 };
